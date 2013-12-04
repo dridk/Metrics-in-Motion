@@ -1,0 +1,38 @@
+//-Layouts
+- var _LayoutIDCounter = _LayoutIDCounter || 0;
+- function _genetareUniqueLayoutID(element){_LayoutIDCounter++;return 'ui-layout-'+element+_LayoutIDCounter;}
+- function _LayoutCompileStyle(options){}
+//-Window
+mixin window(options)
+    - options = options || {}
+    - options.id = options.id || 'ui-layout-window-main'
+    - options.class = options.class || 'ui-layout-window-main'
+    .ui-layout-window(class=options.class id=options.id)
+        block
+
+//-Panel
+mixin panel(options)
+    - options = options || {}
+    - options.orientation = options.orientation || 'center'
+    - options.style = options.style || 'light'
+    - options.style = 'ui-style-' + options.style
+    - options.id = options.id || _genetareUniqueLayoutID('panel')
+    - options.class = options.class || ''
+    - options.class = ('ui-layout-panel '+('ui-layout-'+options.orientation)+' '+options.style+' '+options.class)
+    div(class=options.class id=options.id)(attributes)
+        block
+
+//-Positioners
+mixin row(options)
+    - options = options || {}
+    - options.id = options.id || _genetareUniqueLayoutID('row')
+    - options.class = options.class || ''
+    .ui-layout-row(class=options.class id=options.id)(attributes)
+        block
+
+mixin column(options)
+    - options = options || {}
+    - options.id = options.id || _genetareUniqueLayoutID('column')
+    - options.class = options.class || ''
+    .ui-layout-column(class=options.class id=options.id)(attributes)
+        block

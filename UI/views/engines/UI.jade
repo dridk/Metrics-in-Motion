@@ -1,0 +1,152 @@
+//UI Widgets
+- var _WidgetIDCounter = _WidgetIDCounter || 0;
+- var _WidgetGroupName = '';
+- function _genetareUniqueWidgetID(element){_WidgetIDCounter++;return 'ui-widget-'+element+_WidgetIDCounter;}
+- function _setDefaultOptions(element,options){options = options || {};options.id = options.id || _genetareUniqueWidgetID(element);options.name = options.name || options.id;options.class = options.class || '';options.size = options.size || 'default';return options;}
+- function _compileClasses(options){return (options.class!=undefined?('ui-size-'+options.size):'')+' '+(options.span!=undefined?('ui-layout-span'+options.span):'')+' '+options.class;}
+
+mixin dialog(options)
+    - options = _setDefaultOptions('dialog',options)
+    - options.title = options.title || 'Error'
+    .ui-widget-dialog(attributes class=_compileClasses(options) id=options.id title=options.title)
+        block
+
+mixin label(options)
+    - options = _setDefaultOptions('label',options)
+    - options.text = options.text || 'Label'
+    - options.for = options.for || ''
+    label.ui-label(attributes class=_compileClasses(options) id=options.id for=options.for)=options.text
+        block
+
+mixin icon(options)
+    - options = _setDefaultOptions('icon',options)
+    - options.name = options.name || 'home'
+    - options.class = 'glyphicons '+options.name+' '+options.class
+    span.ui-icon(attributes class=_compileClasses(options) id=options.id)
+
+mixin button(options)
+    - options = _setDefaultOptions('button',options)
+    - options.text = options.text || 'Button'
+    - options.tooltip = options.tooltip || ''
+    - options.name = options.name || options.id
+    if options.label
+        - options.label.for = options.label.for || options.name
+        +label(options.label)
+    button.ui-widget-button(attributes name=options.name class=_compileClasses(options) id=options.id title=options.tooltip)=options.text
+//-        if options.icon
+//-            +icon(options.icon)
+
+mixin buttonGroup(options)
+    - options = _setDefaultOptions('buttonGroup',options)
+    if options.label
+        - options.label.for = options.label.for || options.name
+        +label(options.label)
+    .ui-widget-buttongroup(attributes class=_compileClasses(options) id=options.id)
+        block
+
+mixin textbox(options)
+    - options = _setDefaultOptions('textinput',options)
+    - options.text = options.text || ''
+    - options.type = options.type || 'text'
+    - options.tooltip = options.tooltip || ''
+    - options.name = options.name || options.id
+    if options.label
+        - options.label.for = options.label.for || options.name
+        +label(options.label)
+    input.ui-widget-textinput(attributes type=options.type name=options.name value=options.text class=_compileClasses(options))
+
+mixin emailbox(options)
+    - options = _setDefaultOptions('textinput',options)
+    - options.class = 'ui-widget-email '+options.class
+    - options.type = 'email'
+    +textbox(options)
+
+mixin passwordbox(options)
+    - options = _setDefaultOptions('textinput',options)
+    - options.class = 'ui-widget-password '+options.class
+    - options.type = 'password'
+    +textbox(options)
+
+mixin numberbox(options)
+    +spinner(options)
+mixin spinner(options)
+    - options = _setDefaultOptions('textinput',options)
+    - options.span = options.span || 1
+    - options.class = 'ui-widget-spinner '+options.class
+    - options.type = 'text'
+    +textbox(options)
+    
+mixin datebox(options)
+    - options = _setDefaultOptions('textinput',options)
+    - options.class = 'ui-widget-date '+options.class
+    - options.type = 'date'
+    +textbox(options)    
+
+mixin checkbox(options)
+    - options = _setDefaultOptions('checkbox',options)
+    - options.tooltip = options.tooltip || ''
+    if options.label
+        - options.label = _setDefaultOptions('label',options.label)
+        - options.label.text = options.label.text || 'Label'
+        label.ui-widget-label(attributes class=_compileClasses(options.label) id=options.label.id)
+            input.ui-widget-checkbox(attributes type='checkbox' name=options.name id=options.id class=_compileClasses(options))
+            =options.label.text
+    else
+        input.ui-widget-checkbox(attributes type='checkbox' name=options.name id=options.id class=_compileClasses(options))
+
+mixin radio(options)
+    - options = _setDefaultOptions('radio',options)
+    - options.tooltip = options.tooltip || ''
+    - if(_WidgetGroupName!="") options.name = _WidgetGroupName
+    if options.label
+        - options.label = _setDefaultOptions('label',options.label)
+        - options.label.text = options.label.text || 'Label'
+        label.ui-widget-label(attributes class=_compileClasses(options.label) id=options.label.id)
+            input.ui-widget-radio(attributes type='radio' name=options.name id=options.id class=_compileClasses(options))
+            =options.label.text
+    else
+        input.ui-widget-radio(attributes type='radio' name=options.name id=options.id class=_compileClasses(options))
+
+mixin radiogroup(options)
+    - options = _setDefaultOptions('radioGroup',options)
+    - _WidgetGroupName = options.name
+    if options.label
+        - options.label.for = options.label.for || options.name
+        +label(options.label)
+    block
+
+mixin tabbar(options)
+    - options = _setDefaultOptions('tabbar',options)
+    - options.tabs = options.tabs || []
+    .ui-widget-tabbar(attributes class=_compileClasses(options) id=options.id)
+        ul
+            for tab in options.tabs
+                li
+                    a(href='#'+tab.id)=tab.title
+        block
+
+
+mixin tab(options)
+    - options = _setDefaultOptions('tab',options)
+    - options.scroll = options.scroll || false
+    - if(options.scroll){
+    - options.scrollDirection = options.scrollDirection || 'vertical'
+    - options.class += " " + "ui-layout-scroll"+options.scrollDirection
+    - }
+    .ui-widget-tab(attributes class=_compileClasses(options) id=options.id)
+        block
+
+
+mixin scrollview(options)
+    - options = _setDefaultOptions('scrollview',options)
+    - options.direction = options.direction || 'vertical'
+    .ui-widget-scrollview(attributes class=_compileClasses(options) id=options.id)
+        .ui-widget-scrollview-scrollpane
+            block
+
+
+mixin listview(options)
+    - options = _setDefaultOptions('listview',options)
+    +scrollview(options)
+        
+    

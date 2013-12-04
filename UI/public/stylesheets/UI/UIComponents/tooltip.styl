@@ -1,0 +1,41 @@
+@import 'nib'
+@import '../../shared/variables'
+//- UI Tooltip
+.ui-tooltip
+    font-size: $widget-text-size
+    padding: 5px 8px
+    position: absolute
+    z-index: 9999
+    max-width: 300px
+    color: $widget-light-tooltip-text
+    background: $widget-light-tooltip-base
+    .ui-tooltip-arrow
+        position: relative
+        background: $widget-light-tooltip-base
+        border: 1px solid $widget-light-tooltip-base
+        &:after
+        &:before
+            bottom: 100%
+            left: 50%
+            border: solid transparent
+            content: " "
+            height: 0
+            width: 0
+            position: absolute
+            pointer-events: none
+        &:after
+            border-bottom-color: $widget-light-tooltip-base
+            border-width: 12px
+            margin-left: -12px
+        &.bottom
+            bottom:-16px
+            top: auto
+        &.top
+            top:-16px
+            bottom: auto
+        &.left
+            left: 20%
+            right: auto
+        &.right
+            right: 20%
+            left: auto

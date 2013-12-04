@@ -1,0 +1,9 @@
+- var baseID = 'ui-dialog-addview'
++dialog({id:baseID,title:'Add New Dashboard'})
+    +tabbar({id:baseID+'-tabbar',tabs:[{id:baseID+'-tab1',title:'Properties'},{id:baseID+'-tab2',title:'Widgets'},{id:baseID+'-tab3',title:'Sharing'}]})
+        +tab({id:baseID+'-tab1'})
+            include modalView/properties
+        +tab({id:baseID+'-tab2', scroll:true})
+            include modalView/widgets
+        +tab({id:baseID+'-tab3'})
+            include modalView/sharing

@@ -1,0 +1,54 @@
+extends ../layouts/layout
+block title
+    title Widget Sampler Page
+block scripts
+    include jsnipets/sampler
+block content
+    +panel({orientation:'west',style:'dark',class:'ui-layout-padded'})
+        +column()
+            +row()
+                +label({text:'Dark Side',size:'big'})
+            +row()
+                +button({tooltip:'Test button',class:'ui-layout-fill-width'})
+    +panel({style:'light'})
+        +panel({orientation:'inner-north'})
+            +row()
+                +label({text:'Light Side',size:'big'})
+                
+        +panel({orientation:'inner-south'})
+            +row()
+                p Footer
+                
+        +panel({orientation:'inner-center',class:'ui-layout-padded'})
+            +column()
+                +row()
+                    +button({label:{text:'Default button:',span:2},icon:{name:'circle_plus',class:'ui-layout-align-right'},tooltip:'Test button',span:2})
+                +row()
+                    +buttonGroup({label:{text:'Button group:',span:2}})
+                        +button({text:'Add Chart',icon:{name:'circle_plus'},tooltip:'Add new chart to view'})
+                        +button({text:'Share View',icon:{name:'share_alt'},tooltip:'Share view with group members'})
+                        +button({text:'Font Size',icon:{name:'font'},tooltip:'Change font size'})
+                +row()
+                    +label({text:'Check Boxes:',size:'heavy'})
+                +row()
+                    ul
+                        li 
+                            +checkbox({label:{text:'Item 1'}})
+                        li  
+                            +checkbox({label:{text:'Item 2'}})(checked)
+                        li  
+                            +checkbox({label:{text:'Item 3'}})
+                +row()
+                    +textbox({label:{text:'Sample Textbox:'}})
+                +row()
+                    +label({text:'Radio Buttons:',size:'heavy'})
+                +row()
+                    ul
+                        li
+                            +radio({label:{text:'Item 1'}})
+                        li  
+                            +radio({label:{text:'Item 2'}})(checked)
+                        li  
+                            +radio({label:{text:'Item 3'}})
+                +row()
+                    include components/modalAddVIew

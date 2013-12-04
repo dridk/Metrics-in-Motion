@@ -1,0 +1,41 @@
+//-include ../blocks/sidebar
+extends ../layouts/layout
+block title
+    title Metrics in Motion
+block scripts
+    script(src='/javascripts/mimui.system.js')
+    script(src='/javascripts/mimui.drivers.js')
+    script(src='/javascripts/jquery.mimui.views.js')
+    script(src='/javascripts/jquery.mimui.sidebar.js')
+    include jsnipets/main
+block content
+    +panel({orientation:'west',style:'dark',class:'ui-main-sidebar',id:'ui-main-sidebar'})
+        +panel({orientation:'inner-north',style:'dark',class:'ui-layout-padded'})
+            +row()
+                +label({id:'content-logo',text:'MiM',size:'big'})
+        +panel({orientation:'inner-south',style:'dark',class:'ui-layout-padded'})
+            +row()
+                +button({text:'Add View',id:'content-add-view',class:'ui-layout-fill-width',icon:{name:'circle_plus'}})
+        +panel({orientation:'inner-center',style:'dark',id:'content-views-list'})
+                
+    +panel({style:'light',class:'ui-main-view',id:'ui-main-view'})
+        +panel({orientation:'inner-north',class:'ui-layout-padded ui-main-header',id:'ui-main-header'})
+            +row()
+                +column()
+                    +label({text:'View Title',size:'big',id:'content-view-title'})
+                +column()
+                    +buttonGroup()
+                            +button({text:'Add Chart',icon:{name:'circle_plus'},tooltip:'Add new chart to view'})
+                            +button({text:'Share View',icon:{name:'share_alt'},tooltip:'Share view with group members'})
+                            +button({text:'Download View',icon:{name:'download'},tooltip:'Download current view as an image'})
+                +column({class:'ui-layout-attach-top ui-layout-attach-right'})
+                    +button({text: user.firstName+'\'s Profile',icon:{name:'user'},tooltip:'User Settings'})
+                
+        +panel({orientation:'inner-south',class:'ui-layout-padded ui-main-footer',id:'ui-main-footer'})
+            +row()
+                +label({id:'content-copyright', class:'ui-layout-attach-right', size:'small', text:'Copyright. All right reserved.'})
+                
+        +panel({orientation:'inner-center',class:'ui-layout-padded ui-main-gallery',id:'content-gallery'})
+            p Placeholder
+    include components/modalError
+    include components/modalAddVIew

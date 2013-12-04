@@ -1,0 +1,18 @@
+include ../engines/layous
+include ../engines/UI
+doctype 5
+html
+        head
+                block heads
+                        block title
+                                title Program Name
+                        link(rel='shortcut icon', sizes='196x196' href='nice-highres.png')
+                        block meta
+                                meta(name='description', content='')
+                                meta(name='keywords', content='')
+                                meta(name='viewport', content='width=device-width; initial-scale=1.0')
+                                meta(name='mobile-web-app-capable', content='yes')
+        body.ui-layout-window
+            include header
+            block content
+            include footer

@@ -1,0 +1,18 @@
+include ../engines/UI.jade
+mixin contentViewsList(list)
+    - list = list || []
+    each item, index in list
+        +contentViewsListItem(item,index==0)
+
+mixin contentViewsListItem(item,selected)
+    - item = item || {}
+    - item.key = item.key || ''
+    - item.title = item.title || ''
+    - item.description = item.description || ''
+    - selected = selected?'selected':''
+    div.content-views-list-item(data-viewkey=item.key class=selected)
+        +label({size:'heavy'})
+            item.title
+        if item.description != ''
+            +label({size:'small'})
+                item.description

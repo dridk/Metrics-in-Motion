@@ -1,0 +1,24 @@
+script.
+    $( document ).ready(function() {
+        $('body').layout();
+        $( ".ui-widget-button" ).button();
+        $( ".ui-widget-buttongroup" ).buttonset();
+        $( ".ui-widget-checkbox" ).checkbox();
+        $( ".ui-widget-spinner" ).spinner();
+        $( ".ui-widget-tabbar" ).tabs();
+        $( ".ui-widget-scrollview" ).scrollbar({orientation: 'vertical'});
+        $( "#ui-dialog-addview" ).dialog({
+            width: 600,
+            height: 400,
+            modal: true,
+            autoOpen: true,
+            buttons: {
+                Cancel: function() {
+                    $( this ).dialog( "close" );
+                },
+                Save: function(){
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+    });
