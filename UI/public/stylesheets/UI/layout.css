@@ -33,3 +33,6 @@
 .ui-layout-span5{width:250}
 .ui-layout-span6{width:300}
 #content-view-list{min-height:350px}
+#ui-main-header{padding-bottom:10px}
+#content-gallery{padding-top:10px;padding-bottom:10px}
+#ui-main-footer{padding-top:10px}

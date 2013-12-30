@@ -23,6 +23,8 @@ block content
             +row()
                 +column()
                     +label({text:'View Title',size:'big',id:'content-view-title'})
+                +column()                    
+                    +button({text:'Edit',icon:{name:'circle_plus'},tooltip:'Edit view'})
                 +column()
                     +buttonGroup()
                             +button({text:'Add Chart',icon:{name:'circle_plus'},tooltip:'Add new chart to view'})
@@ -30,6 +32,8 @@ block content
                             +button({text:'Download View',icon:{name:'download'},tooltip:'Download current view as an image'})
                 +column({class:'ui-layout-attach-top ui-layout-attach-right'})
                     +button({text: user.firstName+'\'s Profile',icon:{name:'user'},tooltip:'User Settings'})
+            +row()
+                +label({text:'View Description',id:'content-view-description'})
                 
         +panel({orientation:'inner-south',class:'ui-layout-padded ui-main-footer',id:'ui-main-footer'})
             +row()

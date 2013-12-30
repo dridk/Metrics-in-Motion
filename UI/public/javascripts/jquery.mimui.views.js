@@ -14,6 +14,7 @@
             refreshInterval: 10000,
             viewElementName: "content-view",
             viewTitleElementName: "content-view-title",
+            viewDescriptionElementName: "content-view-description",
             widgetElementName: "content-view-widget",
             alertObject: "#errorMessage",
             gridSettings: {
@@ -87,6 +88,7 @@
             $(el).show();
             //And set the right view title:
             $(plugin.settings.viewTitleElementName.toID()).html(mimUI.views.getDataCurrent().title);
+            $(plugin.settings.viewDescriptionElementName.toID()).html(mimUI.views.getDataCurrent().description);
         };
         var _uiViewHide = function (el) {
             $(el).hide();
