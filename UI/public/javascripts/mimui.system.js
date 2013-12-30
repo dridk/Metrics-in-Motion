@@ -38,6 +38,17 @@ var mimUI = {
             });
         }
     },
+    //User and user settings
+    user: {
+        _data: [],
+        //Getters & setters
+        getData: function () {
+            return mimUI.user._data;
+        },
+        setData: function (data) {
+            mimUI.user._data = data;
+        }
+    },
     //Views settings and Data:
     views: {
         //Internal vars
@@ -159,7 +170,20 @@ var mimUI = {
     dialogs: {
         error: 0,
         alert: 0,
-        addView: 0,
-        addWidget: 0
+        viewDialog: 0,
+        widgetDialog: 0,
+        userDialog: 0
+    },
+    //Sidebar containers
+    sidebars: {
+        left: 0,
+        header: 0,
+        central: 0,
+        footer: 0
+    },
+    //Setup all things here
+    init: function(){
+        //TODO Move all the ajax stuff here.
+        
     }
 };
