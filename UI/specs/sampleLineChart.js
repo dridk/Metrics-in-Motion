@@ -57,6 +57,27 @@
           "FSMC": "47.25"
         }
       ]
+    },
+    {
+      "name": "style",
+      "values":[
+	{
+	  "key":"S&P/TSX Composite Index Total Return",
+	  "color":"#0000cc"
+	},	
+	{
+	  "key":"DEX Universe Bond Index Total Return",
+	  "color":"#cc0000"
+	},	
+	{
+	  "key":"Mortgage Portfolio",
+	  "color":"#ff9900"
+	},
+	{
+	  "key":"FSMC",
+	  "color":"#00cc00"
+	}
+      ]
     }
   ],
   "scales": [
