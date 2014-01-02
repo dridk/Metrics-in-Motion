@@ -9,7 +9,11 @@ String.prototype.toClass = function(){
 /****************************************************/
 var mimUI = {
     //Internal
-    
+    options: {
+        baseURL: "http://localhost:3000",
+        viewsURL: "/users/32/views",
+        widgetsURL: "",
+    },
     //Generc
     alert: function(message,title){
         $(mimUI.dialogs.alert)
@@ -26,18 +30,7 @@ var mimUI = {
         }
     },
     //Comunicator
-    comunicator: {
-        request: function(server, onSuccess, onFalure){
-            return $.ajax({
-                type: 'get',
-                url: server,
-                dataType: 'json',
-                async: true,
-                success: onSuccess,
-                falure: onFalure
-            });
-        }
-    },
+    comunicator: 0, //Object stub
     //User and user settings
     users: 0, //object stub
     //Views settings and Data:

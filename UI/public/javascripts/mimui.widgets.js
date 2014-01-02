@@ -51,4 +51,5 @@ if(mimUI!=undefined){
             return widgets;
         }
     };
-}
+
+}else{alert("Could not find MiM system object.");}

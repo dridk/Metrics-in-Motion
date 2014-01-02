@@ -60,4 +60,5 @@ if(mimUI!=undefined){
             return mimUI.views.getDataByKey(key).widgets;
         }
     };
-}
+
+}else{alert("Could not find MiM system object.");}

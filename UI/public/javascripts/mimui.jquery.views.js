@@ -9,14 +9,13 @@
     $.fn.mimuiView = function (options) {
 
         var defaults = {
-            widgetURL: "http://localhost:3000/users/32/widgets",
+            widgetURL: "",
             widgetUpdatesURL: "",
             refreshInterval: 10000,
             viewElementName: "content-view",
             viewTitleElementName: "content-view-title",
             viewDescriptionElementName: "content-view-description",
             widgetElementName: "content-view-widget",
-            alertObject: "#errorMessage",
             gridSettings: {
                 widget_base_dimensions: [380, 300],
                 widget_margins: [10, 10],
@@ -93,7 +92,7 @@
         var _uiViewHide = function (el) {
             $(el).hide();
         };
-        var _uiCreatWidget = function (data, index) {
+        var _uiCreateWidget = function (data, index) {
             var element =  $('<li/>')
                 .data('key', data.id)
                 .attr('data-row', data.position.row)
@@ -122,7 +121,7 @@
             var container = $('<ul/>')
                 .addClass(plugin.settings.viewElementName + '-wrapper');
                 mimUI.widgets.each(function (dataw, iw) {
-                    $(container).append(_uiCreatWidget(dataw, iw));
+                    $(container).append(_uiCreateWidget(dataw, iw));
                 },data.id);
                 $(element).append(container);
                 

@@ -12,4 +12,5 @@ if(mimUI!=undefined){
             mimUI.user._data = data;
         }
     };
-}
+
+}else{alert("Could not find MiM system object.");}

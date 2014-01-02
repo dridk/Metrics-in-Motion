@@ -9,8 +9,8 @@
     $.fn.mimuiSidebar = function (options) {
 
         var defaults = {
-            viewsURL: "http://localhost:3000/users/32/views",
-            viewsUpdatesURL: "http://localhost:3000/users/32/views/updates",
+            viewsURL: "",
+            viewsUpdatesURL: "",
             refreshInterval: 10000,
             itemElementName: "content-views-list-item",
             onViewSwitch: function (key) {
@@ -19,10 +19,9 @@
             onViewsRefreshed: function (data) {
                 return data;
             },
-            onUpdateReceived: function (key) {
+            onUpdateReceived: function (data) {
                 return data;
-            },
-            alertObject: "#errorMessage",
+            }
         }
 
         var plugin = {};
@@ -32,7 +31,7 @@
 
         var init = function () {
             plugin.settings = $.extend({}, defaults, options);
-            _comunicatorRefreshViews(); //First call to set up the sidebar
+            //_comunicatorRefreshViews(); //First call to set up the sidebar
             //_comunicatorScheduleUpdate(); //Schedule first update
         }
 
@@ -44,39 +43,39 @@
         //--------------------------------
         //comunicator:
         //--------------------------------
-        var _comunicatorRefreshViews = function () {
-            mimUI.comunicator.request(
-                plugin.settings.viewsURL,
-                _comunicatorRefreshSuccess,
-                _comunicatorRefreshFalure);
-        };
-        var _comunicatorScheduleUpdate = function () {
-            setInterval(_comunicatorGetUpdates, plugin.settings.refreshInterval);
-        };
-        var _comunicatorGetUpdates = function () {
-            mimUI.comunicator.request(
-                plugin.settings.viewsUpdatesURL,
-                _comunicatorUpdateSuccess,
-                _comunicatorRefreshFalure);
-        };
-        var _comunicatorRefreshSuccess = function (data) {
-            if (!data.success) {
-                _comunicatorRefreshFalure(data);
-                return;
-            }
-            mimUI.views.setTotal(data.total);
-            mimUI.views.setData(data.result);
-            _uiRender();
-            plugin.settings.onViewsRefreshed(data);
-        };
-        var _comunicatorRefreshFalure = function (data) {
-            alert("Falied to communicate to server.");
-        };
-        var _comunicatorUpdateSuccess = function (data) {
-            //TODO
-            alert('Got update');
-            plugin.settings.onUpdateReceived(data);
-        };
+//        var _comunicatorRefreshViews = function () {
+//            mimUI.comunicator.request(
+//                plugin.settings.viewsURL,
+//                _comunicatorRefreshSuccess,
+//                _comunicatorRefreshFalure);
+//        };
+//        var _comunicatorScheduleUpdate = function () {
+//            setInterval(_comunicatorGetUpdates, plugin.settings.refreshInterval);
+//        };
+//        var _comunicatorGetUpdates = function () {
+//            mimUI.comunicator.request(
+//                plugin.settings.viewsUpdatesURL,
+//                _comunicatorUpdateSuccess,
+//                _comunicatorRefreshFalure);
+//        };
+//        var _comunicatorRefreshSuccess = function (data) {
+//            if (!data.success) {
+//                _comunicatorRefreshFalure(data);
+//                return;
+//            }
+//            mimUI.views.setTotal(data.total);
+//            mimUI.views.setData(data.result);
+//            _uiRender();
+//            plugin.settings.onViewsRefreshed(data);
+//        };
+//        var _comunicatorRefreshFalure = function (data) {
+//            alert("Falied to communicate to server.");
+//        };
+//        var _comunicatorUpdateSuccess = function (data) {
+//            //TODO
+//            alert('Got update');
+//            plugin.settings.onUpdateReceived(data);
+//        };
         //--------------------------------
         //UI renderer
         //--------------------------------
@@ -130,8 +129,8 @@
 
         //Public functions
         //--------------------------------
-        plugin.refresh = _comunicatorRefreshViews();
-        plugin.redraw = _uiRender();
+        //plugin.refresh = _comunicatorRefreshViews;
+        plugin.redraw = _uiRender;
         plugin.getContainer = function () {
             return plugin.el;
         };

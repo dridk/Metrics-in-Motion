@@ -23,16 +23,17 @@ mixin panel(options)
         block
 
 //-Positioners
-mixin row(options)
-    - options = options || {}
-    - options.id = options.id || _genetareUniqueLayoutID('row')
-    - options.class = options.class || ''
-    .ui-layout-row(class=options.class id=options.id)(attributes)
-        block
 
 mixin column(options)
     - options = options || {}
     - options.id = options.id || _genetareUniqueLayoutID('column')
     - options.class = options.class || ''
     .ui-layout-column(class=options.class id=options.id)(attributes)
+        block
+
+mixin row(options)
+    - options = options || {}
+    - options.id = options.id || _genetareUniqueLayoutID('row')
+    - options.class = options.class || ''
+    .ui-layout-row(class=options.class id=options.id)(attributes)
         block
