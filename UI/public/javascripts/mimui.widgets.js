@@ -21,9 +21,10 @@ if(mimUI!=undefined){
         _total: 0,
         //Public functions
         each: function(fn,key){
-            for (var i = 0; i < mimUI.widgets._data.length; i++) {
-                var widget = mimUI.widgets._data[i];
-                if(key==undefined||widget.isInView(key))fn(widget,i);
+            var data = mimUI.views.getWidgets(key);
+            for (var i = 0; i < data.length; i++) {
+                var widget = data[i];
+                fn(widget,i);
             }
         },
         //Getters & setters

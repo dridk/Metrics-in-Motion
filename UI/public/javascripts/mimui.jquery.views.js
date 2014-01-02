@@ -48,38 +48,38 @@
         //--------------------------------
         //comunicator:
         //--------------------------------
-        var _comunicatorRefreshWidgets = function () {
-            mimUI.comunicator.request(
-                plugin.settings.widgetURL,
-                _comunicatorRefreshSuccess,
-                _comunicatorRefreshFalure);
-        };
-        var _comunicatorScheduleUpdate = function () {
-            setInterval(_comunicatorGetUpdates, plugin.settings.refreshInterval);
-        };
-        var _comunicatorGetUpdates = function () {
-            mimUI.comunicator.request(
-                plugin.settings.widgetUpdatesURL,
-                _comunicatorUpdateSuccess,
-                _comunicatorRefreshFalure);
-        };
-        var _comunicatorRefreshSuccess = function (data) {
-            if (!data.success) {
-                _comunicatorRefreshFalure(data);
-                return;
-            }
-            mimUI.widgets.setTotal(data.total);
-            mimUI.widgets.setData(data.result);
-            _uiRender();
-        };
-        var _comunicatorRefreshFalure = function (data) {
-            alert("Falied to communicate to server.");
-        };
-        var _comunicatorUpdateSuccess = function (data) {
-            //TODO
-            alert('Got update');
-            plugin.settings.onUpdateReceived(data);
-        };
+//        var _comunicatorRefreshWidgets = function () {
+//            mimUI.comunicator.request(
+//                plugin.settings.widgetURL,
+//                _comunicatorRefreshSuccess,
+//                _comunicatorRefreshFalure);
+//        };
+//        var _comunicatorScheduleUpdate = function () {
+//            setInterval(_comunicatorGetUpdates, plugin.settings.refreshInterval);
+//        };
+//        var _comunicatorGetUpdates = function () {
+//            mimUI.comunicator.request(
+//                plugin.settings.widgetUpdatesURL,
+//                _comunicatorUpdateSuccess,
+//                _comunicatorRefreshFalure);
+//        };
+//        var _comunicatorRefreshSuccess = function (data) {
+//            if (!data.success) {
+//                _comunicatorRefreshFalure(data);
+//                return;
+//            }
+//            mimUI.widgets.setTotal(data.total);
+//            mimUI.widgets.setData(data.result);
+//            _uiRender();
+//        };
+//        var _comunicatorRefreshFalure = function (data) {
+//            alert("Falied to communicate to server.");
+//        };
+//        var _comunicatorUpdateSuccess = function (data) {
+//            //TODO
+//            alert('Got update');
+//            plugin.settings.onUpdateReceived(data);
+//        };
         //--------------------------------
         //UI renderer
         //--------------------------------
@@ -146,7 +146,7 @@
 
         //Public functions
         //--------------------------------
-        plugin.refresh = plugin.viewsRefreshConnector;
+//        plugin.refresh = plugin.viewsRefreshConnector;
         plugin.redraw = _uiRender;
         plugin.getContainer = function () {
             return plugin.el;

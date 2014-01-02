@@ -51,12 +51,14 @@ if(mimUI!=undefined){
             mimUI.views._current = key;
         },
         getDataByKey: function (key) {
+            key = key || mimUI.views._current;
             return mimUI.views._data[mimUI.views._getIndexByKey(key)];
         },
         getDataCurrent: function(){
             return mimUI.views.getDataByKey(mimUI.views.getCurrent());
         },
         getWidgets: function(key){
+            key = key || mimUI.views._current;
             return mimUI.views.getDataByKey(key).widgets;
         }
     };

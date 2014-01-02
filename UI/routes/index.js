@@ -34,21 +34,7 @@ exports.userViews = function (req, res) {
     //
     //        }]
     //    };
-    var widgets = [
-        {
-            id: 1,
-            sourceID: 1,
-            title: "Widget title",
-            description: "Widget Description",
-            position: {
-                row: 1,
-                col: 1
-            },
-            size: {
-                width: 1,
-                height: 1
-            },
-            spec: {
+    var spec = {
                 "scales": [
                     {
                         "name": "x",
@@ -212,188 +198,7 @@ exports.userViews = function (req, res) {
                         }
                     }
                 ]
-            }
-        },
-        {
-            id: 2,
-            sourceID: 1,
-            title: "Widget title",
-            description: "Widget Description",
-            position: {
-                row: 1,
-                col: 1
-            },
-            size: {
-                width: 1,
-                height: 1
-            },
-            spec: {
-                "scales": [
-                    {
-                        "name": "x",
-                        "type": "time",
-                        "range": "width",
-                        "nice": "week",
-                        "domain": {
-                            "data": "table2",
-                            "field": "data.Date"
-                        }
-                    },
-                    {
-                        "name": "y",
-                        "type": "linear",
-                        "range": "height",
-                        "nice": true,
-                        "domain": {
-                            "data": "table2",
-                            "field": ["data.US", "data.Canada"]
-                        }
-                    }
-                ],
-                "axes": [
-                    {
-                        "type": "x",
-                        "scale": "x",
-                        "grid": true,
-                        "title": "Dates",
-                        "titleOffset": 40,
-                        "layer": "back",
-                        "properties": {
-                            "title": {
-                                "font": {
-                                    "value": "Segoe UI"
-                                },
-                                "fontSize": {
-                                    "value": 12
-                                },
-                                "fontWeight": {
-                                    "value": "bold"
-                                }
-                            },
-                            "labels": {
-                                "font": {
-                                    "value": "Segoe UI"
-                                },
-                                "fontSize": {
-                                    "value": 10
-                                },
-                                "dx": {
-                                    "value": 10
-                                },
-                                "angle": {
-                                    "value": 25
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "type": "y",
-                        "scale": "y",
-                        "grid": true,
-                        "title": "%",
-                        "layer": "back",
-                        "properties": {
-                            "title": {
-                                "font": {
-                                    "value": "Segoe UI"
-                                },
-                                "fontSize": {
-                                    "value": 12
-                                },
-                                "fontWeight": {
-                                    "value": "bold"
-                                }
-                            },
-                            "labels": {
-                                "font": {
-                                    "value": "Segoe UI"
-                                },
-                                "fontSize": {
-                                    "value": 10
-                                },
-                                "dx": {
-                                    "value": 10
-                                },
-                                "angle": {
-                                    "value": 25
-                                }
-                            }
-                        }
-                    }
-                ],
-                "marks": [
-                    {
-                        "type": "line",
-                        "from": {
-                            "data": "table2"
-                        },
-                        "properties": {
-                            "enter": {
-                                "interpolate": {
-                                    "value": "linear"
-                                },
-                                "x": {
-                                    "scale": "x",
-                                    "field": "data.Date"
-                                },
-                                "y": {
-                                    "scale": "y",
-                                    "field": "data.US"
-                                },
-                                "stroke": {
-                                    "value": "#0000cc"
-                                },
-                                "strokeWidth": {
-                                    "value": 2
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "type": "line",
-                        "from": {
-                            "data": "table2"
-                        },
-                        "properties": {
-                            "enter": {
-                                "interpolate": {
-                                    "value": "linear"
-                                },
-                                "x": {
-                                    "scale": "x",
-                                    "field": "data.Date"
-                                },
-                                "y": {
-                                    "scale": "y",
-                                    "field": "data.Canada"
-                                },
-                                "stroke": {
-                                    "value": "#cc0000"
-                                },
-                                "strokeWidth": {
-                                    "value": 2
-                                }
-                            }
-                        }
-                    }
-                ],
-                "data": [
-                    {
-                        "name": "table2",
-                        "format": {
-                            "type": "json",
-                            "url": "http://localhost:3000/users/32/sources/1/data",
-                            "parse": {
-                                "Date": "date",
-                                "US": "number",
-                                "Canada": "number"
-                            }
-                        }
-                    }
-                ]
-            }
-        }
-    ];
+            };
     var arr = {
         total: 2,
         success: true,
@@ -404,14 +209,76 @@ exports.userViews = function (req, res) {
                     title: "my dashboard 1",
                     description: "This my medical dashboard",
                     style: "default",
-                    widgets: widgets
+                    widgets: [
+                        {
+                        id: 1,
+                        sourceID: 1,
+                        title: "Widget 1 title",
+                        description: "Widget 1 Description",
+                        position: {
+                            row: 1,
+                            col: 1
+                        },
+                        size: {
+                            width: 1,
+                            height: 1
+                        },
+                        spec: spec
+                        },
+                        {
+                        id: 2,
+                        sourceID: 1,
+                        title: "Widget 2 title",
+                        description: "Widget 2 Description",
+                        position: {
+                            row: 1,
+                            col: 2
+                        },
+                        size: {
+                            width: 1,
+                            height: 1
+                        },
+                        spec: spec
+                        }
+                    ]
             }, {
                     id: 4,
                     user_id: 32,
                     title: "my dashboard 2",
                     description: "This my developpers dashboard",
                     style: "default",
-                    widgets: widgets
+                    widgets: [
+                        {
+                        id: 3,
+                        sourceID: 1,
+                        title: "Widget 3 title",
+                        description: "Widget 3 Description",
+                        position: {
+                            row: 1,
+                            col: 1
+                        },
+                        size: {
+                            width: 1,
+                            height: 1
+                        },
+                        spec: spec
+                        },
+                        {
+                        id: 4,
+                        sourceID: 1,
+                        title: "Widget 4 title",
+                        description: "Widget 4 Description",
+                        position: {
+                            row: 1,
+                            col: 2
+                        },
+                        size: {
+                            width: 1,
+                            height: 1
+                        },
+                        spec: spec
+                        }
+                    ]
             }
         ]
     };

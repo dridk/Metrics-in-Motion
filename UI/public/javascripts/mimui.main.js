@@ -30,8 +30,7 @@ if(mimUI!=undefined){
         });
         
         //Set up the gallery view plugin
-        mimUI.plugins.gallery = $('#content-gallery').mimuiView({            
-            widgetURL: "http://localhost:3000/users/32/widgets",
+        mimUI.plugins.gallery = $('#content-gallery').mimuiView({
             gridSettings: {
                 widget_base_dimensions: [380, 300],
                 widget_margins: [10, 10],
@@ -45,9 +44,7 @@ if(mimUI!=undefined){
             }
         });
         //Set up the sidebar plugin and connect it to the gallery plugin
-        mimUI.plugins.sidebar = $('#content-views-list').mimuiSidebar({            
-            viewsURL: "http://localhost:3000/users/32/views",
-            viewsUpdatesURL: "http://localhost:3000/users/32/views/updates",
+        mimUI.plugins.sidebar = $('#content-views-list').mimuiSidebar({
             onViewSwitch: mimUI.plugins.gallery.viewShownConnector,
             onUpdateReceived: mimUI.plugins.gallery.viewsUpdateConnector,
             onViewsRefreshed: mimUI.plugins.gallery.viewsRefreshConnector
