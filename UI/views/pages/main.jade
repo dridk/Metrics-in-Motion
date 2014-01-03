@@ -3,10 +3,15 @@ extends ../layouts/layout
 block title
     title Metrics in Motion
 block scripts
+    script(src='/javascripts/mimui.jquery.views.js')
+    script(src='/javascripts/mimui.jquery.sidebar.js')
     script(src='/javascripts/mimui.system.js')
-    script(src='/javascripts/mimui.drivers.js')
-    script(src='/javascripts/jquery.mimui.views.js')
-    script(src='/javascripts/jquery.mimui.sidebar.js')
+    script(src='/javascripts/mimui.comunicator.js')
+    script(src='/javascripts/mimui.users.js')
+    script(src='/javascripts/mimui.views.js')
+    script(src='/javascripts/mimui.sources.js')
+    script(src='/javascripts/mimui.widgets.js')
+    script(src='/javascripts/mimui.main.js')
     include jsnipets/main
 block content
     +panel({orientation:'west',style:'dark',class:'ui-main-sidebar',id:'ui-main-sidebar'})
@@ -23,7 +28,7 @@ block content
             +row()
                 +column()
                     +label({text:'View Title',size:'big',id:'content-view-title'})
-                +column()                    
+                +column()
                     +button({text:'Edit',icon:{name:'circle_plus'},tooltip:'Edit view'})
                 +column()
                     +buttonGroup()
