@@ -92,7 +92,40 @@
         var _uiViewHide = function (el) {
             $(el).hide();
         };
-        var _uiCreateWidget = function (data, index) {
+        var _uiSetupChart = function(data, el) {
+            var key = data.id;
+            var dom = el.get();
+            var spec = data.spec;
+            spec.width = plugin.settings.gridSettings.widget_base_dimensions[0]*data.size.width-spec.padding.left-spec.padding.right;
+            spec.height = plugin.settings.gridSettings.widget_base_dimensions[1]*data.size.height-40-spec.padding.top-spec.padding.bottom;
+            vg.parse.spec(spec, function(chart) {
+                  var vega = chart({el:dom[0], renderer: "canvas"});
+                  vega.update({duration:500, ease:"fade-in"});
+                  mimUI.widgets.setWidgetVega(vega,key);
+              });
+            mimUI.widgets.withSelected.setElement(dom[0]);
+            return el;
+        }
+        var _uiWidgetOnDrag = function (e, ui){
+            var el = ui.$helper.context;
+            var key = $(el).data('key');
+            console.log('STOP position: ' + ui.position.top +' '+ ui.position.left);
+        };
+        var _uiWidgetOnResize = function (e, ui, el){
+            var key = $(el).data('key');
+            mimUI.widgets.selectWidgetByKey(key);
+            var data = mimUI.widgets.getWidgetByKey(key);
+            data.size.width = $(el).attr('data-sizex');
+            data.size.height = $(el).attr('data-sizey');
+            var spec = mimUI.widgets.withSelected.getSpec();
+            var vega = mimUI.widgets.withSelected.getVega();
+            vega.width(plugin.settings.gridSettings.widget_base_dimensions[0]*data.size.width-spec.padding.left-spec.padding.right);
+            vega.height(plugin.settings.gridSettings.widget_base_dimensions[1]*data.size.height-40-spec.padding.top-spec.padding.bottom);
+            vega.update({duration:300});
+//            console.log('STOP position: ' + ui.position.top +' '+ ui.position.left);
+        };
+        var _uiCreateWidget = function (data, index) {            
+            mimUI.widgets.selectWidgetByKey(data.id);
             var element =  $('<li/>')
                 .data('key', data.id)
                 .attr('data-row', data.position.row)
@@ -103,6 +136,7 @@
                 .addClass(plugin.settings.widgetElementName);
             var elementView = $('<div/>')
                 .addClass(plugin.settings.widgetElementName + '-view');
+            elementView = _uiSetupChart(data,elementView);
             var elementTitle = $('<div/>')
                 .addClass(plugin.settings.widgetElementName + '-title')
                 .html(data.title)
@@ -136,6 +170,8 @@
             });
             
             //Setting up grid visual
+            plugin.settings.gridSettings.draggable.stop = _uiWidgetOnDrag;
+            plugin.settings.gridSettings.resize.stop = _uiWidgetOnResize;
             $('.gridster ul').gridster(plugin.settings.gridSettings).data('gridster');
             
             _uiViewShow(

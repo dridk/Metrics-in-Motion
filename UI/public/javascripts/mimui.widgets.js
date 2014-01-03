@@ -4,15 +4,21 @@
 if(mimUI!=undefined){
     mimUI.widgets = {
         //Internal vars
-        _data: [],
         _index: {},
+        _current: undefined,
         _indexData: function () {
             mimUI.widgets._index = {};
-            mimUI.widgets.each(function(data,i){
-                mimUI.widgets._index[data.id] = i;
-                data.isInView = function(viewKey){ //create helper function on each of the widgets
-                    return mimUI.views.getWidgets(viewKey).indexOf(this.id)>-1;
-                };
+            mimUI.views.each(function(data,i){
+                for (var wi = 0; wi < data.widgets.length; wi++) {
+                    var widget = data.widgets[wi];
+                    mimUI.widgets._index[widget.id] = {
+                        view: i,
+                        widget: wi,
+                        el: undefined,
+                        vega: undefined
+                                                      };
+                    
+                }
             });
         },
         _getIndexByKey: function (key) {
@@ -28,28 +34,88 @@ if(mimUI!=undefined){
             }
         },
         //Getters & setters
-        getData: function () {
-            return mimUI.widgets._data;
-        },
-        setData: function (data) {
-            mimUI.widgets._data = data;
-            mimUI.widgets._indexData();
-        },
         getTotal: function () {
-            return mimUI.widgets._total;
+            return mimUI.widgets._index.length;
         },
-        setTotal: function (total) {
-            mimUI.widgets._total = total;
+        getWidgetInView: function(view,widget){
+            return mimUI.views._data[view].widgets[widget];
         },
-        getDataByKey: function (key) {
-            return mimUI.widgets._data[mimUI.widgets._getIndexByKey(key)];
+        getWidgetByKey: function (key) {
+            return mimUI.widgets.getWidgetInView(mimUI.widgets._index[key].view,
+                                                mimUI.widgets._index[key].widget);
         },
-        getDataForCurrent: function(){
-            var widgets = [];
-            mimUI.widgets.each(function(data,i){
-                widgets.push(data);
-            },mimUI.views.getCurrent());
-            return widgets;
+        getWidgetForCurrent: function(){
+            return mimUI.views.getWidgets();
+        },
+        getWidgetElement: function(key){
+            return mimUI.widgets._index[key].el;
+        },
+        setWidgetElement: function(el,key){
+            mimUI.widgets._index[key].el = el;
+        },
+        getWidgetVega: function(key){
+            return mimUI.widgets._index[key].vega;
+        },
+        setWidgetVega: function(vega,key){
+            mimUI.widgets._index[key].vega = vega;
+        },
+        getWidgetSpec: function(key){
+            return getWidgetByKey(key).spec;
+        },
+        setWidgetSpec: function(spec,key){
+            mimUI.views._data[mimUI.widgets._index[key].view].widgets[mimUI.widgets._index[key].widget].spec = spec;
+        },
+        getWidgetPosition: function(key){
+            return getWidgetByKey(key).position;                
+        },
+        setWidgetPosition: function(position,key){
+            mimUI.views._data[mimUI.widgets._index[key].view].widgets[mimUI.widgets._index[key].widget].position = position;
+        },
+        getWidgetSize: function(key){
+            return getWidgetByKey(key).size;
+        },
+        setWidgetSize: function(size,key){
+            mimUI.views._data[mimUI.widgets._index[key].view].widgets[mimUI.widgets._index[key].widget].size = size;
+        },
+        //Updaters
+        selectWidgetByKey: function(key){
+            mimUI.widgets._current = key;
+        },
+        withSelected: {
+            getElement: function(){
+                return mimUI.widgets._index[mimUI.widgets._current].el;
+            },
+            setElement: function(el){
+                mimUI.widgets._index[mimUI.widgets._current].el = el;
+            },
+            getVega: function(){
+                return mimUI.widgets._index[mimUI.widgets._current].vega;
+            },
+            setVega: function(vega){
+                mimUI.widgets._index[mimUI.widgets._current].vega = vega;
+            },
+            getSpec: function(){
+                return mimUI.widgets.getWidgetByKey(mimUI.widgets._current).spec;
+            },
+            setSpec: function(spec){
+                var key = mimUI.widgets._current;
+                mimUI.views._data[mimUI.widgets._index[key].view].widgets[mimUI.widgets._index[key].widget].spec = spec;
+            },
+            getPosition: function(){
+                return mimUI.widgets.getWidgetByKey(mimUI.widgets._current).position;                
+            },
+            setPosition: function(position){
+                var key = mimUI.widgets._current;
+                mimUI.views._data[mimUI.widgets._index[key].view].widgets[mimUI.widgets._index[key].widget].position = position;
+            },
+            getSize: function(){
+                return mimUI.widgets.getWidgetByKey(mimUI.widgets._current).size;
+            },
+            setSize: function(size){
+                var key = mimUI.widgets._current;
+                mimUI.views._data[mimUI.widgets._index[key].view].widgets[mimUI.widgets._index[key].widget].size = size;
+            }
+            
         }
     };
 

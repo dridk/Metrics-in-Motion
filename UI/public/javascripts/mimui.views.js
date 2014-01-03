@@ -31,6 +31,7 @@ if(mimUI!=undefined){
         setData: function (data) {
             mimUI.views._data = data;
             mimUI.views._indexData();
+            mimUI.widgets._indexData();
             //TODO load last saved state from user machine, or server
             mimUI.views.setCurrent(mimUI.views._data[0].id);//Always set the current to the first one on load
         },

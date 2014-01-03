@@ -37,9 +37,13 @@ if(mimUI!=undefined){
                 extra_rows: 99,
                 extra_cols: 99,
                 helper: 'clone',
+                draggable: {
+                    stop: 0
+                },
                 resize: {
                     enabled: true,
-                    max_size: [4, 4]
+                    max_size: [4, 4],
+                    stop: 0
                 }
             }
         });

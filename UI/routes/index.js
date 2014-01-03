@@ -35,6 +35,12 @@ exports.userViews = function (req, res) {
     //        }]
     //    };
     var spec = {
+              "padding": {
+                "top": 20,
+                "left": 30,
+                "bottom": 50,
+                "right": 20
+              },
                 "scales": [
                     {
                         "name": "x",
@@ -117,12 +123,6 @@ exports.userViews = function (req, res) {
                                 },
                                 "fontSize": {
                                     "value": 10
-                                },
-                                "dx": {
-                                    "value": 10
-                                },
-                                "angle": {
-                                    "value": 25
                                 }
                             }
                         }
@@ -136,6 +136,25 @@ exports.userViews = function (req, res) {
                         },
                         "properties": {
                             "enter": {
+                                "interpolate": {
+                                    "value": "linear"
+                                },
+                                "x": {
+                                    "scale": "x",
+                                    "field": "data.Date"
+                                },
+                                "y": {
+                                    "scale": "y",
+                                    "field": "data.US"
+                                },
+                                "stroke": {
+                                    "value": "#0000cc"
+                                },
+                                "strokeWidth": {
+                                    "value": 2
+                                }
+                            },
+                            "update": {
                                 "interpolate": {
                                     "value": "linear"
                                 },
@@ -180,6 +199,25 @@ exports.userViews = function (req, res) {
                                 "strokeWidth": {
                                     "value": 2
                                 }
+                            },
+                            "update": {
+                                "interpolate": {
+                                    "value": "linear"
+                                },
+                                "x": {
+                                    "scale": "x",
+                                    "field": "data.Date"
+                                },
+                                "y": {
+                                    "scale": "y",
+                                    "field": "data.Canada"
+                                },
+                                "stroke": {
+                                    "value": "#cc0000"
+                                },
+                                "strokeWidth": {
+                                    "value": 2
+                                }
                             }
                         }
                     }
@@ -187,9 +225,9 @@ exports.userViews = function (req, res) {
                 "data": [
                     {
                         "name": "table1",
+                            "url": "http://localhost:3000/users/32/sources/1/data",
                         "format": {
                             "type": "json",
-                            "url": "http://localhost:3000/users/32/sources/1/data",
                             "parse": {
                                 "Date": "date",
                                 "US": "number",
@@ -213,8 +251,8 @@ exports.userViews = function (req, res) {
                         {
                         id: 1,
                         sourceID: 1,
-                        title: "Widget 1 title",
-                        description: "Widget 1 Description",
+                        title: "Unemployment",
+                        description: "Unemployment in US VS Canada",
                         position: {
                             row: 1,
                             col: 1
