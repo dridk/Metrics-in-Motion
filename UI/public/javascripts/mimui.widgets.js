@@ -118,8 +118,16 @@ if(mimUI!=undefined){
             setSize: function(size){
                 var key = mimUI.widgets._current;
                 mimUI.views._data[mimUI.widgets._index[key].view].widgets[mimUI.widgets._index[key].widget].size = size;
-            }
+            }            
+        },
+        //Add/Remove functionality
+        add: function(data){
             
+            //TODO notify server
+        },
+        remove: function(key){
+            
+            //TODO notify server
         }
     };
 

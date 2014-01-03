@@ -21,7 +21,6 @@ if(mimUI!=undefined){
                 _comunicatorRefreshFalure(data);
                 return;
             }
-            mimUI.views.setTotal(data.total);
             mimUI.views.setData(data.result);
             mimUI.plugins.sidebar.redraw();
             mimUI.plugins.gallery.redraw();

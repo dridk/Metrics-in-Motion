@@ -6,7 +6,7 @@ if(mimUI!=undefined){
         //Internal vars
         _data: [],
         _index: {},
-        _indexData: function () {
+        _indexData: function (sequentialy) {
             mimUI.views._index = {};
             mimUI.views.each(function(data,i){
                 mimUI.views._index[data.id] = i;
@@ -15,7 +15,6 @@ if(mimUI!=undefined){
         _getIndexByKey: function (key) {
             return mimUI.views._index[key];
         },
-        _total: 0,
         _current: undefined,
         _last: undefined,
         //Public functions
@@ -28,18 +27,17 @@ if(mimUI!=undefined){
         getData: function () {
             return mimUI.views._data;
         },
-        setData: function (data) {
-            mimUI.views._data = data;
+        setData: function (data, update) {
+            if(update){
+                mimUI.views._data.push(data);
+            }else mimUI.views._data = data;
             mimUI.views._indexData();
             mimUI.widgets._indexData();
             //TODO load last saved state from user machine, or server
-            mimUI.views.setCurrent(mimUI.views._data[0].id);//Always set the current to the first one on load
+            if(!update)mimUI.views.setCurrent(mimUI.views._data[0].id);//Always set the current to the first one on load
         },
         getTotal: function () {
-            return mimUI.views._total;
-        },
-        setTotal: function (total) {
-            mimUI.views._total = total;
+            return mimUI.views._data.length;
         },
         getCurrent: function () {
             return mimUI.views._current;
@@ -63,11 +61,13 @@ if(mimUI!=undefined){
             return mimUI.views.getDataByKey(key).widgets;
         },
         //Add/Remove functionality
-        add(data){
-            
+        add: function(data){
+            //Data is expected to have:
+            //title, description, style
+            mimUI.views.setData(data,true);
             //TODO notify server
         },
-        remove(key){
+        remove: function(key){
             
             //TODO notify server
         }
