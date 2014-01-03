@@ -61,6 +61,15 @@ if(mimUI!=undefined){
         getWidgets: function(key){
             key = key || mimUI.views._current;
             return mimUI.views.getDataByKey(key).widgets;
+        },
+        //Add/Remove functionality
+        add(data){
+            
+            //TODO notify server
+        },
+        remove(key){
+            
+            //TODO notify server
         }
     };
 

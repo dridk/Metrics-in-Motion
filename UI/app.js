@@ -42,8 +42,10 @@ if ('development' == app.get('env')) {
 
 //Routes
 app.get('/', routes.index);
+app.get('/users/32', routes.users);
 app.get('/users/32/views', routes.userViews);
 app.get('/users/32/widgets', routes.userWidgets);
+app.get('/users/32/sources/1', routes.userData);
 app.get('/users/32/sources/1/data', routes.userData);
 
 app.get('/sampler', routes.sampler);

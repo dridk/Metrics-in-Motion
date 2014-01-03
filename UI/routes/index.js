@@ -11,6 +11,17 @@ exports.index = function (req, res) {
         user: user
     });
 };
+exports.users = function (req, res) {
+    var data = {
+        success:true,
+        result: {
+            id:32,
+            username:"dridk",
+            email:"istdasklar@gmail.com"
+        }
+    };
+    res.send(data);
+};
 exports.userViews = function (req, res) {
     //    var arr = {
     //        total: 2,
