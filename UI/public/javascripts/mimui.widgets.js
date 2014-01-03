@@ -82,6 +82,10 @@ if(mimUI!=undefined){
             mimUI.widgets._current = key;
         },
         withSelected: {
+            getWidget: function(){
+                return mimUI.widgets.getWidgetInView(mimUI.widgets._index[mimUI.widgets._current].view,
+                                                    mimUI.widgets._index[mimUI.widgets._current].widget);
+            },
             getElement: function(){
                 return mimUI.widgets._index[mimUI.widgets._current].el;
             },

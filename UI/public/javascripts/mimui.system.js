@@ -1,3 +1,6 @@
+String.prototype.toNumber = function(){
+    return this*1.0;
+}
 String.prototype.toID = function(){
     return "#"+this;
 }
@@ -10,7 +13,7 @@ String.prototype.toClass = function(){
 var mimUI = {
     //Internal
     options: {
-        baseURL: "http://localhost:3000",
+        baseURL: "http://fsgin.firstswissgroup.com:3000",
         viewsURL: "/users/32/views",
         widgetsURL: "",
     },

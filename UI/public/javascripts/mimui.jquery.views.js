@@ -106,22 +106,32 @@
             mimUI.widgets.withSelected.setElement(dom[0]);
             return el;
         }
+        //When widget is dragged to a new place we notify the system
         var _uiWidgetOnDrag = function (e, ui){
             var el = ui.$helper.context;
             var key = $(el).data('key');
-            console.log('STOP position: ' + ui.position.top +' '+ ui.position.left);
+            mimUI.widgets.selectWidgetByKey(key);
+            var data = mimUI.widgets.withSelected.getWidget();
+            data.position.row = $(el).attr('data-row');
+            data.position.col = $(el).attr('data-col');
+            //TODO Notify server
+//            console.log('STOP position: ' + ui.position.top +' '+ ui.position.left);
         };
+        //When widget is resized we motify the system
         var _uiWidgetOnResize = function (e, ui, el){
             var key = $(el).data('key');
             mimUI.widgets.selectWidgetByKey(key);
-            var data = mimUI.widgets.getWidgetByKey(key);
+            var data = mimUI.widgets.withSelected.getWidget();
             data.size.width = $(el).attr('data-sizex');
             data.size.height = $(el).attr('data-sizey');
             var spec = mimUI.widgets.withSelected.getSpec();
             var vega = mimUI.widgets.withSelected.getVega();
-            vega.width(plugin.settings.gridSettings.widget_base_dimensions[0]*data.size.width-spec.padding.left-spec.padding.right);
-            vega.height(plugin.settings.gridSettings.widget_base_dimensions[1]*data.size.height-40-spec.padding.top-spec.padding.bottom);
+            //Update the chart view
+            //TODO figure a prettier way to do this here:
+            vega.width(plugin.settings.gridSettings.widget_base_dimensions[0]*data.size.width-spec.padding.left-spec.padding.right+(data.size.width*1-1)*20);
+            vega.height(plugin.settings.gridSettings.widget_base_dimensions[1]*data.size.height-40-spec.padding.top-spec.padding.bottom+(data.size.height*1-1)*20);
             vega.update({duration:300});
+            //TODO Notify server
 //            console.log('STOP position: ' + ui.position.top +' '+ ui.position.left);
         };
         var _uiCreateWidget = function (data, index) {            
@@ -200,7 +210,6 @@
             //When sidebar gets updates from server the data is sent here
         };
         plugin.viewShownConnector = function (key) {
-            //TODO
             //When views are switched in sidebar a signal is sent here
             _uiViewHide(
                 plugin.settings.viewElementName.concat(mimUI.views.getLast()).toID());

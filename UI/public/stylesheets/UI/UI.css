@@ -224,3 +224,4 @@ input.ui-button::-moz-focus-inner,button.ui-button::-moz-focus-inner{border:0;pa
 #content-gallery .content-view-widget .content-view-widget-view svg{width:100%;height:100%}
 #content-gallery .content-view-widget .content-view-widget-title{height:40px;padding:0 20px;}
 #content-gallery .content-view-widget .content-view-widget-title small{display:block;font-size:80%}
+canvas{display:block}
