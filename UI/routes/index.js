@@ -45,210 +45,9 @@ exports.userViews = function (req, res) {
     //
     //        }]
     //    };
-    var spec = {
-              "padding": {
-                "top": 20,
-                "left": 30,
-                "bottom": 50,
-                "right": 20
-              },
-                "scales": [
-                    {
-                        "name": "x",
-                        "type": "time",
-                        "range": "width",
-                        "nice": "week",
-                        "domain": {
-                            "data": "table1",
-                            "field": "data.Date"
-                        }
-                    },
-                    {
-                        "name": "y",
-                        "type": "linear",
-                        "range": "height",
-                        "nice": true,
-                        "zero": false,
-                        "domain": {
-                            "data": "table1",
-                            "field": ["data.US", "data.Canada"]
-                        }
-                    }
-                ],
-                "axes": [
-                    {
-                        "type": "x",
-                        "scale": "x",
-                        "grid": true,
-                        "title": "Dates",
-                        "titleOffset": 40,
-                        "layer": "back",
-                        "properties": {
-                            "title": {
-                                "font": {
-                                    "value": "Segoe UI"
-                                },
-                                "fontSize": {
-                                    "value": 12
-                                },
-                                "fontWeight": {
-                                    "value": "bold"
-                                }
-                            },
-                            "labels": {
-                                "font": {
-                                    "value": "Segoe UI"
-                                },
-                                "fontSize": {
-                                    "value": 10
-                                },
-                                "dx": {
-                                    "value": 10
-                                },
-                                "angle": {
-                                    "value": 25
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "type": "y",
-                        "scale": "y",
-                        "grid": true,
-                        "title": "%",
-                        "layer": "back",
-                        "properties": {
-                            "title": {
-                                "font": {
-                                    "value": "Segoe UI"
-                                },
-                                "fontSize": {
-                                    "value": 12
-                                },
-                                "fontWeight": {
-                                    "value": "bold"
-                                }
-                            },
-                            "labels": {
-                                "font": {
-                                    "value": "Segoe UI"
-                                },
-                                "fontSize": {
-                                    "value": 10
-                                }
-                            }
-                        }
-                    }
-                ],
-                "marks": [
-                    {
-                        "type": "line",
-                        "from": {
-                            "data": "table1"
-                        },
-                        "properties": {
-                            "enter": {
-                                "interpolate": {
-                                    "value": "linear"
-                                },
-                                "x": {
-                                    "scale": "x",
-                                    "field": "data.Date"
-                                },
-                                "y": {
-                                    "scale": "y",
-                                    "field": "data.US"
-                                },
-                                "stroke": {
-                                    "value": "#0000cc"
-                                },
-                                "strokeWidth": {
-                                    "value": 2
-                                }
-                            },
-                            "update": {
-                                "interpolate": {
-                                    "value": "linear"
-                                },
-                                "x": {
-                                    "scale": "x",
-                                    "field": "data.Date"
-                                },
-                                "y": {
-                                    "scale": "y",
-                                    "field": "data.US"
-                                },
-                                "stroke": {
-                                    "value": "#0000cc"
-                                },
-                                "strokeWidth": {
-                                    "value": 2
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "type": "line",
-                        "from": {
-                            "data": "table1"
-                        },
-                        "properties": {
-                            "enter": {
-                                "interpolate": {
-                                    "value": "linear"
-                                },
-                                "x": {
-                                    "scale": "x",
-                                    "field": "data.Date"
-                                },
-                                "y": {
-                                    "scale": "y",
-                                    "field": "data.Canada"
-                                },
-                                "stroke": {
-                                    "value": "#cc0000"
-                                },
-                                "strokeWidth": {
-                                    "value": 2
-                                }
-                            },
-                            "update": {
-                                "interpolate": {
-                                    "value": "linear"
-                                },
-                                "x": {
-                                    "scale": "x",
-                                    "field": "data.Date"
-                                },
-                                "y": {
-                                    "scale": "y",
-                                    "field": "data.Canada"
-                                },
-                                "stroke": {
-                                    "value": "#cc0000"
-                                },
-                                "strokeWidth": {
-                                    "value": 2
-                                }
-                            }
-                        }
-                    }
-                ],
-                "data": [
-                    {
-                        "name": "table1",
-                            "url": "http://fsgin.firstswissgroup.com:3000/users/32/sources/1/data",
-                        "format": {
-                            "type": "json",
-                            "parse": {
-                                "Date": "date",
-                                "US": "number",
-                                "Canada": "number"
-                            }
-                        }
-                    }
-                ]
-            };
+    var spec1 = {padding:{top:20,left:30,bottom:50,right:20},scales:[{name:"x",type:"time",range:"width",nice:"week",domain:{data:"table1",field:"data.Date"}},{name:"y",type:"linear",range:"height",nice:!0,zero:!1,domain:{data:"table1",field:["data.US","data.Canada"]}}],axes:[{type:"x",scale:"x",grid:!0,title:"Dates",layer:"back",properties:{title:{font:{value:"Segoe UI"},fontSize:{value:12},fontWeight:{value:"bold"}},labels:{font:{value:"Segoe UI"},fontSize:{value:10},dx:{value:10},angle:{value:25}}}},{type:"y",scale:"y",grid:!0,title:"%",layer:"back",properties:{title:{font:{value:"Segoe UI"},fontSize:{value:12},fontWeight:{value:"bold"}},labels:{font:{value:"Segoe UI"},fontSize:{value:10}}}}],marks:[{type:"line",from:{data:"table1"},properties:{enter:{interpolate:{value:"linear"},x:{scale:"x",field:"data.Date"},y:{scale:"y",field:"data.US"},stroke:{value:"#0000cc"},strokeWidth:{value:2}},update:{interpolate:{value:"linear"},x:{scale:"x",field:"data.Date"},y:{scale:"y",field:"data.US"},stroke:{value:"#0000cc"},strokeWidth:{value:2}}}},{type:"line",from:{data:"table1"},properties:{enter:{interpolate:{value:"linear"},x:{scale:"x",field:"data.Date"},y:{scale:"y",field:"data.Canada"},stroke:{value:"#cc0000"},strokeWidth:{value:2}},update:{interpolate:{value:"linear"},x:{scale:"x",field:"data.Date"},y:{scale:"y",field:"data.Canada"},stroke:{value:"#cc0000"},strokeWidth:{value:2}}}}],data:[{name:"table1",format:{type:"json",parse:{Date:"date",US:"number",Canada:"number"}}}]},
+        spec2 = {padding:{top:20,left:30,bottom:50,right:20},scales:[{name:"x",type:"time",range:"width",nice:"week",domain:{data:"table2",field:"data.Date"}},{name:"y",type:"linear",range:"height",nice:!0,zero:!1,domain:{data:"table2",field:["data.US","data.Canada"]}}],axes:[{type:"x",scale:"x",grid:!0,title:"Dates",layer:"back",properties:{title:{font:{value:"Segoe UI"},fontSize:{value:12},fontWeight:{value:"bold"}},labels:{font:{value:"Segoe UI"},fontSize:{value:10},dx:{value:10},angle:{value:25}}}},{type:"y",scale:"y",grid:!0,title:"%",layer:"back",properties:{title:{font:{value:"Segoe UI"},fontSize:{value:12},fontWeight:{value:"bold"}},labels:{font:{value:"Segoe UI"},fontSize:{value:10}}}}],marks:[{type:"line",from:{data:"table2"},properties:{enter:{interpolate:{value:"linear"},x:{scale:"x",field:"data.Date"},y:{scale:"y",field:"data.US"},stroke:{value:"#00cccc"},strokeWidth:{value:2}},update:{interpolate:{value:"linear"},x:{scale:"x",field:"data.Date"},y:{scale:"y",field:"data.US"},stroke:{value:"#00cccc"},strokeWidth:{value:2}}}},{type:"line",from:{data:"table2"},properties:{enter:{interpolate:{value:"linear"},x:{scale:"x",field:"data.Date"},y:{scale:"y",field:"data.Canada"},stroke:{value:"#ccee00"},strokeWidth:{value:2}},update:{interpolate:{value:"linear"},x:{scale:"x",field:"data.Date"},y:{scale:"y",field:"data.Canada"},stroke:{value:"#ccee00"},strokeWidth:{value:2}}}}],data:[{name:"table2",format:{type:"json",parse:{Date:"date",US:"number",Canada:"number"}}}]},
+        spec3 = {padding:{top:20,left:30,bottom:50,right:20},scales:[{name:"x",type:"time",range:"width",nice:"week",domain:{data:"table3",field:"data.Date"}},{name:"y",type:"linear",range:"height",nice:!0,zero:!1,domain:{data:"table3",field:["data.US","data.Canada"]}}],axes:[{type:"x",scale:"x",grid:!0,title:"Dates",layer:"back",properties:{title:{font:{value:"Segoe UI"},fontSize:{value:12},fontWeight:{value:"bold"}},labels:{font:{value:"Segoe UI"},fontSize:{value:10},dx:{value:10},angle:{value:25}}}},{type:"y",scale:"y",grid:!0,title:"%",layer:"back",properties:{title:{font:{value:"Segoe UI"},fontSize:{value:12},fontWeight:{value:"bold"}},labels:{font:{value:"Segoe UI"},fontSize:{value:10}}}}],marks:[{type:"line",from:{data:"table3"},properties:{enter:{interpolate:{value:"linear"},x:{scale:"x",field:"data.Date"},y:{scale:"y",field:"data.US"},stroke:{value:"#cc00cc"},strokeWidth:{value:2}},update:{interpolate:{value:"linear"},x:{scale:"x",field:"data.Date"},y:{scale:"y",field:"data.US"},stroke:{value:"#cc00cc"},strokeWidth:{value:2}}}},{type:"line",from:{data:"table3"},properties:{enter:{interpolate:{value:"linear"},x:{scale:"x",field:"data.Date"},y:{scale:"y",field:"data.Canada"},stroke:{value:"#cc6600"},strokeWidth:{value:2}},update:{interpolate:{value:"linear"},x:{scale:"x",field:"data.Date"},y:{scale:"y",field:"data.Canada"},stroke:{value:"#cc6600"},strokeWidth:{value:2}}}}],data:[{name:"table3",format:{type:"json",parse:{Date:"date",US:"number",Canada:"number"}}}]};
     var arr = {
         total: 2,
         success: true,
@@ -262,7 +61,7 @@ exports.userViews = function (req, res) {
                     widgets: [
                         {
                         id: 1,
-                        sourceID: 1,
+                        sourceID: 3,
                         title: "Unemployment",
                         description: "Unemployment in US VS Canada",
                         position: {
@@ -273,7 +72,7 @@ exports.userViews = function (req, res) {
                             width: 1,
                             height: 1
                         },
-                        spec: spec
+                        spec: spec3
                         },
                         {
                         id: 2,
@@ -288,7 +87,7 @@ exports.userViews = function (req, res) {
                             width: 1,
                             height: 1
                         },
-                        spec: spec
+                        spec: spec1
                         }
                     ]
             }, {
@@ -300,7 +99,7 @@ exports.userViews = function (req, res) {
                     widgets: [
                         {
                         id: 3,
-                        sourceID: 1,
+                        sourceID: 2,
                         title: "Widget 3 title",
                         description: "Widget 3 Description",
                         position: {
@@ -311,11 +110,11 @@ exports.userViews = function (req, res) {
                             width: 1,
                             height: 1
                         },
-                        spec: spec
+                        spec: spec2
                         },
                         {
                         id: 4,
-                        sourceID: 1,
+                        sourceID: 3,
                         title: "Widget 4 title",
                         description: "Widget 4 Description",
                         position: {
@@ -326,7 +125,7 @@ exports.userViews = function (req, res) {
                             width: 1,
                             height: 1
                         },
-                        spec: spec
+                        spec: spec3
                         }
                     ]
             }
@@ -421,11 +220,15 @@ exports.userData = function (req, res) {
     var data = [];
     var pad = Math.random()*5;
     var start = Math.floor(Math.random()*dates.length/2);
+    var dataUS = pad+Math.random()*3,
+        dataCD = pad+Math.random()*3;
     for(var i = start; i<dates.length;i++){
+        dataUS+=1-Math.random()*2;
+        dataCD+=1-Math.random()*2;
        data.push({
            "Date":dates[i],
-           "US":pad+Math.random()*3,
-           "Canada":pad+Math.random()*3
+           "US":dataUS,
+           "Canada":dataCD
        }); 
     }
     res.send(data);
