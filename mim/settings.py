@@ -120,6 +120,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'tastypie',
     'mim'
 
     # Uncomment the next line to enable admin documentation:
