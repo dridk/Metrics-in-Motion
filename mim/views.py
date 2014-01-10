@@ -12,3 +12,11 @@ class ViewList(APIView):
 		return Response(serializer.data)
 
 
+
+
+class WidgetList(APIView):
+	def get(self,request,format=None):
+		widgets = Widget.objects.all()
+		serializer = WidgetSerializer(widgets,many=True)
+		return Response(serializer.data)
+

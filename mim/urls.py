@@ -15,7 +15,10 @@ from mim.views import *
 
 urlpatterns = patterns('',
 	("^admin/", include(admin.site.urls)),
-	("^views/$", ViewList.as_view())
+	("^views/$", ViewList.as_view()),
+	("^widgets/$", WidgetList.as_view()),
+
+
 
     # Examples:
     # url(r'^$', 'mim.views.home', name='home'),
