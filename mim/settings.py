@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'tastypie',
+    'rest_framework',
     'mim'
 
     # Uncomment the next line to enable admin documentation:
@@ -155,3 +156,12 @@ LOGGING = {
         },
     }
 }
+
+
+
+# TASTYPIE CONFIGURATION 
+
+TASTYPIE_ALLOW_MISSING_SLASH = True
+
+
+

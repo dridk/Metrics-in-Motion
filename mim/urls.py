@@ -1,15 +1,22 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from mim.api import ViewResource
+from mim.views import *
+
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
-admin.autodiscover()
+# admin.autodiscover()
 
-view_resource = ViewResource()
+# v1_api = Api(api_name='v1')
+# v1_api.register(WidgetResource())
+# v1_api.register(ViewResource())
+# v1_api.register(UserResource())
+
+
 
 urlpatterns = patterns('',
 	("^admin/", include(admin.site.urls)),
-	("^api/", include(view_resource.urls))
+	("^views/$", ViewList.as_view())
+
     # Examples:
     # url(r'^$', 'mim.views.home', name='home'),
     # url(r'^mim/', include('mim.foo.urls')),
