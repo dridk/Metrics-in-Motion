@@ -4,7 +4,7 @@ from mim.views import *
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
-# admin.autodiscover()
+admin.autodiscover()
 
 # v1_api = Api(api_name='v1')
 # v1_api.register(WidgetResource())
@@ -14,9 +14,15 @@ from mim.views import *
 
 
 urlpatterns = patterns('',
-	("^admin/", include(admin.site.urls)),
-	("^views/$", ViewList.as_view()),
-	("^widgets/$", WidgetList.as_view()),
+	 ("^admin/", include(admin.site.urls)),
+	 ("^users$", UserViewSet.as_view({"get":"list"})),
+     ("^users/(?P<id>\d)$", UserViewSet.as_view({"get":"retrieve"})),
+     ("^users/(?P<id>\d)/views$", UserViewSet.as_view({"get":"list_view"})),
+     ("^users/(?P<id>\d)/views/(?P<view_id>\d)$", UserViewSet.as_view({"get":"retrieve_view"})),
+
+
+
+
 
 
 
