@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="us">
+
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI Example Page</title>
+    <link href="css/glyphicons.css" rel="stylesheet">
+    <link href="css/UI.css" rel="stylesheet">
+    <link href="css/nv.d3.css" rel="stylesheet">
+    <script src="js/d3/d3.v3.min.js"></script>
+    <script src="js/d3/vega.js"></script>
+    <script src="js/jquery/jquery-1.10.2.js"></script>
+    <script src="js/jquery/jquery-ui-1.10.4.custom.js"></script>
+    <script src="js/mim.tools.js"></script>
+    <script src="js/mim.vega.jquery.js"></script>
+    <script src="js/mim.vega.js"></script>
+    <script>
+        var data = [
+            ["USA", "Russia", "Germany", "France", "England", "Spain", "Italy", "Date"],
+            ["2032", "121", "88", "312", "381", "90", "4369", "January-13-2013"],
+            ["936", "95", "57", "160", "291", "92", "3228", "February-13-2013"],
+            ["1482", "115", "82", "448", "521", "132", "3695", "March-13-2013"],
+            ["1121", "93", "174", "405", "535", "90", "4296", "April-13-2013"],
+            ["1213", "67", "37", "404", "298", "253", "4188", "May-13-2013"],
+            ["1490", "82", "56", "197", "321", "94", "2089", "June-13-2013"],
+            ["1398", "71", "64", "145", "309", "59", "2839", "July-13-2013"],
+            ["1149", "104", "50", "165", "374", "65", "2049", "August-13-2013"],
+            ["1452", "124", "41", "206", "371", "59", "2640", "September-13-2013"],
+            ["1559", "67", "53", "149", "360", "101", "2606", "October-13-2013"],
+            ["1480", "150", "40", "283", "539", "145", "2833", "November-13-2013"],
+            ["2765", "193", "80", "596", "709", "165", "4393", "December-13-2013"]
+        ];
+        $(function() {
+            $(".column").sortable({
+                cancel: ".portlet-fixed",
+                connectWith: ".column",
+                handle: ".portlet-header",
+                cancel: ".portlet-toggle",
+                placeholder: "portlet-placeholder ui-corner-all"
+            });
+            $(".portlet")
+                .addClass("ui-widget ui-widget-content ui-helper-clearfix ui-corner-all")
+                .find(".portlet-header")
+                .addClass("ui-widget-header ui-corner-all")
+                .prepend("<span class='glyphicons circle_minus portlet-toggle'></span>");
+            $(".portlet-toggle").click(function() {
+                var icon = $(this);
+                icon.toggleClass("circle_minus circle_plus");
+                icon.closest(".portlet").find(".portlet-content").toggle();
+            });$(".portlet-toggle").click();
+            
+            mim.vega.editor.data.set(data);
+        });
+    </script>
+    <style>
+        body {
+        min-width: 520px;
+        }
+        .left_sidebar {
+            float: left;
+            width: 260px;
+        }
+        
+        .column {
+            display: block;
+            width: 240px;
+            padding: 0 10px 10px 10px;
+            background-color: #eee;
+        }
+        .portlet {
+            padding-bottom:5px;
+        }
+        .portlet-fixed .portlet-header {
+background: gray;
+}
+        .portlet-header {
+        padding: 0.2em 0.3em;
+        margin-bottom: 0;
+        position: relative;
+        }
+        .portlet-toggle {
+        position: absolute;
+        right: 8px;
+        }
+        .portlet-content {
+        padding: 0.4em;
+border: 1px solid #ccc;
+border-top: none;
+        }
+        .portlet-placeholder {
+        border: 1px dotted black;
+        margin: 0 1em 1em 0;
+        height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left_sidebar">
+            <div class="portlet portlet-fixed">
+                <div class="portlet-header">Data</div>
+                <div class="portlet-content">No options here for now</div>
+            </div>
+            <div class="column">
+                <div class="portlet">
+                    <div class="portlet-header">Cat A</div>
+                    <div class="portlet-content">
+                        <div class="row">
+                            <label>Title:</label>
+                        </div>
+                        <div class="row">
+                            <input id="vega-editor-col0-title" type="text" value="">
+                        </div>
+                        <div class="row">
+                            <label>Data Type:</label>
+                        </div>
+                        <div class="row">
+                            <select>
+                                <option value="text" selected="selected">Text</option>
+                                <option value="number">Number</option>
+                                <option value="date">Date/Time</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet">
+                    <div class="portlet-header">Cat B</div>
+                    <div class="portlet-content">No options here for now</div>
+                </div>
+                <div class="portlet">
+                    <div class="portlet-header">Cat C</div>
+                    <div class="portlet-content">No options here for now</div>
+                </div>
+            </div>
+            <div class="portlet portlet-fixed">
+                <div class="portlet-header">Chart</div>
+                <div class="portlet-content">
+                    <div class="row">
+                        <label>Title:</label>
+                    </div>
+                    <div class="row">
+                        <input id="vega-editor-chart-title" type="text" value="">
+                    </div>
+                    
+                    <div class="row">
+                        <label>Subtitle:</label>
+                    </div>
+                    <div class="row">
+                        <input id="vega-editor-chart-subtitle" type="text" value="">
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <label>Show Legend:</label>
+                        <input id="vega-editor-chart-showlegend" type="checkbox" checked="checked">
+                    </div>
+                    
+                    <div class="row">
+                        <label>Interpolate:</label>
+                        <input id="vega-editor-chart-interpolate" type="checkbox">
+                    </div>
+                </div>
+            </div>
+            <div class="portlet portlet-fixed">
+                <div class="portlet-header">Scale X</div>
+                <div class="portlet-content">
+                    <div class="row">
+                        <label>Title:</label>
+                    </div>
+                    <div class="row">
+                        <input id="vega-editor-scalex-title" type="text" value="">
+                    </div>
+                    <div class="row">
+                        <label>Show Title:</label>
+                        <input id="vega-editor-scalex-title-show" type="checkbox">
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <label>Scale Padding:</label>
+                        <input id="vega-editor-scalex-nice" type="checkbox" checked="checked">
+                    </div>
+                    <div class="row">
+                        <label>Show Zero Mark:</label>
+                        <input id="vega-editor-scalex-zero" type="checkbox" checked="checked">
+                    </div>
+                    <div class="row">
+                        <label>Show Grid:</label>
+                        <input id="vega-editor-scalex-grid" type="checkbox" checked="checked">
+                    </div>
+                                    
+                </div>
+            </div>
+            <div class="column">
+            </div>
+            <div class="portlet portlet-fixed">
+                <div class="portlet-header">Scale Y</div>
+                <div class="portlet-content">
+                
+                    <div class="row">
+                        <label>Title:</label>
+                    </div>
+                    <div class="row">
+                        <input id="vega-editor-scaley-title" type="text" value="">
+                    </div>
+                    <div class="row">
+                        <label>Show Title:</label>
+                        <input id="vega-editor-scaley-title-show" type="checkbox">
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <label>Scale Padding:</label>
+                        <input id="vega-editor-scaley-nice" type="checkbox" checked="checked">
+                    </div>
+                    <div class="row">
+                        <label>Show Zero Mark:</label>
+                        <input id="vega-editor-scaley-zero" type="checkbox" checked="checked">
+                    </div>
+                    <div class="row">
+                        <label>Show Grid:</label>
+                        <input id="vega-editor-scaley-grid" type="checkbox" checked="checked">
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+            </div>
+        </div>
+        <div class="main"></div>
+    </div>
+</body>
+
+</html>
