@@ -14,6 +14,7 @@
     <script src="js/mim.tools.js"></script>
     <script src="js/mim.vega.jquery.js"></script>
     <script src="js/mim.vega.js"></script>
+    <script src="js/mim.vega.charts.js"></script>
     <script>
         var data = [
             ["USA", "Russia", "Germany", "France", "England", "Spain", "Italy", "Date"],
@@ -47,7 +48,8 @@
                 var icon = $(this);
                 icon.toggleClass("circle_minus circle_plus");
                 icon.closest(".portlet").find(".portlet-content").toggle();
-            });$(".portlet-toggle").click();
+            });
+            //$(".portlet-toggle").click();
             
             mim.vega.editor.data.set(data);
         });
@@ -100,7 +102,12 @@ border-top: none;
         <div class="left_sidebar">
             <div class="portlet portlet-fixed">
                 <div class="portlet-header">Data</div>
-                <div class="portlet-content">No options here for now</div>
+                <div class="portlet-content">                
+                    <div class="row">
+                        <label>Data Contains Headers:</label>
+                        <input id="vega-editor-data-headers" type="checkbox" checked="checked">
+                    </div>
+                </div>
             </div>
             <div class="column">
                 <div class="portlet">
