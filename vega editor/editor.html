@@ -11,10 +11,13 @@
     <script src="js/d3/vega.js"></script>
     <script src="js/jquery/jquery-1.10.2.js"></script>
     <script src="js/jquery/jquery-ui-1.10.4.custom.js"></script>
+    <script src="js/mim.js"></script>
     <script src="js/mim.tools.js"></script>
-    <script src="js/mim.vega.jquery.js"></script>
     <script src="js/mim.vega.js"></script>
     <script src="js/mim.vega.charts.js"></script>
+    <script src="js/mim.vega.editor.UI.js"></script>
+    <script src="js/mim.vega.editor.spec.js"></script>
+    <script src="js/mim.vega.editor.data.js"></script>
     <script>
         var data = [
             ["USA", "Russia", "Germany", "France", "England", "Spain", "Italy", "Date"],
@@ -37,7 +40,10 @@
                 connectWith: ".column",
                 handle: ".portlet-header",
                 cancel: ".portlet-toggle",
-                placeholder: "portlet-placeholder ui-corner-all"
+                placeholder: "portlet-placeholder ui-corner-all",
+                update: function( event, ui ) {
+                    console.log("Sorting finished");
+                }
             });
             $(".portlet")
                 .addClass("ui-widget ui-widget-content ui-helper-clearfix ui-corner-all")
@@ -51,7 +57,7 @@
             });
             //$(".portlet-toggle").click();
             
-            mim.vega.editor.data.set(data);
+            mimUI.vega.editor.data.set(data);
         });
     </script>
     <style>
