@@ -6,13 +6,16 @@ if (mimUI != undefined) {
         parent: mimUI.vega.editor,
         guessType: function (d) {
             var _d = d + "",
-                _n = _d.toNumber(),
-                _t = new Date(_d),
                 _type = "text";
-            if (_n) _type = "number";
+            if (_d.toNumber()) _type = "number";
             //TODO Invent is sane way to guess date
-            //console.log(_t);
-            //if (_t != "Invalid Date"&& _t.getFullYear()>1900&&_t.getFullYear()<2030) _type = "date";
+            if(
+                _d.match(/^\d{1,2}[\/-]\d{1,2}[\/-]\d{2,4}$/) ||        // 01/02/2013, 01-02-2013, 1/2/13, etc.
+                _d.match(/^\w{3,10}[ \/-]\d{1,2}[ ,\/-]\d{2,4}$/) ||    // Jan 05, 2013 january 5-2013, etc.
+                _d.match(/^\w{3,10}[ \/-]\d{1,2}$/) ||                  // Jan 05, january 5, etc.
+                _d.match(/^\d{1,2}[ \/-]\w{3,10}[ ,\/-]\d{2,4}$/) ||    // 05 Jan, 2013, 5 january 2013, etc.
+                _d.match(/^\d{1,2}[ \/-]\w{3,10}$/)                     // 05 jan, 5 january, etc.
+              ) _type = "date";
             return _type;
         },
         hasHeaders: function () {
