@@ -13,12 +13,19 @@ admin.autodiscover()
 
 
 
+
 urlpatterns = patterns('',
 	 ("^admin/", include(admin.site.urls)),
-	 ("^users$", UserViewSet.as_view({"get":"list"})),
+     ("^users$", UserViewSet.as_view({"post":"create", "get":"list"})),
      ("^users/(?P<id>\d)$", UserViewSet.as_view({"get":"retrieve"})),
-     ("^users/(?P<id>\d)/views$", UserViewSet.as_view({"get":"list_view"})),
-     ("^users/(?P<id>\d)/views/(?P<view_id>\d)$", UserViewSet.as_view({"get":"retrieve_view"})),
+     ("^users/(?P<user_id>\d)/views$", DashboardViewSet.as_view({"get":"list","post":"create"})),
+     ("^users/(?P<user_id>\d)/views/(?P<id>\d)$", DashboardViewSet.as_view({"get":"retrieve"})),
+
+
+
+
+)
+
 
 
 
@@ -35,4 +42,4 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-)
+
