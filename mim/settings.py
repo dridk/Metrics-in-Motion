@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'rest_framework',
+    'rest_framework_swagger',
     'mim'
 
     # Uncomment the next line to enable admin documentation:

@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from mim.views import *
+from rest_framework.routers import *
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -12,19 +13,20 @@ admin.autodiscover()
 # v1_api.register(UserResource())
 
 
-
-
 urlpatterns = patterns('',
 	 ("^admin/", include(admin.site.urls)),
-     ("^users$", UserViewSet.as_view({"post":"create", "get":"list"})),
-     ("^users/(?P<id>\d)$", UserViewSet.as_view({"get":"retrieve"})),
-     ("^users/(?P<user_id>\d)/views$", DashboardViewSet.as_view({"get":"list","post":"create"})),
-     ("^users/(?P<user_id>\d)/views/(?P<id>\d)$", DashboardViewSet.as_view({"get":"retrieve"})),
+     ("^users$", UserResource.as_view({"get":"list"})),
+     ("^users/(?P<pk>\d)$", UserResource.as_view({"get":"retrieve"})),
+     ("^users/(?P<user_id>\d)/views$", DashboardResource.as_view({"post":"create","get":"list",})),
+     ("^users/(?P<user_id>\d)/views/(?P<pk>\d)$", DashboardResource.as_view({"get":"retrieve", "delete":"destroy"})),
 
-
-
+     ("^users/(?P<user_id>\d)/views/(?P<view_id>\d)/widgets$", WidgetResource.as_view({"get":"list"})),
+     ("^users/(?P<user_id>\d)/views/(?P<view_id>\d)/widgets/(?P<pk>\d)$", WidgetResource.as_view({"get":"retrieve", "delete":"destroy"})),
 
 )
+
+
+
 
 
 
