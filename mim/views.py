@@ -8,9 +8,6 @@ from django.http import *
 
 
 
-
-
-
 class UserViewSet(viewsets.ViewSet):
 
 	def perform_authentication(self, request):
