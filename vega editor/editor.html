@@ -13,6 +13,7 @@
     <script src="js/jquery/jquery-ui-1.10.4.custom.js"></script>
     <script src="js/mim.js"></script>
     <script src="js/mim.tools.js"></script>
+    <script src="js/mim.builder.js"></script>
     <script src="js/mim.vega.js"></script>
     <script src="js/mim.vega.charts.js"></script>
     <script src="js/mim.vega.editor.UI.js"></script>
@@ -35,13 +36,23 @@
             ["2765", "193", "80", "596", "709", "165", "4393", "December-13-2013"]
         ];
         $(function() {
+
+            var html = [{"classes":"container","children":[{"classes":"left_sidebar","children":[{"classes":["portlet","portlet-fixed"],"children":[{"classes":"portlet-header","text":"Data"},{"classes":"portlet-content","children":[{"tag":"label","text":"Data Contains Headers:"},{"tag":"input","id":"vega-editor-data-headers","attrs":[{"key":"type","val":"checkbox"},{"key":"checked","val":"checked"}]}]}]},{"classes":"column","children":[{"classes":"portlet","children":[{"classes":"portlet-header","text":"Cat A"},{"classes":"portlet-content","children":[{"classes":"row","children":[{"tag":"label","text":"Title:"}]},{"classes":"row","children":[{"tag":"input","id":"vega-editor-col0-title","attrs":[{"key":"type","val":"text"},{"key":"value","val":""}]}]},{"classes":"row","children":[{"tag":"label","text":"Data Type:"}]},{"classes":"row","children":[{"tag":"select","children":[{"tag":"option","text":"Text","attrs":[{"key":"value","val":"text"},{"key":"selected","val":"selected"}]},{"tag":"option","text":"Number","attrs":[{"key":"value","val":"number"}]},{"tag":"option","text":"Date/Time","attrs":[{"key":"value","val":"date"}]}]}]}]}]}]}]},{"classes":"main"}]}];
+
+
+            var window = new mimUI.builder.Window();
+            html.push(window);
+
+            mimUI.builder.setRoot(mimUI.jq("body"));
+            mimUI.builder.build(html);
+
             $(".column").sortable({
                 cancel: ".portlet-fixed",
                 connectWith: ".column",
                 handle: ".portlet-header",
                 cancel: ".portlet-toggle",
                 placeholder: "portlet-placeholder ui-corner-all",
-                update: function( event, ui ) {
+                update: function(event, ui) {
                     console.log("Sorting finished");
                 }
             });
@@ -56,7 +67,7 @@
                 icon.closest(".portlet").find(".portlet-content").toggle();
             });
             //$(".portlet-toggle").click();
-            
+
             mimUI.vega.editor.data.set(data);
         });
     </script>
@@ -103,142 +114,6 @@ border-top: none;
     </style>
 </head>
 
-<body>
-    <div class="container">
-        <div class="left_sidebar">
-            <div class="portlet portlet-fixed">
-                <div class="portlet-header">Data</div>
-                <div class="portlet-content">                
-                    <div class="row">
-                        <label>Data Contains Headers:</label>
-                        <input id="vega-editor-data-headers" type="checkbox" checked="checked">
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="portlet">
-                    <div class="portlet-header">Cat A</div>
-                    <div class="portlet-content">
-                        <div class="row">
-                            <label>Title:</label>
-                        </div>
-                        <div class="row">
-                            <input id="vega-editor-col0-title" type="text" value="">
-                        </div>
-                        <div class="row">
-                            <label>Data Type:</label>
-                        </div>
-                        <div class="row">
-                            <select>
-                                <option value="text" selected="selected">Text</option>
-                                <option value="number">Number</option>
-                                <option value="date">Date/Time</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="portlet">
-                    <div class="portlet-header">Cat B</div>
-                    <div class="portlet-content">No options here for now</div>
-                </div>
-                <div class="portlet">
-                    <div class="portlet-header">Cat C</div>
-                    <div class="portlet-content">No options here for now</div>
-                </div>
-            </div>
-            <div class="portlet portlet-fixed">
-                <div class="portlet-header">Chart</div>
-                <div class="portlet-content">
-                    <div class="row">
-                        <label>Title:</label>
-                    </div>
-                    <div class="row">
-                        <input id="vega-editor-chart-title" type="text" value="">
-                    </div>
-                    
-                    <div class="row">
-                        <label>Subtitle:</label>
-                    </div>
-                    <div class="row">
-                        <input id="vega-editor-chart-subtitle" type="text" value="">
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <label>Show Legend:</label>
-                        <input id="vega-editor-chart-showlegend" type="checkbox" checked="checked">
-                    </div>
-                    
-                    <div class="row">
-                        <label>Interpolate:</label>
-                        <input id="vega-editor-chart-interpolate" type="checkbox">
-                    </div>
-                </div>
-            </div>
-            <div class="portlet portlet-fixed">
-                <div class="portlet-header">Scale X</div>
-                <div class="portlet-content">
-                    <div class="row">
-                        <label>Title:</label>
-                    </div>
-                    <div class="row">
-                        <input id="vega-editor-scalex-title" type="text" value="">
-                    </div>
-                    <div class="row">
-                        <label>Show Title:</label>
-                        <input id="vega-editor-scalex-title-show" type="checkbox">
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <label>Scale Padding:</label>
-                        <input id="vega-editor-scalex-nice" type="checkbox" checked="checked">
-                    </div>
-                    <div class="row">
-                        <label>Show Zero Mark:</label>
-                        <input id="vega-editor-scalex-zero" type="checkbox" checked="checked">
-                    </div>
-                    <div class="row">
-                        <label>Show Grid:</label>
-                        <input id="vega-editor-scalex-grid" type="checkbox" checked="checked">
-                    </div>
-                                    
-                </div>
-            </div>
-            <div class="column">
-            </div>
-            <div class="portlet portlet-fixed">
-                <div class="portlet-header">Scale Y</div>
-                <div class="portlet-content">
-                
-                    <div class="row">
-                        <label>Title:</label>
-                    </div>
-                    <div class="row">
-                        <input id="vega-editor-scaley-title" type="text" value="">
-                    </div>
-                    <div class="row">
-                        <label>Show Title:</label>
-                        <input id="vega-editor-scaley-title-show" type="checkbox">
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <label>Scale Padding:</label>
-                        <input id="vega-editor-scaley-nice" type="checkbox" checked="checked">
-                    </div>
-                    <div class="row">
-                        <label>Show Zero Mark:</label>
-                        <input id="vega-editor-scaley-zero" type="checkbox" checked="checked">
-                    </div>
-                    <div class="row">
-                        <label>Show Grid:</label>
-                        <input id="vega-editor-scaley-grid" type="checkbox" checked="checked">
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-            </div>
-        </div>
-        <div class="main"></div>
-    </div>
-</body>
+<body></body>
 
 </html>
