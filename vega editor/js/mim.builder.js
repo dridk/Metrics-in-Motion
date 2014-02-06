@@ -18,7 +18,9 @@ if (mimUI != undefined) {
             classes: [],
             attrs: [],
             datas: [],
-            text: ""
+            text: "",
+	    onChange: null,
+	    onClick: null
         };
         var opts = $.extend({}, defaults, attrs);
         var el = mimUI.jq('<'+opts.tag+'/>');
@@ -44,6 +46,8 @@ if (mimUI != undefined) {
             }
         };
         if (opts.text != "") el.html(opts.text);
+	if (opts.onChange != null) el.change(opts.onChange);
+	if (opts.onClick != null) el.click(opts.onClick);
         if(appendTo != undefined && appendTo!= null)appendTo.append(el);
         return el;
     }
@@ -67,23 +71,24 @@ if (mimUI != undefined) {
         getRoot: function(){
             return this.rootEl;
         },
-        _buildNode: function(node,root){
+        _buildWalker: function(node,root){
             if(typeof(node) == "object")node.each(function(e,i){
                 var el = new mimUI.Element(e,root);
                 e["el"] = el;
-                if(mimUI.ElementHasChildren(e))mimUI.builder._buildNode(e.children,el);
+                if(mimUI.ElementHasChildren(e))mimUI.builder._buildWalker(e.children,el);
             });
         },
-        build: function(s){
-            if(s!==undefined&&s!==null) this.spec = s;
-            mimUI.builder._buildNode(this.spec,this.rootEl);
+        build: function(s,r){
+	    var spec = s || this.spec;
+	    var root = r || this.rootEl;
+            mimUI.builder._buildWalker(spec,root);
         },
         clear: function(){
             this.rootEl.empty();
         },
         //Abstracts to create specs
         BaseElement: function(){
-            return {tag:"",classes:[]};
+            return {tag:"div",classes:[]};
         },
         BaseContainer: function(){
             return {classes:[],children:[]};
