@@ -1,0 +1,13 @@
+---
+mongodb: 
+    host  : localhost
+    port  : 27017
+    db    : mim
+
+flask:
+    debug : true
+    secret_key: "A0Zr98j/3yX R~XHH!jmN]LWX/,?RT"
+
+
+
+
