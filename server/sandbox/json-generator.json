@@ -1,13 +1,13 @@
 [
    '{{repeat(1, 7)}}',
    {
-      id:'{{index()}}',
+      _id:'{{index()}}',
       email:'{{email([random])}}',
       password:'password',
       views:[
          '{{repeat(7)}}',
          {
-            id:'{{index()}}',
+            _id:'{{index()}}',
             isPrivate:'{{bool()}}',
             widgetCount:'0',
             title:'{{lorem([2],["words"])}}',
@@ -15,7 +15,7 @@
             widgets:[
                '{{repeat(4)}}',
                {
-                  id:'{{index()}}',
+                  _id:'{{index()}}',
                   position:'{{integer([1], [4])}}',
                   width:'{{integer([1], [10])}}',
                   height:'{{integer([1], [10])}}',
@@ -145,13 +145,6 @@
                   }
                }
             ]
-         }
-      ],
-      friends:[
-         '{{repeat(3)}}',
-         {
-            id:'{{index()}}',
-            name:'{{firstName()}} {{surname()}}'
          }
       ]
    }
