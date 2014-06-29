@@ -42,5 +42,6 @@ app.config.update(
 )
 
 
+# ADDED BY IKIT
 # Run Flask App
 app.run()
