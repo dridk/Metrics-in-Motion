@@ -26,7 +26,7 @@ def search(keyword):
 """
 @resource.route("/users/<string:user_id>", methods=["GET"])
 def get_user(user_id):
-	data = current_app.db.users.find_one({"_id":ObjectId(user_id)}, {"email":True})
+	data = current_app.db.users.find_one({"_id":ObjectId(user_id)}, {"email":True, "password":True})
 	return SuccessResponse(parseObjectId(data))
 
 """Create user
@@ -41,8 +41,25 @@ def post_user():
 	except Exception, e:
 		return ErrorResponse(e.message,600)
 	else:
-		a = current_app.db.users.insert(user.to_primitive())
-		return SuccessResponse({"id":str(a)})
+		objId = current_app.db.users.insert(user.to_primitive())
+		return SuccessResponse({"id":str(objId)})
 
+"""Update user
+"""
+@resource.route("/users/<string:user_id>", methods=["PUT"])
+def update_user(user_id):
+
+	user = User(json.loads(request.data))
+
+	try:
+		user.validate(partial=True)
+	except Exception, e:
+		return ErrorResponse(e.message,600)
+	else:
+		results = user.to_primitive()
+		if results["password"] is None:
+			del results["password"] # VERRY IMPORTANT!! DO NOT UPDATE PASSWORD IF EMPTY
+		objId = current_app.db.users.update({"_id":ObjectId(user_id)}, {"$set":results})
+		return SuccessResponse("yes")
 
 	
