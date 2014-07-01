@@ -1,0 +1,118 @@
+@import 'nib'
+@import '../shared/variables'
+/****************************************************/
+/****************Metrics in Motion*******************/
+/****************************************************/
+.ui-layout-window
+    min-width: 640px
+    min-height: 480px
+
+.ui-layout-panel
+    &.ui-layout-padded
+        padding: $layout-base-size
+
+.ui-layout-column
+.ui-layout-row
+    display: block
+    position: relative
+    &.ui-layout-padded
+        padding: floor($layout-base-size/2)
+    
+.ui-layout-column
+    margin: 0 $layout-base-spacing
+    &:first-child
+        margin-left: 0!important
+    &:last-child
+        margin-right: 0!important
+    &>*
+        display: block
+        margin: $layout-base-spacing 0
+        &:first-child
+            margin-top: 0!important
+        &:last-child
+            margin-bottom: 0!important
+
+.ui-layout-row
+    margin: $layout-base-spacing 0
+    &:first-child
+        margin-top: 0!important
+    &:last-child
+        margin-bottom: 0!important
+    &>*
+        display: inline-block
+        margin: 0 $layout-base-spacing
+        &:first-child
+            margin-left: 0!important
+        &:last-child
+            margin-right: 0!important
+    
+.ui-style-light
+    &.ui-layout-panel
+        background: $widget-light-window
+        color: $color-black
+        
+.ui-style-dark
+    &.ui-layout-panel
+        background: $widget-dark-window
+        color: $color-gray-light
+
+.ui-layout-fill-width
+    width: 100%
+.ui-layout-align-left
+    float: left
+.ui-layout-align-right
+    float: right
+
+.ui-layout-attach-top
+.ui-layout-attach-bottom
+.ui-layout-attach-left
+.ui-layout-attach-right
+    position: absolute
+
+.ui-layout-attach-top
+    top: 0
+.ui-layout-attach-bottom
+    bottom: 0
+.ui-layout-attach-left
+    left: 0
+.ui-layout-attach-right
+    right 0
+
+.ui-layout-scrollhorizontal
+    width: 100%
+    overflow-y: hidden
+    overflow-x: scroll
+    height: 100%
+.ui-layout-scrollvertical
+    height: 100%
+    overflow-x: hidden
+    overflow-y: scroll
+    height: 100%
+
+.ui-layout-span1
+    width: $layout-column-width*1
+.ui-layout-span2
+    width: $layout-column-width*2
+.ui-layout-span3
+    width: $layout-column-width*3
+.ui-layout-span4
+    width: $layout-column-width*4
+.ui-layout-span5
+    width: $layout-column-width*5
+.ui-layout-span6
+   width: $layout-column-width*6
+//-.ui-layout-span7
+//-    width: $layout-column-width*7
+//-.ui-layout-span8
+//-    width: $layout-column-width*8
+//-.ui-layout-span9
+//-    width: $layout-column-width*9
+//-.ui-layout-span10
+//-    width: $layout-column-width*10
+//-.ui-layout-span11
+//-    width: $layout-column-width*11
+//-.ui-layout-span12
+//-    width: $layout-column-width*12
+
+
+@import 'content'
