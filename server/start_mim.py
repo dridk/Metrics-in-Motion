@@ -15,7 +15,7 @@ with open("config.yaml","r") as f:
 	cfg = yaml.load(f)
 
 # init flask
-app     = Flask(__name__, static_folder="static")
+app     = Flask(__name__,static_url_path='')
 
 # init mongodb
 client  = MongoClient(host = cfg["mongodb"]["host"],
