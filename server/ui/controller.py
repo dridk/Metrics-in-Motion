@@ -7,4 +7,4 @@ resource = Blueprint("ui", __name__,template_folder='templates')
 """
 @resource.route("/", methods=["GET"])
 def home():
-	return render_template("home.jade")
+	return render_template("home.html")

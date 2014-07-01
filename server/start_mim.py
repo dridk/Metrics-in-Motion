@@ -4,6 +4,7 @@
 from flask import Flask , g
 from pymongo import MongoClient
 from api import users, views
+from ui import controller
 import yaml 
 
 
@@ -41,6 +42,10 @@ app.config.update(
     flask_cfg
 )
 
+
+
+
+app.register_blueprint(controller.resource)
 
 # ADDED BY IKIT
 # Run Flask App
