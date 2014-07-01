@@ -1,5 +1,0 @@
-mimUI.drivers = {
-    piechart: {
-        
-    }
-};
