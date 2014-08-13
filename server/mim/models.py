@@ -1,5 +1,7 @@
 from mongoengine import *
 from datetime import datetime
+import uuid
+
 class User(Document):
 	email       = EmailField(required=True)
 	nickname    = StringField(required=True, max_length=50)
@@ -16,6 +18,7 @@ class Vega(DynamicEmbeddedDocument):
 	pass
 
 class Widget(EmbeddedDocument):
+	uuid        = UUIDField(binary=False)
 	title  		= StringField(default ="No Title", max_length=50)
 	description = StringField(max_length=255)	
 	comments    = ListField(EmbeddedDocumentField(Comment))

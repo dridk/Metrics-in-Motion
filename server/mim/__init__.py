@@ -2,16 +2,23 @@ from flask import Flask
 from flask import render_template
 import mongoengine as mongo
 from models import *
-from api import *
+
+from api.user_api import *
+from api.dashview_api import * 
+
 
 app = Flask(__name__)
+
+
 
 #load configuration from config.py 
 app.config.from_pyfile("config.py")
 mongo.connect(app.config["DATABASE"])
 
 
-app.register_blueprint(api,url_prefix="/api")
+
+app.register_blueprint(user_api,url_prefix="/api")
+app.register_blueprint(dashview_api,url_prefix="/api")
 
 
 
