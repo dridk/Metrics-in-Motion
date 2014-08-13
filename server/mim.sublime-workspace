@@ -1,0 +1,1245 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fro",
+				"from_object	function"
+			],
+			[
+				"fr",
+				"from_pyfile	function"
+			],
+			[
+				"a",
+				"append	function"
+			],
+			[
+				"surf",
+				"surface_sum"
+			],
+			[
+				"brow",
+				"brown_sum"
+			],
+			[
+				"brw",
+				"brown_sum"
+			],
+			[
+				"bro",
+				"brown_sum"
+			],
+			[
+				"get",
+				"get_white_pixels  (function)"
+			],
+			[
+				"OPenS",
+				"openslide  (module)"
+			],
+			[
+				"border-co",
+				"border-color"
+			],
+			[
+				"machi",
+				"machines"
+			],
+			[
+				"huma",
+				"humans"
+			],
+			[
+				"hu",
+				"humans"
+			],
+			[
+				"mach",
+				"machines"
+			],
+			[
+				"QM",
+				"QPixmap"
+			],
+			[
+				"Image",
+				"ImageQt"
+			],
+			[
+				"from",
+				"fromimage"
+			],
+			[
+				"fl",
+				"filename"
+			],
+			[
+				"cal",
+				"calibration/gland_89_0"
+			],
+			[
+				"loa",
+				"loadImage"
+			],
+			[
+				"shi",
+				"shift_hue_saturation"
+			],
+			[
+				"bri",
+				"brightness"
+			],
+			[
+				"for",
+				"format"
+			],
+			[
+				"gland_89",
+				"gland_89_0.jpg	w:1280 h:800"
+			],
+			[
+				"gold",
+				"goldData"
+			],
+			[
+				"gol",
+				"goldData"
+			],
+			[
+				"dete",
+				"detect_red"
+			],
+			[
+				"calibration",
+				"calibration/"
+			],
+			[
+				"split",
+				"splitRange"
+			],
+			[
+				"level",
+				"levelRange"
+			],
+			[
+				"leve",
+				"levelRange"
+			],
+			[
+				"_",
+				"_red_sum"
+			],
+			[
+				"total",
+				"total_height"
+			],
+			[
+				"spl",
+				"splitFactor"
+			],
+			[
+				"file",
+				"filename"
+			],
+			[
+				"sy",
+				"style.css"
+			],
+			[
+				"static",
+				"static/"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"pa",
+				"password"
+			],
+			[
+				"json",
+				"jsonData"
+			],
+			[
+				"to",
+				"to_primitive  (function)"
+			],
+			[
+				"pars",
+				"parseObjectId"
+			],
+			[
+				"par",
+				"parseId"
+			],
+			[
+				"jso",
+				"json_util"
+			],
+			[
+				"Exe",
+				"Exception  (class)"
+			],
+			[
+				"C",
+				"User  (class)"
+			],
+			[
+				"us",
+				"user_api  (variable)"
+			],
+			[
+				"user",
+				"users"
+			],
+			[
+				"sco",
+				"$scope	AngularJS"
+			],
+			[
+				"Main",
+				"mainwindow"
+			],
+			[
+				"fi",
+				"filter_mode"
+			],
+			[
+				"filter",
+				"filter_ids"
+			],
+			[
+				"fil",
+				"filter_ids"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"top",
+				"margin-top"
+			],
+			[
+				"pad",
+				"padding-top"
+			],
+			[
+				"mar",
+				"margin-right"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"bacte",
+				"bactery_id"
+			],
+			[
+				"obj",
+				"objects"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "mim/__init__.py",
+			"settings":
+			{
+				"buffer_size": 307,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mim/models.py",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "run.py",
+			"settings":
+			{
+				"buffer_size": 57,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mim/config.py",
+			"settings":
+			{
+				"buffer_size": 64,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"command_palette":
+	{
+		"height": 138.0,
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"link",
+				"Snippet: Markdown_link_(mdl)"
+			],
+			[
+				"image",
+				"Snippet: Markdown_image_(mdi)"
+			],
+			[
+				"markdown i",
+				"Snippet: Markdown_image_(mdi)"
+			],
+			[
+				"markdown im",
+				"Snippet: Markdown_image_(mdi)"
+			],
+			[
+				"date",
+				"Pelican: Update Article Date"
+			],
+			[
+				"pelican new",
+				"Pelican: New Article (Markdown)"
+			],
+			[
+				"syntax json",
+				"Set Syntax: JSON"
+			],
+			[
+				"syntax py",
+				"Set Syntax: Jade (Python)"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git pull",
+				"Git: Pull"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"case",
+				"Convert Case: Lower Case"
+			],
+			[
+				"upper",
+				"Convert Case: Upper Case"
+			],
+			[
+				"yaml",
+				"YAML Nav: Goto Symbol"
+			],
+			[
+				"yam",
+				"Set Syntax: YAML"
+			],
+			[
+				"remove p",
+				"Package Control: Remove Package"
+			],
+			[
+				"term",
+				"Preferences: Terminal Settings – Default"
+			],
+			[
+				"termi",
+				"Preferences: Terminal Key Bindings – User"
+			],
+			[
+				"pelica",
+				"Pelican: New Article (Markdown)"
+			],
+			[
+				"imae",
+				"Snippet: Markdown_image_(mdi)"
+			],
+			[
+				"link	",
+				"Snippet: Markdown_link_(mdl)"
+			],
+			[
+				"pelican",
+				"Pelican: Insert Tag"
+			],
+			[
+				"kink",
+				"Package Control: Install Package"
+			],
+			[
+				"inser",
+				"Pelican: Insert Tag"
+			],
+			[
+				"set syntax cv",
+				"Set Syntax: Objective-C++"
+			],
+			[
+				"pelican is",
+				"Pelican: Insert Metadata"
+			],
+			[
+				"pelican ins",
+				"Pelican: Insert Metadata"
+			],
+			[
+				"snippet",
+				"Snippet: Markdown_link_(mdl)"
+			],
+			[
+				"markdown",
+				"Snippet: Markdown_header_(mdh1)"
+			],
+			[
+				"markdo",
+				"Set Syntax: Markdown"
+			],
+			[
+				"set syntax html",
+				"Set Syntax: HTML"
+			],
+			[
+				"sideba",
+				"View: Toggle Side Bar"
+			]
+		],
+		"width": 530.0
+	},
+	"console":
+	{
+		"height": 179.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/schutz/dev/Metrics-in-Motion/server/config.py",
+		"/home/schutz/dev/Metrics-in-Motion/.gitignore",
+		"/home/schutz/dev/Metrics-in-Motion/server/app/config.py",
+		"/home/schutz/dev/Metrics-in-Motion/server/requirements.txt",
+		"/home/schutz/dev/Metrics-in-Motion/server/app/static/stylesheets/style.css",
+		"/home/schutz/dev/Metrics-in-Motion/server/app/templates/index.html",
+		"/home/schutz/dev/Metrics-in-Motion/server/run.py",
+		"/home/schutz/dev/Metrics-in-Motion/server/app/__init__.py",
+		"/home/schutz/dev/Metrics-in-Motion/server/app/app.py",
+		"/home/schutz/dev/Metrics-in-Motion/server/start.py",
+		"/home/schutz/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
+		"/home/schutz/dev/flasktest/app/templates/index.html",
+		"/home/schutz/dev/flasktest/app/app.py",
+		"/home/schutz/Dropbox/labsquare/projects/MiM/database/db/gen/users.jsongen",
+		"/home/schutz/Dropbox/labsquare/projects/MiM/new concept/database.txt",
+		"/home/schutz/Dropbox/labsquare/projects/MiM/database.json",
+		"/home/schutz/Dropbox/blog/content/post6.md",
+		"/home/schutz/Dropbox/labsquare/projects/MiM/database/db/users.json",
+		"/home/schutz/Dropbox/labsquare/projects/MiM/database/db/gen/dashviews.jsongen",
+		"/home/schutz/Dropbox/blog/pelican-themes/pure-single/static/css/pure.css",
+		"/home/schutz/Dropbox/blog/pelicanconf.py",
+		"/home/schutz/Dropbox/blog/content/post1.md",
+		"/home/schutz/Dropbox/blog/content/openslide.md",
+		"/home/schutz/dev/bgsa-ndpi/calibration.py",
+		"/home/schutz/dev/bgsa-ndpi/bgsa.py",
+		"/home/schutz/dev/bgsa-ndpi/bgsa-gui.py",
+		"/home/schutz/dev/bgsa-ndpi/test.py",
+		"/home/schutz/dev/bgsa-ndpi/bgsa-runner.py",
+		"/home/schutz/Dropbox/blog/content/post3.md",
+		"/home/schutz/Dropbox/Photos/How to use the Photos folder.rtf",
+		"/home/schutz/Dropbox/labsquare/projects/MiM/api.txt",
+		"/home/schutz/Dropbox/blog/content/post7.md",
+		"/home/schutz/Dropbox/blog/publishconf.py",
+		"/home/schutz/Dropbox/blog/pelican-themes/pure-single/templates/category.html",
+		"/home/schutz/Dropbox/blog/pelican-themes/pure-single/templates/tag.html",
+		"/home/schutz/Dropbox/blog/content/post2.md",
+		"/home/schutz/Dropbox/blog/content/post4.md",
+		"/home/schutz/Dropbox/blog/content/post5.md",
+		"/home/schutz/Dropbox/blog/pelican-themes/pure-single/templates/index.html",
+		"/home/schutz/Dropbox/blog/pelican-themes/pure-single/templates/base.html",
+		"/home/schutz/Dropbox/blog/pelican-themes/pure-single/templates/archives.html",
+		"/home/schutz/Dropbox/blog/pelican-themes/pelican-blueidea/templates/article_infos.html",
+		"/home/schutz/Dropbox/blog/pelican-themes/pelican-blueidea/templates/base.html",
+		"/home/schutz/Dropbox/blog/pelican-themes/pelican-blueidea/templates/piwik.html",
+		"/home/schutz/Dropbox/blog/pelican-themes/pelican-blueidea/templates/article.html",
+		"/home/schutz/Dropbox/blog/pelican-themes/pelican-blueidea/templates/archives.html",
+		"/home/schutz/Dropbox/blog/pelican-themes/pelican-blueidea/static/css/main.css",
+		"/home/schutz/Dropbox/blog/pelican-themes/pelican-blueidea/templates/index.html",
+		"/home/schutz/Dropbox/blog/pelican-themes/pelican-blueidea/static/css/reset.css",
+		"/home/schutz/Dropbox/blog/pelican-themes/pelican-blueidea/static/css/wide.css",
+		"/usr/share/applications/kde4/konsole.desktop",
+		"/media/schutz/DATA/devel/sebastiens/python/main.py",
+		"/home/schutz/dev/bgsa-ndpi/requirements.txt",
+		"/home/schutz/dev/bgsa-ndpi/test2.py",
+		"/tmp/run.sh",
+		"/home/schutz/dev/bgsa-ndpi/detect_red.py",
+		"/home/schutz/Dropbox/IMAGEJ/filtre rouge",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/templates/home.html",
+		"/home/schutz/Dropbox/labsquare/projects/AbsG/Project Mgmt/Planing.txt",
+		"/home/schutz/dev/Metrics-in-Motion/server/start_mim.py",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/controller.py",
+		"/home/schutz/Dropbox/labsquare/projects/AbsG/Spec/Quality Requirements.txt",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/templates/home.jade",
+		"/home/schutz/Metrics-in-Motion-JadeUI/UI/views/engines/UI.jade",
+		"/home/schutz/Metrics-in-Motion-JadeUI/UI/views/engines/layous.jade",
+		"/home/schutz/Metrics-in-Motion-JadeUI/UI/views/layouts/layout.jade",
+		"/home/schutz/Metrics-in-Motion-JadeUI/UI/views/pages/main.jade",
+		"/tmp/4BYA_A.fasta.txt",
+		"/tmp/4BYA_A.fasta-1.txt",
+		"/home/schutz/Metrics-in-Motion-JadeUI/UI/public/main.html",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/templates/engines/layous.jade",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/templates/layouts/layout.jade",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/templates/pages/home.jade",
+		"/home/schutz/dev/Metrics-in-Motion/server/api/model.py",
+		"/home/schutz/dev/Metrics-in-Motion/server/api/users.py",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/templates/footer.jade",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/templates/test/test.jade",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/templates/blocks/footer.jade",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/templates/pages/main.jade",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/templates/blocks/sidebar.jade",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/templates/engines/UI.jade",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/templates/test.jade",
+		"/home/schutz/dev/Metrics-in-Motion/server/style.styl",
+		"/home/schutz/Metrics-in-Motion-JadeUI/UI/routes/index.js",
+		"/home/schutz/Metrics-in-Motion-JadeUI/UI/app.js",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/static/style.css",
+		"/home/schutz/dev/Metrics-in-Motion/client/web/requirements.txt",
+		"/home/schutz/dev/Metrics-in-Motion/server/static/style.css",
+		"/home/schutz/dev/Metrics-in-Motion/server/ui/ui.py",
+		"/home/schutz/dev/Metrics-in-Motion/server/web_app/web_app.py",
+		"/home/schutz/dev/Metrics-in-Motion/server/start_test.py",
+		"/home/schutz/dev/mim",
+		"/home/schutz/dev/Metrics-in-Motion/server/mim.sublime-project",
+		"/home/schutz/dev/Metrics-in-Motion/server/api/views.py",
+		"/home/schutz/dev/Metrics-in-Motion/server/api/common.py",
+		"/home/schutz/dev/Metrics-in-Motion/server/sandbox/fake-data.json",
+		"/home/schutz/dev/Metrics-in-Motion/server/sandbox/json-generator.json",
+		"/home/schutz/Dropbox/labsquare/projects/MiM/sandbox/mim_api.txt",
+		"/home/schutz/.config/sublime-text-2/Packages/Git/Git.sublime-settings",
+		"/home/schutz/dev/Metrics-in-Motion/server/api/requirements.txt",
+		"/home/schutz/dev/Metrics-in-Motion/server/config.yaml",
+		"/home/schutz/dev/Metrics-in-Motion/server/sandbox/[json-generator.json",
+		"/home/schutz/Dropbox/labsquare/projects/MiM/sandbox/Ajax object description.md",
+		"/home/schutz/dev/angularjs/index.html",
+		"/home/schutz/dev/flask/app.py",
+		"/home/schutz/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/schutz/.config/sublime-text-2/Packages/AngularJS/AngularJS-completions.sublime-settings",
+		"/home/schutz/.config/sublime-text-2/Packages/Terminal/Default (Linux).sublime-keymap",
+		"/home/schutz/.config/sublime-text-2/Packages/Terminal/Terminal.sublime-settings",
+		"/home/schutz/.config/sublime-text-2/Packages/Browser Refresh/Default (Linux).sublime-keymap",
+		"/home/schutz/.config/sublime-text-2/Packages/Emmet/Emmet.sublime-settings",
+		"/home/schutz/.config/sublime-text-2/Packages/AngularJS/AngularJS-sublime-package.sublime-settings",
+		"/home/schutz/.config/sublime-text-2/Packages/Emmet/Default (Linux).sublime-keymap",
+		"/home/schutz/.config/sublime-text-2/Packages/User/AngularJS-sublime-package.sublime-settings",
+		"/home/schutz/.config/sublime-text-2/Packages/User/Terminal.sublime-settings",
+		"/home/schutz/Dropbox/blog/content/pages/contact.md",
+		"/home/schutz/Dropbox/blog/pelican-themes/pelican-simplegrey/static/css/pygment.css",
+		"/home/schutz/.config/sublime-text-2/Packages/Pelican/Pelican.sublime-settings",
+		"/home/schutz/.config/sublime-text-2/Packages/User/Pelican.sublime-settings",
+		"/home/schutz/dev/test/main.pro",
+		"/home/schutz/dev/test/mainwindow.cpp",
+		"/home/schutz/dev/test/mainwindow.h",
+		"/home/schutz/dev/test/main.cpp",
+		"/home/schutz/dev/guill/marseille/marseille/settings.py",
+		"/home/schutz/dev/guill/marseille/marseille/models.py",
+		"/home/schutz/Téléchargements/sequence.fasta",
+		"/home/schutz/lettres",
+		"/home/schutz/Dropbox/labsquare/web/theme/documentation/index.html"
+	],
+	"find":
+	{
+		"height": 179.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"	<link rel=\"stylesheet\" href=\"static/stylesheets/style.css\">\n",
+			"img",
+			"png",
+			"]",
+			"[",
+			"avec",
+			"MENUITEMS",
+			"##",
+			"entry",
+			"entry-content",
+			"entry",
+			"entry-content",
+			"OTHER",
+			"*",
+			"_brightness  = ImageEnhance.Brightness(layer)\n	layer        = _brightness.enhance(brightness)",
+			"	parser.add_argument(\"-t\", \"--target\", default=\"output\",  type=int)\n",
+			"parser",
+			"splitFactor",
+			"print \"height:\\t{:10}\".format(ndpi.dimensions[1])\nprint \"level count:\\t{:10}\".format(ndpi.level_count)",
+			"javascripts/",
+			"link",
+			"    #container.col",
+			"_id:'{{index()}}',",
+			"_id:'{{index()}}'",
+			"friends",
+			"frien",
+			"config",
+			" init mim database \n",
+			"[A-Z]+",
+			"auto_com",
+			"\\(.\\)",
+			"MongoDB",
+			"mongoDB",
+			"\n",
+			"![Capture d'ecran du blog généré avec pelican](/images/post1-pelican.png){width:200px;}\n",
+			"> ",
+			"LINKS =  (('Pelican', 'http://getpelican.com/'),\n          ('Python.org', 'http://python.org/'),\n          ('Jinja2', 'http://jinja.pocoo.org/'),\n          ('You can modify those links in your config file', '#'),)",
+			"«",
+			"»",
+			"\n	print \"GO\"\n	for item in atbTesting:\n\n		obj = {}\n		print item\n		obj[\"name\"] = item[\"name\"]\n		obj[\"id\"]   = item[\"id\"]\n		obj[\"S\"] = int(resistances.filter(value=\"S\", antibiotic__id = item[\"id\"]).count())\n		obj[\"R\"] = int(resistances.filter(value=\"R\", antibiotic__id = item[\"id\"]).count())\n		obj[\"I\"] = int(resistances.filter(value=\"I\", antibiotic__id = item[\"id\"]).count())\n		obj[\"count\"] = obj[\"S\"] + obj[\"R\"] + obj[\"I\"]\n\n		atb.append(obj)"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "mim/__init__.py",
+					"settings":
+					{
+						"buffer_size": 307,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								265,
+								265
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2.0,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5.0,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10.0,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 510.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "mim/models.py",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2.0,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5.0,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10.0,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "run.py",
+					"settings":
+					{
+						"buffer_size": 57,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								54,
+								54
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2.0,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5.0,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10.0,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "mim/config.py",
+					"settings":
+					{
+						"buffer_size": 64,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								56,
+								56
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2.0,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5.0,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10.0,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 51.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 229.0
+	},
+	"output.git":
+	{
+		"height": 208.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"utils",
+				"/home/schutz/dev/antibiobank/antibiobank/utils.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 269.0,
+	"status_bar_visible": true
+}
