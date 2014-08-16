@@ -9,6 +9,7 @@ class User(Document):
 
 
 class Comment(EmbeddedDocument):
+	id          = UUIDField(binary=False, default=uuid.uuid4())
 	owner 		= ReferenceField(User)
 	created 	= DateTimeField(default=datetime.now)
 	comment 	= StringField(max_length=255)	
@@ -18,7 +19,7 @@ class Vega(DynamicEmbeddedDocument):
 	pass
 
 class Widget(EmbeddedDocument):
-	uuid        = UUIDField(binary=False)
+	id          = UUIDField(binary=False, default=uuid.uuid4())
 	title  		= StringField(default ="No Title", max_length=50)
 	description = StringField(max_length=255)	
 	comments    = ListField(EmbeddedDocumentField(Comment))
