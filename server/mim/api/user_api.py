@@ -9,8 +9,8 @@ user_api = Blueprint("user_api", __name__)
 """
 @user_api.route("/users", methods = ["GET"])
 def list():
-	data = User.objects.all()
-	return SuccessResponse(data.to_json())
+	data = collection2List(User.objects.all())
+	return SuccessResponse(data)
 
 
 """ Search a User by his nickname
@@ -18,7 +18,8 @@ def list():
 @user_api.route("/users/search/<string:nickname>", methods=["GET"])
 def search(nickname):
 	data = User.objects(nickname__contains=nickname)
-	return SuccessResponse(data.to_json())
+	print(data)
+	return SuccessResponse(collection2List(data))
 	
 """ Search a unique user from id 
 """
@@ -29,7 +30,7 @@ def get(user_id):
 	except Exception,e:
 		return ErrorResponse(e.message, 600)
 	else:
-		return SuccessResponse(data.to_json())
+		return SuccessResponse(document2Dict(data))
 
 
 """ Create a User
@@ -42,7 +43,7 @@ def create():
 	except Exception, e:
 		return ErrorResponse(e.message,600)
 	else: 
-		SuccessResponse(json.dumps({"id":str(user.pk)}))
+		SuccessResponse({"id":user.pk})
 
 """ Update a User
 """
@@ -66,7 +67,7 @@ def update(user_id):
 		return ErrorResponse(e.message, 700)
 
 	else:
-		return SuccessResponse(json.dumps({"id":str(user.pk)}))
+		return SuccessResponse({"id":str(user.pk)})
 
 
 """ Delete a User
@@ -116,4 +117,4 @@ def me():
 	if (session["current_user"] is None):
 		return ErrorResponse("you are not logged", 700) 
 	else:
-		return SuccessResponse(User.objects.get(pk=session["current_user"]).to_json())
+		return SuccessResponse(document2Dict(User.objects.get(pk=session["current_user"])))

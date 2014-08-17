@@ -9,7 +9,7 @@ def SuccessResponse(data = None):
 	if data is None:
 		results = {"success":True}
 	else:
-		results = {"success":True, "results": json.loads(data)}
+		results = {"success":True, "results":data}
 	return jsonify(results)
 
 
@@ -25,6 +25,9 @@ def ErrorResponse(message, code):
 #Helper function to parse MongoDocument to Python object, and then to json
 #Thanks to jason-w / gist:4969476
 
+''' This has been write by jason-w from github. It's a recurive function to convert 
+MongoEngine engine document to python dictionnary. 
+''' 
 def mongo_to_dict(obj, exclude_fields = []):
 	return_data = []
 
@@ -54,6 +57,9 @@ def mongo_to_dict(obj, exclude_fields = []):
 
 	return dict(return_data)
 
+''' This has been write by jason-w from github. It's a part of the recursive function "mongo_to_dict". 
+It convert a ListField to a python list 
+''' 
 def list_field_to_dict(list_field):
 	return_data = []
 	for item in list_field:
@@ -63,6 +69,9 @@ def list_field_to_dict(list_field):
 			return_data.append(mongo_to_python_type(item,item))
 	return return_data
 
+''' This has been write by jason-w from github. It's a part of the recursive function "mongo_to_dict". 
+It convert a mongoengine field type to the python type. 
+''' 
 
 def mongo_to_python_type(field,data):
 
@@ -85,14 +94,30 @@ def mongo_to_python_type(field,data):
 	else:
 		return str(data)
 
+''' Convert a mongoengine Document to a python dictionnary. Based on "mongo_to_dict", 
+it is just a renaming for a better usage. 
+''' 
 def document2Dict(document):
 	return mongo_to_dict(document)
 
+''' Convert a mongoengine Collection to a python list. Based on "mongo_to_dict",
+it loops over a queryset and append each document to a new python list. 
+''' 
 def collection2List(collection):
 	return_data = []
 	for document in collection:
 		return_data.append(document2Dict(document))
 	return return_data
+
+''' Convert a mongoengine Document to json 
+'''
+def document2Json(document):
+	return json.dumps(document2Dict(document)) 
+
+''' Convert a mongoengine Collection to json
+'''
+def collection2Json(collection):
+	return json.dumps(collection2List(collection))
 
 
 
