@@ -1,4 +1,5 @@
 from flask import Response, jsonify
+import base64
 from mongoengine import *
 import json 
 
@@ -22,8 +23,10 @@ def ErrorResponse(message, code):
 	response.status_code = 400 
 	return response
 
+#-------------------------------------------------------------------------
 #Helper function to parse MongoDocument to Python object, and then to json
 #Thanks to jason-w / gist:4969476
+
 
 ''' This has been write by jason-w from github. It's a recurive function to convert 
 MongoEngine engine document to python dictionnary. 
@@ -41,8 +44,8 @@ def mongo_to_dict(obj, exclude_fields = []):
 		if field_name in exclude_fields:
 			continue
 
-		if field_name in ("id",):
-			continue
+		# if field_name in ("id",):
+		# 	continue
 
 		data = obj._data[field_name]
 
@@ -119,5 +122,22 @@ def document2Json(document):
 def collection2Json(collection):
 	return json.dumps(collection2List(collection))
 
+#-------------------------------------------------------------------------
+#Helper function to parse MongoDocument to Python object, and then to json
+#Thanks to jason-w / gist:4969476
 
+''' encode objectID to base64 id to make it smaller 
+'''
+def encodeId(id):
+	if isinstance(id,ObjectId):
+		return base64.urlsafe_b64encode(id.binary)
+	else:
+		raise TypeError("encodeId take ObjectId as arguments")
 
+''' decode base64 id to objectID 
+'''
+def decodeId(id):
+	if isinstance(id,string):
+		return ObjectId(base64.urlsafe_b64decode(string))
+	else:
+		raise TypeError("encodeId take str as arguments")

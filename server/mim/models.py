@@ -1,6 +1,9 @@
 from mongoengine import *
 from datetime import datetime
 import uuid
+from bson.objectid import ObjectId
+
+
 
 class User(Document):
 	email       = EmailField(required=True)
@@ -9,7 +12,7 @@ class User(Document):
 
 
 class Comment(EmbeddedDocument):
-	id          = UUIDField(binary=False, default=uuid.uuid4())
+	id          = ObjectIdField(required=True,default=ObjectId())
 	owner 		= ReferenceField(User)
 	created 	= DateTimeField(default=datetime.now)
 	comment 	= StringField(max_length=255)	
@@ -19,7 +22,7 @@ class Vega(DynamicEmbeddedDocument):
 	pass
 
 class Widget(EmbeddedDocument):
-	id          = UUIDField(binary=False, default=uuid.uuid4())
+	id          = ObjectIdField(required=True,default=ObjectId())
 	title  		= StringField(default ="No Title", max_length=50)
 	description = StringField(max_length=255)	
 	comments    = ListField(EmbeddedDocumentField(Comment))
