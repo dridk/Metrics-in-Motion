@@ -299,6 +299,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "mim/__init__.py",
+			"settings":
+			{
+				"buffer_size": 596,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mim/models.py",
+			"settings":
+			{
+				"buffer_size": 1075,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
 	"command_palette":
@@ -307,12 +323,12 @@
 		"selected_items":
 		[
 			[
-				"instal",
-				"Package Control: Install Package"
-			],
-			[
 				"link",
 				"Snippet: Markdown_link_(mdl)"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
 			],
 			[
 				"image",
@@ -443,7 +459,7 @@
 				"View: Toggle Side Bar"
 			]
 		],
-		"width": 602.0
+		"width": 593.0
 	},
 	"console":
 	{
@@ -460,6 +476,10 @@
 	},
 	"file_history":
 	[
+		"/home/schutz/Dropbox/blog/pelicanconf.py",
+		"/home/schutz/Dropbox/blog/content/pages/application.md",
+		"/home/schutz/Dropbox/blog/content/pages/contact.md",
+		"/home/schutz/Dropbox/blog/publishconf.py",
 		"/home/schutz/dev/Metrics-in-Motion/server/run.py",
 		"/home/schutz/dev/Metrics-in-Motion/server/mim/api/dashview_api.py",
 		"/home/schutz/dev/Metrics-in-Motion/server/mim/api/user_api.py",
@@ -492,7 +512,6 @@
 		"/home/schutz/Dropbox/blog/content/post6.md",
 		"/home/schutz/Dropbox/labsquare/projects/MiM/database/db/gen/dashviews.jsongen",
 		"/home/schutz/Dropbox/blog/pelican-themes/pure-single/static/css/pure.css",
-		"/home/schutz/Dropbox/blog/pelicanconf.py",
 		"/home/schutz/Dropbox/blog/content/post1.md",
 		"/home/schutz/Dropbox/blog/content/openslide.md",
 		"/home/schutz/dev/bgsa-ndpi/calibration.py",
@@ -504,7 +523,6 @@
 		"/home/schutz/Dropbox/Photos/How to use the Photos folder.rtf",
 		"/home/schutz/Dropbox/labsquare/projects/MiM/api.txt",
 		"/home/schutz/Dropbox/blog/content/post7.md",
-		"/home/schutz/Dropbox/blog/publishconf.py",
 		"/home/schutz/Dropbox/blog/pelican-themes/pure-single/templates/category.html",
 		"/home/schutz/Dropbox/blog/pelican-themes/pure-single/templates/tag.html",
 		"/home/schutz/Dropbox/blog/content/post2.md",
@@ -585,9 +603,7 @@
 		"/home/schutz/.config/sublime-text-2/Packages/Emmet/Emmet.sublime-settings",
 		"/home/schutz/.config/sublime-text-2/Packages/AngularJS/AngularJS-sublime-package.sublime-settings",
 		"/home/schutz/.config/sublime-text-2/Packages/Emmet/Default (Linux).sublime-keymap",
-		"/home/schutz/.config/sublime-text-2/Packages/User/AngularJS-sublime-package.sublime-settings",
-		"/home/schutz/.config/sublime-text-2/Packages/User/Terminal.sublime-settings",
-		"/home/schutz/Dropbox/blog/content/pages/contact.md"
+		"/home/schutz/.config/sublime-text-2/Packages/User/AngularJS-sublime-package.sublime-settings"
 	],
 	"find":
 	{
@@ -668,8 +684,166 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "mim/__init__.py",
+					"settings":
+					{
+						"buffer_size": 596,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "mim/models.py",
+					"settings":
+					{
+						"buffer_size": 1075,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								343,
+								343
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2.0,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5.0,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10.0,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
