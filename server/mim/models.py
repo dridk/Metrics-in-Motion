@@ -3,6 +3,11 @@ from datetime import datetime
 import uuid
 from bson.objectid import ObjectId
 
+PYGAL_TYPES =(
+	"Line","StackedLine","Bar","StackedBar","HorizontalBar","XY",
+	"DateY","Pie","Radar","Box","Dot","Funnel","Gauge","Pyramid",
+	"Worldmap"
+	)
 
 
 class User(Document):
@@ -17,16 +22,23 @@ class Comment(EmbeddedDocument):
 	created 	= DateTimeField(default=datetime.now)
 	comment 	= StringField(max_length=255)	
 
+''' https://github.com/Kozea/pygal/blob/master/pygal/config.py ''' 
+class Config(DynamicEmbeddedDocument):
+	chart_type   = StringField(required=True,default="Line",choices=PYGAL_TYPES)
+	title        = StringField()
+	width        = IntField()
+	height 		 = IntField()
+	x_title      = StringField()
+	y_title 	 = StringField()
 
-class Vega(DynamicEmbeddedDocument):
+
 	pass
 
 class Widget(EmbeddedDocument):
 	id          = ObjectIdField(required=True,default=ObjectId())
-	title  		= StringField(default ="No Title", max_length=50)
 	description = StringField(max_length=255)	
 	comments    = ListField(EmbeddedDocumentField(Comment))
-	vega        = EmbeddedDocumentField(Vega)
+	config      = EmbeddedDocumentField(Config, required=True,default=Config())
 
 
 class DashView(Document):
