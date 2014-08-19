@@ -24,18 +24,16 @@ class Comment(EmbeddedDocument):
 
 ''' https://github.com/Kozea/pygal/blob/master/pygal/config.py ''' 
 class Config(DynamicEmbeddedDocument):
-	chart_type   = StringField(required=True,default="Line",choices=PYGAL_TYPES)
-	title        = StringField()
 	width        = IntField()
 	height 		 = IntField()
 	x_title      = StringField()
 	y_title 	 = StringField()
-
-
 	pass
 
 class Widget(EmbeddedDocument):
 	id          = ObjectIdField(required=True,default=ObjectId())
+	chart_type  = StringField(required=True,default="Line",choices=PYGAL_TYPES)
+	title       = StringField()
 	description = StringField(max_length=255)	
 	comments    = ListField(EmbeddedDocumentField(Comment))
 	config      = EmbeddedDocumentField(Config, required=True,default=Config())
