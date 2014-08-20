@@ -28,7 +28,7 @@ class Config(DynamicEmbeddedDocument):
 	height 		 = IntField()
 	x_title      = StringField()
 	y_title 	 = StringField()
-	pass
+
 
 class Widget(EmbeddedDocument):
 	id          = ObjectIdField(required=True,default=ObjectId())
@@ -37,6 +37,8 @@ class Widget(EmbeddedDocument):
 	description = StringField(max_length=255)	
 	comments    = ListField(EmbeddedDocumentField(Comment))
 	config      = EmbeddedDocumentField(Config, required=True,default=Config())
+	source      = URLField()
+	datas       = DictField()
 
 
 class DashView(Document):
