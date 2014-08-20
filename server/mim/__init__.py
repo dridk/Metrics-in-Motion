@@ -5,6 +5,7 @@ from models import *
 
 from api.user_api import *
 from api.dashview_api import * 
+from api.widget_api import *
 
 
 app = Flask(__name__)
@@ -19,6 +20,7 @@ mongo.connect(app.config["DATABASE"])
 
 app.register_blueprint(user_api,url_prefix="/api")
 app.register_blueprint(dashview_api,url_prefix="/api")
+app.register_blueprint(widget_api,url_prefix="/api")
 
 
 

@@ -29,9 +29,14 @@ class Config(DynamicEmbeddedDocument):
 	x_title      = StringField()
 	y_title 	 = StringField()
 
+class DashView(Document):
+	owner 		= ReferenceField(User)
+	title  		= StringField(default ="No Title", max_length=50)
+	description = StringField(max_length=255)	
+	created 	= DateTimeField(default=datetime.now)
 
-class Widget(EmbeddedDocument):
-	id          = ObjectIdField(required=True,default=ObjectId())
+class Widget(Document):
+	dashview     = ReferenceField(DashView, required=True)
 	chart_type  = StringField(required=True,default="Line",choices=PYGAL_TYPES)
 	title       = StringField()
 	description = StringField(max_length=255)	
@@ -41,11 +46,7 @@ class Widget(EmbeddedDocument):
 	datas       = DictField()
 
 
-class DashView(Document):
-	owner 		= ReferenceField(User)
-	title  		= StringField(default ="No Title", max_length=50)
-	description = StringField(max_length=255)	
-	created 	= DateTimeField(default=datetime.now)
-	widgets 	= ListField(EmbeddedDocumentField(Widget))
+
+
 
 

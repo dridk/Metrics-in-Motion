@@ -15,6 +15,7 @@ User(email="sacha@labsquare.org", nickname="ikit", password="ikit").save()
 
 # # Generate fake view
 DashView.drop_collection() 
+Widget.drop_collection() 
 print "Creation of Dashviews collections ..."
 
 for i in range(2):
@@ -22,12 +23,13 @@ for i in range(2):
 	view.owner       = User.objects.first()
 	view.title       = get_sentence()[:10]
 	view.description = get_sentence()
+	view.save()
 
 	for j in range(4):
 		widget = Widget()
 		widget.title = get_sentence()[:10]
 		widget.description = get_sentence()
-		view.widgets.append(widget)
+		widget.dashview = view
 
 		if j==0:
 			widget.datas["Firefox"] = [None, None, 0, 16.6,   25,   31, 36.4, 45.5, 46.3, 42.8, 37.1]
@@ -42,7 +44,10 @@ for i in range(2):
 			comment.comment = get_sentence()
 			widget.comments.append(comment)
 
-	view.save()
+		widget.save()
+
+
+	
 	
 
 print "Finish in {} seconds".format(time.clock() - start_time)
