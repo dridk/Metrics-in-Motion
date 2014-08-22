@@ -36,12 +36,12 @@ class DashView(Document):
 	created 	= DateTimeField(default=datetime.now)
 
 class Widget(Document):
-	dashview     = ReferenceField(DashView, required=True)
+	dashview    = ReferenceField(DashView, required=True)
 	chart_type  = StringField(required=True,default="Line",choices=PYGAL_TYPES)
 	title       = StringField()
 	description = StringField(max_length=255)	
 	comments    = ListField(EmbeddedDocumentField(Comment))
-	config      = EmbeddedDocumentField(Config, required=True,default=Config())
+	config      = DictField()
 	source      = URLField()
 	datas       = DictField()
 
