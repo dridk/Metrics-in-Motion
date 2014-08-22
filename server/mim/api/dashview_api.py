@@ -17,7 +17,7 @@ def list():
  			ids[key]+=1
 
 #Get the dashviews list
-	dashviews = collection2List(DashView.objects.all()) 
+	dashviews = toDict(DashView.objects.all()) 
 #Loop over dashviews and add widget_count key / value
 	for index in range(len(dashviews)):
 		key = dashviews[index]["id"]

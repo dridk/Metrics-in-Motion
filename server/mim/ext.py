@@ -112,6 +112,16 @@ def collection2List(collection):
 		return_data.append(document2Dict(document))
 	return return_data
 
+def toDict(mongodata):
+	if isinstance(mongodata, Document):
+		return document2Dict(mongodata) 
+	if isinstance(mongodata, QuerySet):
+		return collection2List(mongodata)
+	else:
+		raise TypeError()
+
+
+
 ''' Convert a mongoengine Document to json 
 '''
 def document2Json(document):

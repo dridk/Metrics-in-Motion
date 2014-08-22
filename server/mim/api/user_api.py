@@ -9,7 +9,7 @@ user_api = Blueprint("user_api", __name__)
 """
 @user_api.route("/users", methods = ["GET"])
 def list():
-	data = collection2List(User.objects.all())
+	data = toDict(User.objects.all())
 	return SuccessResponse(data)
 
 
@@ -19,7 +19,7 @@ def list():
 def search(nickname):
 	data = User.objects(nickname__contains=nickname)
 	print(data)
-	return SuccessResponse(collection2List(data))
+	return SuccessResponse(toDict(data))
 	
 """ Search a unique user from id 
 """
@@ -30,7 +30,7 @@ def get(user_id):
 	except Exception,e:
 		return ErrorResponse(e.message, 600)
 	else:
-		return SuccessResponse(document2Dict(data))
+		return SuccessResponse(toDict(data))
 
 
 """ Create a User
@@ -117,4 +117,4 @@ def me():
 	if (session["current_user"] is None):
 		return ErrorResponse("you are not logged", 700) 
 	else:
-		return SuccessResponse(document2Dict(User.objects.get(pk=session["current_user"])))
+		return SuccessResponse(toDict(User.objects.get(pk=session["current_user"])))
