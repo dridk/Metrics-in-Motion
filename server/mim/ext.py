@@ -78,6 +78,9 @@ It convert a mongoengine field type to the python type.
 
 def mongo_to_python_type(field,data):
 
+	if isinstance(field, ReferenceField):
+		return str(data.id)
+
 	if isinstance(field, DateTimeField):
 		return str(data.isoformat())
 	elif isinstance(field, ComplexDateTimeField):
