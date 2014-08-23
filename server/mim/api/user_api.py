@@ -2,119 +2,98 @@
 from flask import *
 from mim.models import *
 from mim.ext import *
+from flask.ext.restful import Resource
 
-user_api = Blueprint("user_api", __name__)
+class UserListAPI(Resource):
+	''' Get all users '''
 
-""" Get Users Collections 
-"""
-@user_api.route("/users", methods = ["GET"])
-def list():
-	data = toDict(User.objects.all())
-	return SuccessResponse(data)
+	def get(self):
+		return SuccessResponse(toDict(User.objects.all()))
 
+	''' Create a new user '''
+	def post(self):
+		try:
+			user = User.from_json(request.data)
+			user.save()
+		except Exception, e:
+			return ErrorResponse(e.message,600)
+		else: 
+			SuccessResponse({"id":user.id})	
+		
 
-""" Search a User by his nickname
-"""
-@user_api.route("/users/search/<string:nickname>", methods=["GET"])
-def search(nickname):
-	data = User.objects(nickname__contains=nickname)
-	print(data)
-	return SuccessResponse(toDict(data))
+class UserAPI(Resource):
+	''' Get a specific users'''
+	def get(self, user_id):
+		try:
+			data = User.objects.get(pk=user_id)
+		except Exception,e:
+			return ErrorResponse(e.message, 600)
+		else:
+			return SuccessResponse(toDict(data))
 	
-""" Search a unique user from id 
-"""
-@user_api.route("/users/<string:user_id>", methods = ["GET"])
-def get(user_id):
-	try:
-		data = User.objects.get(pk=user_id)
-	except Exception,e:
-		return ErrorResponse(e.message, 600)
-	else:
-		return SuccessResponse(toDict(data))
+	''' Update a specific users'''
+	def put(self, user_id):
+		try:
+			postData = json.loads(request.data)
+			user = User.objects.get(pk=user_id)
+		except Exception, e:
+			return ErrorResponse(e.message, 600)
+
+		if "nickname" in postData:
+			user.nickname = postData["nickname"]
+
+		if "password" in postData:
+			user.nickname = postData["password"]
+
+		try:
+			user.save()
+		except Exception, e:
+			return ErrorResponse(e.message, 700)
+
+		else:
+			return SuccessResponse({"id":str(user.pk)})
+	
+	''' Delete a specific users'''
+	def delete(self, user_id):
+		try:
+			user = User.objects.get(pk=user_id)
+			user.delete()
+		except Exception, e:
+			return ErrorResponse(e.message, 700)
+		else:
+			return SuccessResponse()
 
 
-""" Create a User
-"""
-@user_api.route("/users", methods=["POST"])
-def create():
-	try:
-		user = User.from_json(request.data)
-		user.save()
-	except Exception, e:
-		return ErrorResponse(e.message,600)
-	else: 
-		SuccessResponse({"id":user.pk})
-
-""" Update a User
-"""
-@user_api.route("/users/<string:user_id>", methods=["PUT"])
-def update(user_id):
-	try:
-		postData = json.loads(request.data)
-		user = User.objects.get(pk=user_id)
-	except Exception, e:
-		return ErrorResponse(e.message, 600)
-
-	if "nickname" in postData:
-		user.nickname = postData["nickname"]
-
-	if "password" in postData:
-		user.nickname = postData["password"]
-
-	try:
-		user.save()
-	except Exception, e:
-		return ErrorResponse(e.message, 700)
-
-	else:
-		return SuccessResponse({"id":str(user.pk)})
-
-
-""" Delete a User
-"""
-@user_api.route("/users/<string:user_id>", methods=["DELETE"])
-def delete(user_id):
-	try:
-		user = User.objects.get(pk=user_id)
-		user.delete()
-	except Exception, e:
-		return ErrorResponse(e.message, 700)
-	else:
-		return SuccessResponse()
-
-""" User login
-"""
-@user_api.route("/users/login", methods=["POST"])
 def login():
 	postData = json.loads(request.data)
+	print postData
+
 	if ("email" not in postData) or ("password" not in postData):
-		return ErrorResponse("Json request is not complete", 700) 
+		return jsonify(ErrorResponse("Json request is not complete", 700))
 	try:
 		user = User.objects.get(email=postData["email"])
 	except Exception, e:
-		return ErrorResponse(e.message, 700)
+		return jsonify(ErrorResponse(e.message, 700))
 
 	else:
 		if user.password == postData["password"]:
 			session["current_user"] = str(user.pk)
 			print session
-			return SuccessResponse()
+			return jsonify(SuccessResponse())
 	
 	session["current_user"] = None;
-	return ErrorResponse("Invalid password or username", 700)
+	return jsonify(SuccessResponse())
 
 """ User logout
 """
-@user_api.route("/users/logout", methods=["POST"])
 def logout():
 	session["current_user"] = None;
-	return SuccessResponse()
+	return jsonify(SuccessResponse())
 
 """ User me 
 """
-@user_api.route("/users/me", methods=["GET"])
 def me():
 	if (session["current_user"] is None):
-		return ErrorResponse("you are not logged", 700) 
+		return jsonify(ErrorResponse("you are not logged", 700))
 	else:
-		return SuccessResponse(toDict(User.objects.get(pk=session["current_user"])))
+		return jsonify(SuccessResponse(toDict(User.objects.get(pk=session["current_user"]))))
