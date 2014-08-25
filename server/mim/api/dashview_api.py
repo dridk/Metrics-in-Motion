@@ -1,8 +1,8 @@
-
 from flask import *
 from mim.models import *
 from mim.ext import *
-dashview_api = Blueprint("dashview_api", __name__)
+from flask.ext.restful import Resource
+
 
 ''' This is an extra function, which add "widget_count" key into all 
 dashview results collections. 
@@ -26,36 +26,59 @@ def add_widget_count(collection):
 	return collection
 
 
-@dashview_api.route("/dashviews", methods = ["GET"])
-def list():
-	dashviews = toDict(DashView.objects.all()) 
-	dashviews = add_widget_count(dashviews)
-	return SuccessResponse(dashviews)
+class DashviewListAPI(Resource):
+	''' Get all dashview '''
 
+	def get(self):
+		dashviews = toDict(DashView.objects.all()) 
+		dashviews = add_widget_count(dashviews)
+		return SuccessResponse(dashviews)
 
-""" Create a User
-"""
-@dashview_api.route("/dashviews", methods=["POST"])
-def create():
-	try:
-		view = View.from_json(request.data)
-		view.save()
-	except Exception, e:
-		return ErrorResponse(e.message,600)
-	else: 
-		SuccessResponse(json.dumps({"id":str(user.pk)}))
+	''' Create a new dashview '''
+	def post(self):
+		try:
+			dashview = DashView.from_json(request.data)
+			dashview.save()
+		except Exception, e:
+			return ErrorResponse(e.message,600)
+		else: 
+			SuccessResponse({"id":dashview.id})	
+		
 
-
-""" Get a User
-"""		
-@dashview_api.route("/dashviews/<string:dashview_id>", methods = ["GET"])
-def get(dashview_id):
-	try:
-		dashview = DashView.objects.get(id=dashview_id)
-	except Exception,e:
-		return ErrorResponse(e.message, 600)
-	else:
-		return SuccessResponse(toDict(dashview))
-
+class DashviewAPI(Resource):
+	''' Get a specific dashview'''
+	def get(self, dashview_id):
+		try:
+			data = DashView.objects.get(pk=dashview_id)
+		except Exception,e:
+			return ErrorResponse(e.message, 600)
+		else:
+			return SuccessResponse(toDict(data))
 	
+	''' Update a specific dashview'''
+	def put(self, dashview_id):
+		try:
+			postData = json.loads(request.data)
+			dashview = DashView.objects.get(pk=dashview_id)
+		except Exception, e:
+			return ErrorResponse(e.message, 600)
+		try:
+			dashview.save()
+		except Exception, e:
+			return ErrorResponse(e.message, 700)
+
+		else:
+			return SuccessResponse({"id":str(dashview.pk)})
+	
+	''' Delete a specific dashview'''
+	def delete(self, user_id):
+		try:
+			dashview = DashView.objects.get(pk=user_id)
+			dashview.delete()
+		except Exception, e:
+			return ErrorResponse(e.message, 700)
+		else:
+			return SuccessResponse()
+
+
 
