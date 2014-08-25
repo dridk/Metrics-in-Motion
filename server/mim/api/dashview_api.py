@@ -7,6 +7,8 @@ from flask.ext.restful import Resource
 ''' This is an extra function, which add "widget_count" key into all 
 dashview results collections. 
 ''' 
+
+
 def add_widget_count(collection):
 	#Create a dictionnary [dashview_id] = count
 	ids = {}
@@ -31,7 +33,7 @@ class DashviewListAPI(Resource):
 
 	def get(self):
 		dashviews = toDict(DashView.objects.all()) 
-		dashviews = add_widget_count(dashviews)
+		# dashviews = add_widget_count(dashviews)
 		return SuccessResponse(dashviews)
 
 	''' Create a new dashview '''
@@ -49,11 +51,16 @@ class DashviewAPI(Resource):
 	''' Get a specific dashview'''
 	def get(self, dashview_id):
 		try:
-			data = DashView.objects.get(pk=dashview_id)
+			dashview = DashView.objects.get(id=dashview_id)
+			widgets  = Widget.objects.filter(dashview = dashview)
+
+			data = toDict(dashview)
+			data["widgets"] = toDict(widgets)
+
 		except Exception,e:
 			return ErrorResponse(e.message, 600)
 		else:
-			return SuccessResponse(toDict(data))
+			return SuccessResponse(data)
 	
 	''' Update a specific dashview'''
 	def put(self, dashview_id):
