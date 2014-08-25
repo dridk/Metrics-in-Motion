@@ -39,12 +39,12 @@ app.add_url_rule('/api/users/logout', 'logout', logout,methods=['GET'])
 
 
 
-# @app.route("/")
-# def index():
-# 	print("salut")
-# 	return render_template("index.html")
+@app.route("/")
+def index():
+	print("salut")
+	return render_template("index.html")
 
-# @app.errorhandler(404)
-# def page_not_found(e):
-#     return flask.jsonify(error=404, text=e), 404
+@app.errorhandler(404)
+def page_not_found(e):
+    return flask.jsonify(error=404, text=e), 404
 
