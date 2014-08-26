@@ -1,6 +1,7 @@
 from flask import Response, jsonify
 import base64
 from mongoengine import *
+from mongoengine.base.datastructures import BaseList # Allow comments conversion
 import json 
 
 '''Return a success Response 
@@ -76,9 +77,11 @@ It convert a mongoengine field type to the python type.
 
 def mongo_to_python_type(field,data):
 
+	if isinstance(field, BaseList):
+		return "TES"
+
 	if isinstance(field, ReferenceField):
 		return str(data.id)
-
 	if isinstance(field, DateTimeField):
 		return str(data.isoformat())
 	elif isinstance(field, ComplexDateTimeField):
@@ -114,24 +117,16 @@ def collection2List(collection):
 	return return_data
 
 def toDict(mongodata):
+	print type(mongodata)
 	if isinstance(mongodata, Document):
 		return document2Dict(mongodata) 
 	if isinstance(mongodata, QuerySet):
 		return collection2List(mongodata)
+	if isinstance(mongodata, BaseList):
+		return collection2List(mongodata)
+
 	else:
 		raise TypeError()
-
-
-
-''' Convert a mongoengine Document to json 
-'''
-def document2Json(document):
-	return json.dumps(document2Dict(document)) 
-
-''' Convert a mongoengine Collection to json
-'''
-def collection2Json(collection):
-	return json.dumps(collection2List(collection))
 
 #-------------------------------------------------------------------------
 #Helper function to parse MongoDocument to Python object, and then to json

@@ -7,7 +7,7 @@ from models import *
 from api.user_api import *
 from api.dashview_api import * 
 from api.widget_api import *
-
+from api.comment_api import *
 
 app = Flask(__name__)
 
@@ -26,6 +26,7 @@ api.add_resource(DashviewListAPI,"/dashviews")
 api.add_resource(DashviewAPI,'/dashviews/<string:dashview_id>', "/dashviews")
 
 api.add_resource(WidgetAPI,'/widgets/<string:widget_id>')
+api.add_resource(CommentListAPI,'/widgets/<string:widget_id>/comments')
 
 
 app.add_url_rule('/api/users/login', 'login', login, methods=['POST'])
