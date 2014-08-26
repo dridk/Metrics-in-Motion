@@ -12,22 +12,22 @@ class CommentListAPI(Resource):
 		widget = Widget.objects.get(id=widget_id)
 		return SuccessResponse(toDict(widget.comments))
 
-# 	''' Create a new user '''
-# 	def post(self):
+# 	''' Create a new comments '''
+# 	def post(self, widget_id):
 # 		try:
-# 			user = User.from_json(request.data)
-# 			user.save()
+# 			comment = Comment.from_json(request.data)
+# 			comment.save()
 # 		except Exception, e:
 # 			return ErrorResponse(e.message,600)
 # 		else: 
-# 			SuccessResponse({"id":user.id})	
+# 			SuccessResponse({"id":comment.id})	
 		
 
-# class UserAPI(Resource):
-# 	''' Get a specific users'''
-# 	def get(self, user_id):
+# class CommentAPI(Resource):
+# 	''' Get a specific comments'''
+# 	def get(self, widget_id, user_id):
 # 		try:
-# 			data = User.objects.get(pk=user_id)
+# 			data = Comment.objects.get(pk=user_id)
 # 		except Exception,e:
 # 			return ErrorResponse(e.message, 600)
 # 		else:
