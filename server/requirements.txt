@@ -4,4 +4,4 @@ Flask-Testing
 Mongoengine 
 pygal
 loremipsum
-
+flask-restful
