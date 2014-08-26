@@ -33,7 +33,7 @@ class DashviewListAPI(Resource):
 
 	def get(self):
 		dashviews = toDict(DashView.objects.all()) 
-		# dashviews = add_widget_count(dashviews)
+		dashviews = add_widget_count(dashviews)
 		return SuccessResponse(dashviews)
 
 	''' Create a new dashview '''
@@ -78,9 +78,9 @@ class DashviewAPI(Resource):
 			return SuccessResponse({"id":str(dashview.pk)})
 	
 	''' Delete a specific dashview'''
-	def delete(self, user_id):
+	def delete(self, dashview_id):
 		try:
-			dashview = DashView.objects.get(pk=user_id)
+			dashview = DashView.objects.get(pk=dashview_id)
 			dashview.delete()
 		except Exception, e:
 			return ErrorResponse(e.message, 700)

@@ -1,31 +1,43 @@
-
 from flask import *
 from mim.models import *
 from mim.ext import *
-from mim import render
-from flask import send_file
+from flask.ext.restful import Resource
 
-widget_api = Blueprint("widget_api", __name__)
+class WidgetAPI(Resource):
+	''' Get a specific widget'''
+	def get(self, widget_id):
+		print "GET WIDGETS"
+		try:
+			widget = Widget.objects.get(id=widget_id)
+		except Exception,e:
+			return ErrorResponse(e.message, 600)
+		else:
+			return SuccessResponse(toDict(widget))
+	
+	''' Update a specific widget'''
+	def put(self, widget_id):
+		try:
+			postData = json.loads(request.data)
+			widget = Widget.objects.get(pk=widget_id)
+		except Exception, e:
+			return ErrorResponse(e.message, 600)
+		try:
+			widget.save()
+		except Exception, e:
+			return ErrorResponse(e.message, 700)
 
-""" Get Users Collections 
-"""
-@widget_api.route("/widgets/<string:widget_id>/image.svg", methods = ["GET"])
-def test(widget_id):
-	widget = Widget.objects.first()
-	chart = render.toChart(widget)
-	return Response(chart.render(), mimetype="image/svg+xml")
+		else:
+			return SuccessResponse({"id":str(widget.pk)})
+	
+	''' Delete a specific widget'''
+	def delete(self, widget_id):
+		try:
+			widget = Widget.objects.get(pk=widget_id)
+			widget.delete()
+		except Exception, e:
+			return ErrorResponse(e.message, 700)
+		else:
+			return SuccessResponse()
 
-""" Get Users Collections 
-"""
-@widget_api.route("/widgets/<string:widget_id>/image.png", methods = ["GET"])
-def test2(widget_id):
-	widget = Widget.objects.first()
-	chart = render.toChart(widget)
 
-	filename = "%s.png" % widget_id
 
-	print filename
-
-	chart.render_to_png("mim/cache/"+filename)
-
-	return send_file("cache/"+filename, mimetype='image/png')

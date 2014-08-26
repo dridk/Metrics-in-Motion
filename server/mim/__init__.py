@@ -25,6 +25,8 @@ api.add_resource(UserAPI,'/users/<string:user_id>', "/users")
 api.add_resource(DashviewListAPI,"/dashviews")
 api.add_resource(DashviewAPI,'/dashviews/<string:dashview_id>', "/dashviews")
 
+api.add_resource(WidgetAPI,'/widgets/<string:widget_id>')
+
 
 app.add_url_rule('/api/users/login', 'login', login, methods=['POST'])
 app.add_url_rule('/api/users/logout', 'logout', logout,methods=['GET'])
