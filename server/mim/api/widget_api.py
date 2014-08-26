@@ -9,10 +9,13 @@ class WidgetAPI(Resource):
 		print "GET WIDGETS"
 		try:
 			widget = Widget.objects.get(id=widget_id)
+			data = toDict(widget)
+			data["comments_count"] = len(data["comments"])
+			del data["comments"]
 		except Exception,e:
 			return ErrorResponse(e.message, 600)
 		else:
-			return SuccessResponse(toDict(widget))
+			return SuccessResponse(data)
 	
 	''' Update a specific widget'''
 	def put(self, widget_id):
