@@ -117,12 +117,17 @@ def collection2List(collection):
 		return_data.append(document2Dict(document))
 	return return_data
 
-def toDict(mongodata):
+def convert_id(data):
+	data['id'] = data['_id']
+
+def toDict(mongodata, **args):
 	res = []
 	inject = []
 	exclude = []
-	func_generic_extra_info = []
+	func_generic_extra_info = [convert_id]
 	func_extra_info = []
+
+
 	res = MongoEngineSerializer(inject,exclude,func_generic_extra_info,func_extra_info).dumps(mongodata)
 	
 	return res

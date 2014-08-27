@@ -1,3 +1,11 @@
+# ===========
+# MongoEngine-encoder
+# ===========
+# :Info: Json Encoder for mongoengine.
+# :Author: Pio Clemente (http://github.com/pioclemente)
+# :Maintainer: Pio Clemente (http://github.com/pioclemente)
+
+
 # -*- coding: utf-8 -*-
 from bson.dbref import DBRef
 from bson.objectid import ObjectId
@@ -119,9 +127,19 @@ class MongoEngineSerializer(object):
         ret = []
         if isinstance(obj,QuerySet):
             for o in obj:
-                ret.append(MongoEncoder(obj=o,inject=self.inject,exclude=self.exclude,func_generic_extra_info=self.func_generic_extra_info,func_extra_info=self.func_extra_info).to_dict())
+                data = MongoEncoder(obj=o,inject=self.inject,exclude=self.exclude,func_generic_extra_info=self.func_generic_extra_info,func_extra_info=self.func_extra_info).to_dict()
+                # EXTRA TO REPLACE ALWAYS _ID BY ID
+                if ("_id" in data):
+                    data["id"] = data["_id"]
+                    del data["_id"]
+                    ret.append(data)
 
         else:
             ret = MongoEncoder(obj=obj,inject=self.inject,exclude=self.exclude,func_generic_extra_info=self.func_generic_extra_info,func_extra_info=self.func_extra_info).to_dict()
+            # EXTRA TO REPLACE ALWAYS _ID BY ID
+            if ("_id" in ret):
+                ret["id"] = ret["_id"]
+                del ret["_id"]
+
         return ret
 
