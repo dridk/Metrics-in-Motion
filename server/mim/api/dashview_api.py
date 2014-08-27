@@ -9,31 +9,16 @@ dashview results collections.
 ''' 
 
 
-def add_widget_count(collection):
-	#Create a dictionnary [dashview_id] = count
-	ids = {}
-	for widget in Widget.objects.all():
-		key = str(widget.dashview.id)
-		if key not in ids:
- 			ids[key]=1
- 		else:
- 			ids[key]+=1
-
-#Loop over the collection and add widget_count key and value
-	for index in range(len(collection)):
-		key = collection[index]["id"]
-		print key
-		if key in ids:
-			collection[index]["widgets_count"] = ids[key]
-	return collection
-
-
 class DashviewListAPI(Resource):
 	''' Get all dashview '''
 
 	def get(self):
-		dashviews = toDict(DashView.objects.all()) 
-		# dashviews = add_widget_count(dashviews)
+
+		def count_widget(data):
+			count = Widget.objects.no_dereference().filter(dashview="53fe44d012f8032b8c2a9adc").count()
+			data["widget_count"] = count
+
+		dashviews = toDict(DashView.objects.all(),func_extra_info=[count_widget]) 
 		return SuccessResponse(dashviews)
 
 	''' Create a new dashview '''
@@ -45,7 +30,8 @@ class DashviewListAPI(Resource):
 			return ErrorResponse(e.message,600)
 		else: 
 			SuccessResponse({"id":dashview.id})	
-		
+
+
 
 class DashviewAPI(Resource):
 	''' Get a specific dashview'''
@@ -55,7 +41,8 @@ class DashviewAPI(Resource):
 			widgets  = Widget.objects.filter(dashview = dashview)
 
 			data = toDict(dashview)
-			data["widgets"] = toDict(widgets)
+
+			data["widgets"] = toDict(widgets, exclude="comments")
 
 		except Exception,e:
 			return ErrorResponse(e.message, 600)
