@@ -1,12 +1,10 @@
+# -*- coding: utf-8 -*-
 # ===========
 # MongoEngine-encoder
 # ===========
 # :Info: Json Encoder for mongoengine.
 # :Author: Pio Clemente (http://github.com/pioclemente)
 # :Maintainer: Pio Clemente (http://github.com/pioclemente)
-
-
-# -*- coding: utf-8 -*-
 from bson.dbref import DBRef
 from bson.objectid import ObjectId
 import datetime
