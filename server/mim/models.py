@@ -3,6 +3,7 @@ from datetime import datetime
 import uuid
 from bson.objectid import ObjectId
 
+CHART_TYPE = ["Line","Bar","Radar","PolarArea","Pie","Doughnut"]
 
 class User(Document):
 	email       = EmailField(required=True)
@@ -16,28 +17,24 @@ class Comment(EmbeddedDocument):
 	created 	= DateTimeField(default=datetime.now)
 	comment 	= StringField(max_length=255)	
 
-# ''' https://github.com/Kozea/pygal/blob/master/pygal/config.py ''' 
-# class Config(DynamicEmbeddedDocument):
-# 	width        = IntField()
-# 	height 		 = IntField()
-# 	x_title      = StringField()
-# 	y_title 	 = StringField()
-
 class DashView(Document):
 	owner 		= ReferenceField(User)
 	title  		= StringField(default ="No Title", max_length=50)
 	description = StringField(max_length=255)	
 	created 	= DateTimeField(default=datetime.now)
 
+class Datas(DynamicEmbeddedDocument):
+	pass
+
 class Widget(Document):
 	dashview    = ReferenceField(DashView, required=True)
 	title       = StringField()
-	description = StringField(max_length=255)	
+	chart       = StringField(choices=CHART_TYPE)
+	description = StringField(max_length=255)
+	style       = StringField()	
 	comments    = ListField(EmbeddedDocumentField(Comment))
 	config      = DictField()
-	source      = URLField()
-	datas       = ListField(DictField())
-
+	datas       = EmbeddedDocumentField(Datas, required=True, default = Datas())
 
 
 
