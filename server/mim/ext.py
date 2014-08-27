@@ -23,6 +23,13 @@ def ErrorResponse(message, code):
 	json = {"success":False, "msg":message, "error_code":code}
 	return json
 
+''' This is a function generator using to replace list data by a key with the count of 
+the list . This function should be pass to the 'toDict' methods with 'func_extra_info' 
+arguments '''
+def append_counter(key):
+	def counter(data):
+		data["test"] = "YES GENERATION SUCCESS"
+	return counter
 
 def toDict(mongodata, **args):
 	res = []
@@ -49,8 +56,6 @@ def toDict(mongodata, **args):
 	if "func_extra_info" in args:
 		func_extra_info = args["func_extra_info"]
 
-
-	print exclude
 	res = MongoEngineSerializer(inject,exclude,func_generic_extra_info,func_extra_info).dumps(mongodata)
 	
 	return res

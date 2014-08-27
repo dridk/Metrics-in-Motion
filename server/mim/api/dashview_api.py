@@ -36,13 +36,17 @@ class DashviewListAPI(Resource):
 class DashviewAPI(Resource):
 	''' Get a specific dashview'''
 	def get(self, dashview_id):
+		def count_comments(data):
+			data["comments_count"] = len(data["comments"])
+			del data["comments"]
+
 		try:
 			dashview = DashView.objects.get(id=dashview_id)
 			widgets  = Widget.objects.filter(dashview = dashview)
 
 			data = toDict(dashview)
 
-			data["widgets"] = toDict(widgets, exclude="comments")
+			data["widgets"] = toDict(widgets, func_extra_info=[count_comments])
 
 		except Exception,e:
 			return ErrorResponse(e.message, 600)

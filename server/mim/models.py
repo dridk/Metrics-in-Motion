@@ -34,7 +34,7 @@ class Widget(Document):
 	style       = StringField()	
 	comments    = ListField(EmbeddedDocumentField(Comment))
 	config      = DictField()
-	datas       = EmbeddedDocumentField(Datas, required=True, default = Datas())
+	datas       = EmbeddedDocumentField(Datas)
 
 
 
