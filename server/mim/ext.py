@@ -3,6 +3,7 @@ import base64
 from mongoengine import *
 from mongoengine.base.datastructures import BaseList # Allow comments conversion
 import json 
+from serializer import MongoEngineSerializer
 
 '''Return a success Response 
 Take json data as arguments
@@ -117,16 +118,15 @@ def collection2List(collection):
 	return return_data
 
 def toDict(mongodata):
-	print type(mongodata)
-	if isinstance(mongodata, Document):
-		return document2Dict(mongodata) 
-	if isinstance(mongodata, QuerySet):
-		return collection2List(mongodata)
-	if isinstance(mongodata, BaseList):
-		return collection2List(mongodata)
+	res = []
+	inject = []
+	exclude = []
+	func_generic_extra_info = []
+	func_extra_info = []
+	res = MongoEngineSerializer(inject,exclude,func_generic_extra_info,func_extra_info).dumps(mongodata)
+	
+	return res
 
-	else:
-		raise TypeError()
 
 #-------------------------------------------------------------------------
 #Helper function to parse MongoDocument to Python object, and then to json

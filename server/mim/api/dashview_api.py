@@ -33,7 +33,7 @@ class DashviewListAPI(Resource):
 
 	def get(self):
 		dashviews = toDict(DashView.objects.all()) 
-		dashviews = add_widget_count(dashviews)
+		# dashviews = add_widget_count(dashviews)
 		return SuccessResponse(dashviews)
 
 	''' Create a new dashview '''
