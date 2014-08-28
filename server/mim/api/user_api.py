@@ -8,7 +8,7 @@ class UserListAPI(Resource):
 	''' Get all users '''
 
 	def get(self):
-		return SuccessResponse(toDict(User.objects.all()))
+		return SuccessResponse(toDict(User.objects.exclude("password").all()))
 
 	''' Create a new user '''
 	def post(self):
@@ -25,7 +25,7 @@ class UserAPI(Resource):
 	''' Get a specific users'''
 	def get(self, user_id):
 		try:
-			data = User.objects.get(pk=user_id)
+			data = User.objects.exclude('password').get(pk=user_id)
 		except Exception,e:
 			return ErrorResponse(e.message, 600)
 		else:

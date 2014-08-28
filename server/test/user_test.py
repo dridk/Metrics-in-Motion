@@ -9,7 +9,8 @@ class UserTest(unittest.TestCase):
 		self.assertIn("id",data)
 		self.assertIn("email",data)
 		self.assertIn("username",data)
-		self.assertIn("password",data)
+		self.assertNotIn("password",data)
+
 
 	def get_first_user_id(self):
 		data = requests.get(UserTest.url + "users").text 
