@@ -63,10 +63,10 @@ class UserTest(unittest.TestCase):
 
 	def test_update_user(self):
 		user_id = self.get_first_user_id()
-		payload = {"email":"testing@labsquare.org"}
+		payload = {"email":"testingUPDATED@labsquare.org"}
 		headers = {'content-type': 'application/json'}
 
-		data =requests.delete(UserTest.url + "users/" + user_id, 
+		data =requests.put(UserTest.url + "users/" + user_id, 
 							 data = json.dumps(payload),
 							 headers = headers).text
 
@@ -74,7 +74,8 @@ class UserTest(unittest.TestCase):
 
 		self.assertIn("success",array)
 		self.assertTrue(array["success"], "success equal false")
-		print 
+		
+		updatedUser = User.objects.get(pk=user_id)
 
 		
 

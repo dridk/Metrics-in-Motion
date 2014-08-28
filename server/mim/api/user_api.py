@@ -40,10 +40,13 @@ class UserAPI(Resource):
 			return ErrorResponse(e.message, 600)
 
 		if "username" in postData:
-			user.nickname = postData["nickname"]
+			user.username = postData["nickname"]
 
 		if "password" in postData:
-			user.nickname = postData["password"]
+			user.password = postData["password"]
+
+		if "email" in postData:
+			user.email = postData["email"]
 
 		try:
 			user.save()
