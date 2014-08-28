@@ -12,7 +12,10 @@ def SuccessResponse(data = None):
 	if data is None:
 		results = {"success":True}
 	else:
-		results = {"success":True, "results":data}
+		if isinstance(data, list):
+			results = {"success":True, "results":data, "total":len(data)}
+		else:
+			results = {"success":True, "results":data}
 	return results
 
 
