@@ -1,10 +1,25 @@
 import unittest
 import requests 
 import json 
-from mim import *
+import mim
 
 class DashViewTest(unittest.TestCase):
+	def setUp(self):
+		mim.app.config['TESTING'] = True
+		self.app = mim.app.test_client()
+		user = mim.models.User(email="testing@labsquare.org", password="", username="testing")
+		user.save()
+		for i in range(5):
+		    dashview = mim.models.DashView()
+		    dashview.owner = user 
+		    dashview.title = "test"
+		    dashview.description = "test"
+		    dashview.save()
+        
 
+	def tearDown(self):
+		mim.models.User.objects.filter(username="testing").delete()
+		mim.models.DashView.objects.filter(title="test").delete()
 
 	def is_dashview(self,data):
 		self.assertIn("id",data)
@@ -14,27 +29,11 @@ class DashViewTest(unittest.TestCase):
 		self.assertIn("owner",data)
 		
 	def get_dashview_id(self):
-		return str(DashView.objects.filter(title="test").first().id)
-
-
-	def setUp(self):
-		user = User(email="testing@labsquare.org", password="", username="testing")
-		user.save()
-		for i in range(5):
-		    dashview = DashView()
-		    dashview.owner = user 
-		    dashview.title = "test"
-		    dashview.description = "test"
-		    dashview.save()
-
-
-	def tearDown(self):
-		User.objects.filter(username="testing").delete()
-		DashView.objects.filter(title="test").delete()
+		return str(mim.models.DashView.objects.filter(title="test").first().id)
 
 
 	def test_get_dashview_list(self):
-		data = requests.get(DashViewTest.url + "dashviews").text 
+		data = self.app.get("/api/dashviews").data 
 		array = json.loads(data)
 		self.assertIn("results",array)
 		for view in array["results"]:
@@ -42,6 +41,6 @@ class DashViewTest(unittest.TestCase):
 
 	def test_get_dashview(self):
 		view_id = self.get_dashview_id()
-		data = requests.get(DashViewTest.url + "dashviews/" + view_id).text 
+		data = self.app.get("/api/dashviews/" + view_id).data 
 		array = json.loads(data)
-		self.is_dashview(array)
+		self.is_dashview(array["results"])
