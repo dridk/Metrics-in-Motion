@@ -23,7 +23,7 @@ def SuccessResponse(data = None):
 Take message and de status code 
 '''
 def ErrorResponse(message, code):
-	json = {"success":False, "msg":message, "error_code":code}
+	json = {"success":False, "message":message, "error_code":code}
 	return json
 
 ''' This is a function generator using to replace list data by a key with the count of 
