@@ -17,8 +17,8 @@ class UserListAPI(Resource):
 			user.save()
 		except Exception, e:
 			return ErrorResponse(e.message,600)
-		else: 
-			SuccessResponse({"id":user.id})	
+		else:
+			return SuccessResponse({"id":str(user.id)})	
 		
 
 class UserAPI(Resource):
