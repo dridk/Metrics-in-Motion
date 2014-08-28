@@ -74,9 +74,7 @@ class UserTest(unittest.TestCase):
 
 		self.assertIn("success",array)
 		self.assertTrue(array["success"], "success equal false")
-		
 		updatedUser = User.objects.get(pk=user_id)
-
 		self.assertEqual(payload["email"], updatedUser.email)
 
 		
