@@ -5,6 +5,18 @@ from mim import *
 
 class UserTest(unittest.TestCase):
 
+	def setUp(self):
+		for i in range(5):
+		    user = User()
+		    user.email = "testing%s@labsquare.org" % i
+		    user.username = "testing"
+		    user.password = "testing"
+		    user.save()
+
+	def tearDown(self):
+		User.objects.filter(username="testing").delete()
+
+
 	def is_user(self,data):
 		self.assertIn("id",data)
 		self.assertIn("email",data)
@@ -13,10 +25,8 @@ class UserTest(unittest.TestCase):
 
 
 	def get_first_user_id(self):
-		data = requests.get(UserTest.url + "users").text 
-		array = json.loads(data)
-		user_id = array["results"][0]["id"]
-		return user_id
+		user = User.objects.filter(username="testing").first()
+		return str(user.id)
 
 	def test_get_user_list(self):
 		data = requests.get(UserTest.url + "users").text 
@@ -60,7 +70,12 @@ class UserTest(unittest.TestCase):
 							 data = json.dumps(payload),
 							 headers = headers).text
 
+		array = json.loads(data)
+
 		self.assertIn("success",array)
 		self.assertTrue(array["success"], "success equal false")
+		print 
+
+		
 
 
