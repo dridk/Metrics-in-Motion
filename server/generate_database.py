@@ -8,9 +8,9 @@ start_time = time.clock()
 # Generate fake user 
 print "Creation of User collections ..."
 User.drop_collection()
-User(email="olivier@labsquare.org", nickname="ikit", password="ikit").save()
-User(email="eugene@labsquare.org", nickname="it-s", password="it-s").save()
-User(email="sacha@labsquare.org", nickname="ikit", password="ikit").save()
+User(email="olivier@labsquare.org", username="ikit", password="ikit").save()
+User(email="eugene@labsquare.org", username="it-s", password="it-s").save()
+User(email="sacha@labsquare.org", username="ikit", password="ikit").save()
 
 
 # # Generate fake view

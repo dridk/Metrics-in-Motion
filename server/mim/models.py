@@ -7,7 +7,7 @@ CHART_TYPE = ["Line","Bar","Radar","PolarArea","Pie","Doughnut"]
 
 class User(Document):
 	email       = EmailField(required=True)
-	nickname    = StringField(required=True, max_length=50)
+	username    = StringField(required=True, max_length=50)
 	password    = StringField(required=True, max_length=255) 
 
 

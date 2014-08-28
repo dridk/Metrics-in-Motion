@@ -8,7 +8,7 @@ class UserTest(unittest.TestCase):
 	def is_user(self,data):
 		self.assertIn("id",data)
 		self.assertIn("email",data)
-		self.assertIn("nickname",data)
+		self.assertIn("username",data)
 		self.assertIn("password",data)
 
 	def get_first_user_id(self):
@@ -31,7 +31,7 @@ class UserTest(unittest.TestCase):
 		self.is_user(array["results"])
 
 	def test_post_user(self):
-		payload = {"email":"testing@labsquare.org", "nickname":"test", "password":"pass"}
+		payload = {"email":"testing@labsquare.org", "username":"test", "password":"pass"}
 		headers = {'content-type': 'application/json'}
 		data =requests.post(UserTest.url + "users",
 		 					data=json.dumps(payload),

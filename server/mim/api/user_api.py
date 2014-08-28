@@ -39,7 +39,7 @@ class UserAPI(Resource):
 		except Exception, e:
 			return ErrorResponse(e.message, 600)
 
-		if "nickname" in postData:
+		if "username" in postData:
 			user.nickname = postData["nickname"]
 
 		if "password" in postData:
