@@ -1,7 +1,7 @@
 import unittest
 import requests 
 import json 
-
+from mim import *
 
 class UserTest(unittest.TestCase):
 
@@ -50,5 +50,17 @@ class UserTest(unittest.TestCase):
 		data =requests.delete(UserTest.url + "users/" + user_id).text
 		array = json.loads(data)
 		self.assertIn("success",array)
-		
+
+	def test_update_user(self):
+		user_id = self.get_first_user_id()
+		payload = {"email":"testing@labsquare.org"}
+		headers = {'content-type': 'application/json'}
+
+		data =requests.delete(UserTest.url + "users/" + user_id, 
+							 data = json.dumps(payload),
+							 headers = headers).text
+
+		self.assertIn("success",array)
+		self.assertTrue(array["success"], "success equal false")
+
 
