@@ -1,6 +1,7 @@
 import unittest
 import requests 
 import json 
+import logging
 import mim
 
 class UserTest(unittest.TestCase):
@@ -50,46 +51,38 @@ class UserTest(unittest.TestCase):
 		array = json.loads(data)
 		self.check_json_error(array)
 
-		
+
+	def test_post_user(self):
+		payload = {"email":"testing@labsquare.org", "username":"test", "password":"pass"}
+		headers = {'content-type': 'application/json'}
+		data =self.app.post("/api/users", headers=headers, data=json.dumps(payload)).data 
+		array = json.loads(data)
+		self.check_json_error(array)
+		self.assertIn("success",array)
+		self.assertTrue(array["success"], "success equal false")
+		self.assertIn("id",array["results"])
 
 
-		
+	def test_delete_user(self):
+		user_id = self.get_first_user_id()
+		data =self.app.delete("api/users/" + user_id).data
+		array = json.loads(data)
+		self.assertIn("success",array)
 
-	# def test_post_user(self):
-	# 	payload = {"email":"testing@labsquare.org", "username":"test", "password":"pass"}
-	# 	headers = {'content-type': 'application/json'}
-	# 	data =requests.post(UserTest.url + "users",
-	# 	 					data=json.dumps(payload),
-	# 	  					headers=headers).text 
+	def test_update_user(self):
+		user_id = self.get_first_user_id()
+		payload = {"email":"testingUPDATED@labsquare.org"}
+		headers = {'content-type': 'application/json'}
 
-		
-	# 	array = json.loads(data)
-	# 	self.assertIn("success",array)
-	# 	self.assertTrue(array["success"], "success equal false")
-	# 	self.assertIn("id",array["results"])
+		data =self.app.put("/api/users/" + user_id, 
+							 data = json.dumps(payload),
+							 headers = headers).data
 
+		array = json.loads(data)
+		self.check_json_error(array)
 
-	# def test_delete_user(self):
-	# 	user_id = self.get_first_user_id()
-	# 	data =requests.delete(UserTest.url + "users/" + user_id).text
-	# 	array = json.loads(data)
-	# 	self.assertIn("success",array)
-
-	# def test_update_user(self):
-	# 	user_id = self.get_first_user_id()
-	# 	payload = {"email":"testingUPDATED@labsquare.org"}
-	# 	headers = {'content-type': 'application/json'}
-
-	# 	data =requests.put(UserTest.url + "users/" + user_id, 
-	# 						 data = json.dumps(payload),
-	# 						 headers = headers).text
-
-	# 	array = json.loads(data)
-
-	# 	self.assertIn("success",array)
-	# 	self.assertTrue(array["success"], "success equal false")
-	# 	updatedUser = User.objects.get(pk=user_id)
-	# 	self.assertEqual(payload["email"], updatedUser.email)
+		updatedUser = mim.models.User.objects.get(pk=user_id)
+		self.assertEqual(payload["email"], updatedUser.email)
 
 		
 
