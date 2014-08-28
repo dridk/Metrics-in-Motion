@@ -77,6 +77,8 @@ class UserTest(unittest.TestCase):
 		
 		updatedUser = User.objects.get(pk=user_id)
 
+		self.assertEqual(payload["email"], updatedUser.email)
+
 		
 
 
