@@ -72,6 +72,7 @@ class DashviewAPI(Resource):
 	def delete(self, dashview_id):
 		try:
 			dashview = DashView.objects.get(pk=dashview_id)
+			Widget.objects.filter(dashview = dashview).delete()
 			dashview.delete()
 		except Exception, e:
 			return ErrorResponse(e.message, 700)
