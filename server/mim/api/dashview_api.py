@@ -29,7 +29,7 @@ class DashviewListAPI(Resource):
 		except Exception, e:
 			return ErrorResponse(e.message,600)
 		else: 
-			SuccessResponse({"id":dashview.id})	
+			return SuccessResponse({"id":str(dashview.id)})	
 
 
 
