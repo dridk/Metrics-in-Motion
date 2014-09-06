@@ -19,7 +19,7 @@ class DashViewTest(unittest.TestCase):
 
 	def tearDown(self):
 		mim.models.User.objects.filter(username="testing").delete()
-		mim.models.DashView.objects.filter(title="test").delete()
+		mim.models.DashView.objects.filter(title__contains="test").delete()
 
 	def check_json_error(self,data):
 		if "message" in data:
