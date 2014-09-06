@@ -20,7 +20,7 @@ class Comment(EmbeddedDocument):
 class DashView(Document):
 	owner 		= ReferenceField(User)
 	title  		= StringField(default ="No Title", max_length=50)
-	description = StringField(max_length=255)	
+	description = StringField(default = "No description", max_length=255)	
 	created 	= DateTimeField(default=datetime.now)
 
 class Datas(DynamicEmbeddedDocument):

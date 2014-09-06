@@ -58,6 +58,12 @@ class DashviewAPI(Resource):
 		try:
 			postData = json.loads(request.data)
 			dashview = DashView.objects.get(pk=dashview_id)
+
+			if "title" in postData:
+				dashview.title = postData["title"]
+			if "description" in postData:
+				dashview.description = postData["description"]
+			
 		except Exception, e:
 			return ErrorResponse(e.message, 600)
 		try:
