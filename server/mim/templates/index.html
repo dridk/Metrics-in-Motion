@@ -12,7 +12,6 @@
 	<script src="static/javascripts/jquery.gridster.min.js"></script>
     <script src="static/javascripts/underscore-min.js"></script>
     <script src="static/javascripts/backbone-min.js"></script>
-	<script src="static/javascripts/mim.js"></script>
 
 </head>
 <body>
@@ -74,7 +73,7 @@
 	<script>
 	
 // LOAD gridster
-
+/*
 $(function(){ //DOM Ready
 
 	$(".gridster ul").gridster({
@@ -128,24 +127,47 @@ for (var i=0; i<10; i++) {
 	var myLineChart = new Chart(ctx).Line(data,options);
 
 
-}
+}*/
 
 
-var app = {};
+var User = Backbone.Model.extend();
 
-  app.User = Backbone.Model.extend();
+var UserList = Backbone.Collection.extend(
+{
+	model : User,
+	url:"api/users",
+	parse: function (response) 
+	{
+		console.log("PARSE")
+		return response.results;
+	}
+});
 
-  app.UserList = Backbone.Collection.extend({
-    model : app.User,
-    url:"https://dl.dropboxusercontent.com/u/25981400/users.json",
-    parse: function (response) {
-      console.log("PARSE")
-      return response.results;
-    }
-  });
+
+var users = new UserList();
+
+/*
+userList.fetch({
+	success:function (collection, response)
+	{
+		console.log("YESSSSSSSSSSSS")
+		console.log(userList.length)
+	},
+
+	error :function (e) 
+	{
+		console.log("ERROR FETCH")
+		console.log(e)
+	}, 
+
+	complete: function (e) 
+	{
+		console.log("complete")
+	}
 
 
-
+})
+*/
 
 </script>
 
