@@ -131,7 +131,18 @@ for (var i=0; i<10; i++) {
 }
 
 
+var app = {};
 
+  app.User = Backbone.Model.extend();
+
+  app.UserList = Backbone.Collection.extend({
+    model : app.User,
+    url:"https://dl.dropboxusercontent.com/u/25981400/users.json",
+    parse: function (response) {
+      console.log("PARSE")
+      return response.results;
+    }
+  });
 
 
 
