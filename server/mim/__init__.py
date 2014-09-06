@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template
 from flask.ext.restful import Resource, Api
+from flask.json import jsonify
 import mongoengine as mongo
 from models import *
 
@@ -47,7 +48,5 @@ def index():
 	print("salut")
 	return render_template("index.html")
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return flask.jsonify(error=404, text=e), 404
+
 
