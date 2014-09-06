@@ -12,7 +12,11 @@
 	<script src="static/javascripts/jquery.gridster.min.js"></script>
 	<script src="static/javascripts/underscore-min.js"></script>
 	<script src="static/javascripts/backbone-min.js"></script>
-
+	<script src="static/javascripts/backbone.epoxy.min.js"></script>
+	<script src="static/javascripts/mim.backbone.js"></script>
+	<!--script type="text/template" id="mimTpl_dashviewListItem">
+		<li><a href="<%= dashview_url %>"><%= dashview_name %></a><span><%= dashview_widgetNumber %></span></li>
+	</script-->
 </head>
 <body>
 	
@@ -22,16 +26,8 @@
 			<div class="logo"></div>
 
 			<h4>DASH VIEWS</h4>
-			<ul class="section">
-				<li><a href="">Personal</a> <span>23</span></li>
-				<li><a href="">Work</a><span>3</span></li>
-				<li><a href="">Play</a><span>14</span></li>
-				<li><a href="">Eat</a><span>12</span></li>
-				<li><a href="">Sleep</a><span>25</span></li>
-
+			<ul class="section" id="mimControler_DashviewList" data-bind="collection:$collection">
 			</ul>
-
-
 
 		</div>
 
@@ -75,12 +71,21 @@
 // LOAD gridster
 
 $(function(){ //DOM Ready
-
+	/*
 	$(".gridster ul").gridster({
 		widget_margins: [10, 10],
 		widget_base_dimensions: [300, 300]
-	});
+	});*/
 
+	if (mimControler)
+	{
+		mimControler.initView();
+
+	}
+	else
+	{
+		alert("mimControler not loaded ...");
+	}
 });
 
 
@@ -89,26 +94,15 @@ $(function(){ //DOM Ready
 options  = {animation: false, tooltipEvents:[]}
 var gridster = $(".gridster ul").gridster().data('gridster');
 
-
-$.getJSON('http://localhost:5000/api/dashviews/540af54412f80330e6fa62da', function(json, textStatus) {
-	var widgets = json.results.widgets;
-	$.each(widgets, function(index, val) {
-
-		var name = "chart"+index;
-		gridster.add_widget('<li class="new"><canvas id="'+name+'" width="390" height="200"></canvas></li>', 1, 1);
-		var ctx = $("#"+name).get(0).getContext("2d");
-		var myLineChart = new Chart(ctx).Line(val.datas,options);
-
-		console.log(val.datas)
-
-
-	});
+/*
+$.getJSON('/api/dashviews/540b01d7037ffe3c06bc047a', function(json, textStatus) {
+	
 
 });
 
 
 
-
+*/
 
 
 
