@@ -18,7 +18,7 @@ class Comment(EmbeddedDocument):
 	comment 	= StringField(max_length=255)	
 
 class DashView(Document):
-	owner 		= ReferenceField(User)
+	owner 		= ReferenceField(User, default=None, required=True)
 	title  		= StringField(default ="No Title", max_length=50)
 	description = StringField(default = "No description", max_length=255)	
 	created 	= DateTimeField(default=datetime.now)

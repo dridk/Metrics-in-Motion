@@ -4,6 +4,9 @@ from mim.models import *
 from mim.ext import *
 from flask.ext.restful import Resource
 
+# Authentification 
+# http://blog.miguelgrinberg.com/post/restful-authentication-with-flask
+
 class UserListAPI(Resource):
 	''' Get all users '''
 
