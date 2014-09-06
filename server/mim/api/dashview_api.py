@@ -15,7 +15,7 @@ class DashviewListAPI(Resource):
 	def get(self):
 
 		def count_widget(data):
-			count = Widget.objects.no_dereference().filter(dashview="53fe44d012f8032b8c2a9adc").count()
+			count = Widget.objects.no_dereference().filter(dashview=data["_id"]).count()
 			data["widget_count"] = count
 
 		dashviews = toDict(DashView.objects.all(),func_extra_info=[count_widget]) 
