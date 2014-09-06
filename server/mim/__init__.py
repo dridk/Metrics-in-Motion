@@ -48,5 +48,7 @@ def index():
 	print("salut")
 	return render_template("index.html")
 
-
+# @app.errorhandler(404)
+# def page_not_found(e):
+#     return jsonify(error=404, text=e), 404
 

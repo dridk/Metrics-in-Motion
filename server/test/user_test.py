@@ -17,7 +17,7 @@ class UserTest(unittest.TestCase):
         
 
 	def tearDown(self):
-		pass
+		mim.models.User.objects.filter(email__contains="testing").delete()
 
 
 	def is_user(self,data):
