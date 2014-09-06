@@ -40,7 +40,7 @@ class UserAPI(Resource):
 			return ErrorResponse(e.message, 600)
 
 		if "username" in postData:
-			user.username = postData["nickname"]
+			user.username = postData["username"]
 
 		if "password" in postData:
 			user.password = postData["password"]
