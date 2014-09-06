@@ -184,7 +184,7 @@ var mimControler = new function()
 					// Display chart
 					obj.chartType = "Line";
 					obj.datas = DebugGraphData();
-					obj.options = [];
+					obj.options = {animation:false, showTooltips : false};
 					var myLineChart = eval("new Chart(ctx)." + obj.chartType + "(obj.datas, obj.options);");
 				});
 			}
