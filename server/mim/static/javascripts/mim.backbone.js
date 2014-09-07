@@ -201,7 +201,6 @@ var mimController = new function()
 				{
 					// DEBUG ---------------------------------------
 					obj.options = {animation:false, showTooltips: false, responsive: true, maintainAspectRatio: false};
-					obj.chartType = obj.chart;
 					if (obj.id == "540bfe4b037ffe0d889de8c7")
 						obj.layout = {"col":1,"row":1,"size_x":2,"size_y":1};
 					else
@@ -225,8 +224,8 @@ var mimController = new function()
 					var ctx  = elmt[0].firstChild.getContext("2d");
 
 					// Display chart
-					mimController.widgets[name] = {chartType: obj.chartType, datas: obj.datas, options: obj.options};
-					eval("new Chart(ctx)." + obj.chartType + "(obj.datas, obj.options);");
+					mimController.widgets[name] = {chartType: obj.chart_type, datas: obj.datas, options: obj.options};
+					eval("new Chart(ctx)." + obj.chart_type + "(obj.datas, obj.options);");
 				});
 			}
 			else
@@ -244,7 +243,7 @@ var mimController = new function()
 		widget.firstChild = '<canvas id="'+id+'"></canvas>';
 		var ctx = widget.firstChild.getContext("2d");
 
-		eval("new Chart(ctx)." + mimController.widgets[id].chartType + "(mimController.widgets[id].datas, mimController.widgets[id].options);");
+		eval("new Chart(ctx)." + mimController.widgets[id].chart_type + "(mimController.widgets[id].datas, mimController.widgets[id].options);");
 
 		/* 
 		// Ne fonctionne pas... dommage c'était plus propre
