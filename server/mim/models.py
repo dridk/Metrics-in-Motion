@@ -26,6 +26,8 @@ class DashView(Document):
 class Datas(DynamicEmbeddedDocument):
 	pass
 
+
+
 class Widget(Document):
 	dashview    = ReferenceField(DashView, required=True)
 	title       = StringField(default="No Title", required = True)
@@ -36,8 +38,11 @@ class Widget(Document):
 	config      = DictField()
 	datas       = EmbeddedDocumentField(Datas)
 	source      = URLField()
-
-
+	column  	= IntField(default=0, required=True)
+	row 		= IntField(default=0, required=True)
+	width 		= IntField(default=1, required=True)
+	height 		= IntField(default=1, required=True)
+	
 
 
 

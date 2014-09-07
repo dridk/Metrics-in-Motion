@@ -23,7 +23,6 @@ class MongoEncoder(object):
         self.fields=obj_to_mongo.keys()
 
         for f in self.fields:
-            print "[FIELD]:"  + str(f)
             val = self.h_value(f,obj,obj_to_mongo[f])
             if val is not None:
                 self._sett_attr(f,val)
@@ -58,7 +57,6 @@ class MongoEncoder(object):
 
 
         if isinstance(obj_to_mongo, dict):
-            print "[VAL]: " + str((f))
 
             #return obj_to_mongo.strftime('%Y-%m-%dT%H:%M:%S')
             tmp_ret = {}
