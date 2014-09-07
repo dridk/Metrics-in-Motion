@@ -146,12 +146,15 @@ var mimControler = new function()
 {
 	this.DashviewsListView = null;
 	this.Dashviews = null;
+	var gridster = null;
 
 	// Init
 	this.initView = function ()
 	{
 		this.DashviewsListView = new DashviewsListView();
 		this.Dashviews = this.DashviewsListView.collection;
+	    gridster = $(".gridster ul").gridster().data('gridster');
+
 	};
 
 
