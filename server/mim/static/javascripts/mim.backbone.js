@@ -48,7 +48,7 @@ var Dasview = Backbone.Epoxy.Model.extend(
 	{
         link: function() 
         {
-            return "javascript:mimControler.displayDashview('" + this.get("id") + "');";
+            return "javascript:mimController.displayDashview('" + this.get("id") + "');";
         }
     },
 	urlRoot: "api/dashviews"
@@ -79,7 +79,7 @@ var DashviewItemView = Backbone.Epoxy.View.extend(
 
 var DashviewsListView = Backbone.Epoxy.View.extend(
 {
-    el: "#mimControler_DashviewList",
+    el: "#mimController_DashviewList",
 
     collection: new DasviewList(),
     itemView: DashviewItemView,
@@ -142,33 +142,42 @@ DebugGraphData = function()
 
 
 
-var mimControler = new function()
+var mimController = new function()
 {
-	this.DashviewsListView = null;
-	this.Dashviews = null;
-	var gridster = null;
+	// Backbone Views
+	this.dashviewsListView = null;
+
+	// Backbone Model
+	this.dashviews = null;
+
+
+	this.gridster = null;
+	this.widgets = null;
+
 
 	// Init
 	this.initView = function ()
 	{
-		this.DashviewsListView = new DashviewsListView();
-		this.Dashviews = this.DashviewsListView.collection;
+		this.dashviewsListView = new DashviewsListView();
+		this.dashviews = this.dashviewsListView.collection;
 
-		// Check http://gridster.net/demos/resize-limits.html
-	    gridster = $(".gridster ul").gridster(
-	    	{
+		mimController.gridster = $(".gridster ul").gridster(
+		{
+			resize: 
+			{
+				enabled:true,
+				max_size:[4,4],
+				min_size: [1,1],
 
+				stop: function (event, eventUISource, widget) 
+				{
+					var newHeight = this.resize_coords.data.height;
+					var newWidth = this.resize_coords.data.width;
 
-	    		resize: {
-	    			enabled:true,
-	    			max_size:[4,4],
-	    			min_size: [1,1]
-	    		}
-	    	}
-
-
-	    	).data('gridster');
-
+					mimController.redrawWidgetID(widget[0], newHeight, newWidth);
+				}
+			}
+		}).data('gridster');
 	};
 
 
@@ -176,7 +185,8 @@ var mimControler = new function()
 	this.displayDashview = function(dashviewID)
 	{
 		// Clean the dashview canvas
-		gridster.remove_all_widgets();
+		mimController.gridster.remove_all_widgets();
+		mimController.widgets = {};
 
 		// get
 		$.getJSON('/api/dashviews/'+dashviewID, function(json, textStatus) 
@@ -189,18 +199,34 @@ var mimControler = new function()
 				// Display
 				$.each(widgets, function(index, obj) 
 				{
+					// DEBUG ---------------------------------------
+					obj.options = {animation:false, showTooltips: false, responsive: true, maintainAspectRatio: false};
+					obj.chartType = obj.chart;
+					if (obj.id == "540bfe4b037ffe0d889de8c7")
+						obj.layout = {"col":1,"row":1,"size_x":2,"size_y":1};
+					else
+						obj.layout = {"col":index,"row":index,"size_x":1,"size_y":1};
+					// DEBUG ---------------------------------------
+
+
+
 					// Create id of the chart
-					var name = "chart"+index;
+					var name = "w"+obj.id;
 
 					// Build Canvas and add it to DOM
-					var elmt = gridster.add_widget('<li class="new gs-w" data-max-size-y="6", data-max-size-x="2"><canvas id="'+name+'" width="390" height="200"></canvas><span class="gs-resize-handle gs-resize-handle-both"></span></li>', 1, 1);
+					var elmt = mimController.gridster.add_widget(
+						'<li class="new gs-w" data-max-size-y="6", data-max-size-x="4"><canvas id="'+name+'"></canvas><span class="gs-resize-handle gs-resize-handle-both"></span></li>'
+						,obj.layout["size_x"]
+						,obj.layout["size_y"]
+						,obj.layout["col"] 
+						,obj.layout["row"]);
 
 					// Get drawing context for the chart
-					var ctx  = elmt[0].firstChild.getContext("2d")
+					var ctx  = elmt[0].firstChild.getContext("2d");
 
 					// Display chart
-					obj.options = {animation:false, showTooltips : false};
-					var myLineChart = eval("new Chart(ctx)." + obj.chart + "(obj.datas, obj.options);");
+					mimController.widgets[name] = {chartType: obj.chartType, datas: obj.datas, options: obj.options};
+					eval("new Chart(ctx)." + obj.chartType + "(obj.datas, obj.options);");
 				});
 			}
 			else
@@ -208,8 +234,27 @@ var mimControler = new function()
 				alert("Error - Unable to get data of dashview : " + dashviewID + "\n\n" + textStatus);
 			}
 		});
-
-
-		
 	};
+
+
+	this.redrawWidgetID = function(widget, newHeight, newWidth)
+	{
+		// To force redraw of the chart, need to recreate the canvas and chart
+		var id = widget.firstChild.id;
+		widget.firstChild = '<canvas id="'+id+'"></canvas>';
+		var ctx = widget.firstChild.getContext("2d");
+
+		eval("new Chart(ctx)." + mimController.widgets[id].chartType + "(mimController.widgets[id].datas, mimController.widgets[id].options);");
+
+		/* 
+		// Ne fonctionne pas... dommage c'était plus propre
+
+		var canvas = widget.firstChild;
+		canvas.width = newWidth - 10;
+		canvas.height = newHeight - 10;
+		canvas.style = "width: " + canvas.width + "px; height: " + canvas.height + "px;"
+		mimController.widgets[canvas.id].resize();
+		*/
+	};
+
 };
