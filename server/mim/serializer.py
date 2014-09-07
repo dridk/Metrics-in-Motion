@@ -23,6 +23,7 @@ class MongoEncoder(object):
         self.fields=obj_to_mongo.keys()
 
         for f in self.fields:
+            print "[FIELD]:"  + str(f)
             val = self.h_value(f,obj,obj_to_mongo[f])
             if val is not None:
                 self._sett_attr(f,val)
@@ -54,7 +55,11 @@ class MongoEncoder(object):
     def h_value(self,f,obj,obj_to_mongo):
         if f in self.exclude:
             return None
+
+
         if isinstance(obj_to_mongo, dict):
+            print "[VAL]: " + str((f))
+
             #return obj_to_mongo.strftime('%Y-%m-%dT%H:%M:%S')
             tmp_ret = {}
             for k in obj_to_mongo:
@@ -78,7 +83,10 @@ class MongoEncoder(object):
         elif isinstance(obj_to_mongo, ObjectId):
             return u"%s"%str(obj_to_mongo)
         elif isinstance(obj_to_mongo, list):
-            tmp_list_ret = []
+            # tmp_list_ret = []  
+            # SACHA ADDED THIS ... DATA FROM DATASETS'WIDGETS WAS NOT SHOW
+            tmp_list_ret = list(obj_to_mongo)
+            # END SACHA ADDED
             for position,tmp in enumerate(obj_to_mongo):
                 #pp(new_obj)
                 if isinstance(tmp, dict):
