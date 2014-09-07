@@ -26,7 +26,7 @@
 			<div class="logo"></div>
 
 			<h4>DASH VIEWS</h4>
-			<ul class="section" id="mimControler_DashviewList" data-bind="collection:$collection">
+			<ul class="section" id="mimController_DashviewList" data-bind="collection:$collection">
 			</ul>
 
 		</div>
@@ -77,14 +77,14 @@ $(function(){ //DOM Ready
 		widget_base_dimensions: [300, 300]
 	});*/
 
-	if (mimControler)
+	if (mimController)
 	{
-		mimControler.initView();
+		mimController.initView();
 
 	}
 	else
 	{
-		alert("mimControler not loaded ...");
+		alert("mimController not loaded ...");
 	}
 });
 
