@@ -185,10 +185,8 @@ var mimControler = new function()
 					var ctx  = elmt[0].firstChild.getContext("2d")
 
 					// Display chart
-					obj.chartType = "Line";
-					obj.datas = DebugGraphData();
 					obj.options = {animation:false, showTooltips : false};
-					var myLineChart = eval("new Chart(ctx)." + obj.chartType + "(obj.datas, obj.options);");
+					var myLineChart = eval("new Chart(ctx)." + obj.chart + "(obj.datas, obj.options);");
 				});
 			}
 			else

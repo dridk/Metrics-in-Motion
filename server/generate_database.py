@@ -36,16 +36,22 @@ for i in range(2):
 		widget.datas = Datas()
 		widget.datas.labels = ["January", "February", "March", "April", "May", "June", "July"]
 		widget.datas.datasets = []
+
+		r = random.randint(50,220)
+		g = random.randint(50,220)
+		b = random.randint(50,220)
+
 		widget.datas.datasets.append(
 			{
 			"label": "My First dataset",
-			"fillColor": "rgba(220,220,220,0.2)",
-			"strokeColor": "rgba(220,220,220,1)",
-			"pointColor": "rgba(220,220,220,1)",
+			"fillColor": "rgba(%s,%s,%s,0.2)" % (r,g,b),
+			"strokeColor": "rgba(%s,%s,%s,1)" % (r,g,b),
+			"pointColor": "rgba(%s,%s,%s,1)" % (r,g,b),
 			"pointStrokeColor": "#fff",
 			"pointHighlightFill": "#fff",
 			"pointHighlightStroke": "rgba(220,220,220,1)",
-			"data": [65, 59, 80, 81, 56, 55, 40]
+			"data": [random.randint(1,20) for i in range(12)]
+
 			})
 
 
