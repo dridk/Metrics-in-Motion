@@ -201,32 +201,26 @@ var mimController = new function()
 				{
 					// DEBUG ---------------------------------------
 					obj.options = {animation:false, showTooltips: false, responsive: true, maintainAspectRatio: false};
-					if (obj.id == "540c4c72037ffe341b64b536")
-						obj.layout = {"col":1,"row":1,"size_x":1,"size_y":2};
-					else if (obj.id == "540c4c72037ffe341b64b538")
-						obj.layout = {"col":3,"row":1,"size_x":2,"size_y":1};
-					else
-						obj.layout = {"col":index,"row":index,"size_x":1,"size_y":1};
 					// DEBUG ---------------------------------------
 
 
 
 					// Create id of the chart
-					var name = "w"+obj.id;
+					var id = "w"+obj.id;
 
 					// Build Canvas and add it to DOM
 					var elmt = mimController.gridster.add_widget(
-						'<li class="new gs-w" data-max-size-y="6", data-max-size-x="4"><canvas id="'+name+'"></canvas><span class="gs-resize-handle gs-resize-handle-both"></span></li>'
-						,obj.layout["size_x"]
-						,obj.layout["size_y"]
-						,obj.layout["col"] 
-						,obj.layout["row"]);
+						'<li class="new gs-w" data-max-size-y="6", data-max-size-x="4"><canvas id="'+id+'"></canvas><span class="gs-resize-handle gs-resize-handle-both"></span></li>'
+						,obj.width
+						,obj.height
+						,obj.column 
+						,obj.row);
 
 					// Get drawing context for the chart
 					var ctx  = elmt[0].firstChild.getContext("2d");
 
 					// Display chart
-					mimController.widgets[name] = {chartType: obj.chart_type, datas: obj.datas, options: obj.options};
+					mimController.widgets[id] = {chartType: obj.chart_type, datas: obj.datas, options: obj.options};
 					eval("new Chart(ctx)." + obj.chart_type + "(obj.datas, obj.options);");
 				});
 			}
