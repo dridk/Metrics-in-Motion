@@ -25,7 +25,7 @@ for i in range(2):
 	view.description = get_sentence()
 	view.save()
 
-	for j in range(4):
+	for j in range(5):
 		widget = Widget()
 		widget.title = get_sentence()[:10]
 		widget.description = get_sentence()

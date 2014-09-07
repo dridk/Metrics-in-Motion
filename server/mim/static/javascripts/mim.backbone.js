@@ -153,7 +153,21 @@ var mimControler = new function()
 	{
 		this.DashviewsListView = new DashviewsListView();
 		this.Dashviews = this.DashviewsListView.collection;
-	    gridster = $(".gridster ul").gridster().data('gridster');
+
+		// Check http://gridster.net/demos/resize-limits.html
+	    gridster = $(".gridster ul").gridster(
+	    	{
+
+
+	    		resize: {
+	    			enabled:true,
+	    			max_size:[4,4],
+	    			min_size: [1,1]
+	    		}
+	    	}
+
+
+	    	).data('gridster');
 
 	};
 
@@ -179,7 +193,7 @@ var mimControler = new function()
 					var name = "chart"+index;
 
 					// Build Canvas and add it to DOM
-					var elmt = gridster.add_widget('<li class="new"><canvas id="'+name+'" width="390" height="200"></canvas></li>', 1, 1);
+					var elmt = gridster.add_widget('<li class="new gs-w" data-max-size-y="6", data-max-size-x="2"><canvas id="'+name+'" width="390" height="200"></canvas><span class="gs-resize-handle gs-resize-handle-both"></span></li>', 1, 1);
 
 					// Get drawing context for the chart
 					var ctx  = elmt[0].firstChild.getContext("2d")
