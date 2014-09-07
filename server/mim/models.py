@@ -29,7 +29,7 @@ class Datas(DynamicEmbeddedDocument):
 class Widget(Document):
 	dashview    = ReferenceField(DashView, required=True)
 	title       = StringField(default="No Title", required = True)
-	chart       = StringField(choices=CHART_TYPE, default=CHART_TYPE[0], required=True)
+	chart_type  = StringField(choices=CHART_TYPE, default=CHART_TYPE[0], required=True)
 	description = StringField(max_length=255)
 	style       = StringField()	
 	comments    = ListField(EmbeddedDocumentField(Comment))

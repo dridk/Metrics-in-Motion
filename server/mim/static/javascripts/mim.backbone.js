@@ -200,7 +200,7 @@ var mimControler = new function()
 
 					// Display chart
 					obj.options = {animation:false, showTooltips : false};
-					var myLineChart = eval("new Chart(ctx)." + obj.chart + "(obj.datas, obj.options);");
+					var myLineChart = eval("new Chart(ctx)." + obj.chart_type + "(obj.datas, obj.options);");
 				});
 			}
 			else

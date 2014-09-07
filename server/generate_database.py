@@ -30,7 +30,7 @@ for i in range(2):
 		widget.title = get_sentence()[:10]
 		widget.description = get_sentence()
 		widget.dashview = view
-		widget.chart = "Line"
+		widget.chart_type = "Line"
 		widget.config["animation"] = False
 		widget.config["showScale"] = False
 		widget.datas = Datas()
