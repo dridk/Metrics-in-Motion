@@ -190,7 +190,7 @@ var mimControler = new function()
 			}
 			else
 			{
-				alert("Error - Enable to get data of dashview : " + dashviewID + "\n\n" + textStatus);
+				alert("Error - Unable to get data of dashview : " + dashviewID + "\n\n" + textStatus);
 			}
 		});
 
