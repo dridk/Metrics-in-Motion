@@ -201,8 +201,10 @@ var mimController = new function()
 				{
 					// DEBUG ---------------------------------------
 					obj.options = {animation:false, showTooltips: false, responsive: true, maintainAspectRatio: false};
-					if (obj.id == "540bfe4b037ffe0d889de8c7")
-						obj.layout = {"col":1,"row":1,"size_x":2,"size_y":1};
+					if (obj.id == "540c4c72037ffe341b64b536")
+						obj.layout = {"col":1,"row":1,"size_x":1,"size_y":2};
+					else if (obj.id == "540c4c72037ffe341b64b538")
+						obj.layout = {"col":3,"row":1,"size_x":2,"size_y":1};
 					else
 						obj.layout = {"col":index,"row":index,"size_x":1,"size_y":1};
 					// DEBUG ---------------------------------------
@@ -243,7 +245,7 @@ var mimController = new function()
 		widget.firstChild = '<canvas id="'+id+'"></canvas>';
 		var ctx = widget.firstChild.getContext("2d");
 
-		eval("new Chart(ctx)." + mimController.widgets[id].chart_type + "(mimController.widgets[id].datas, mimController.widgets[id].options);");
+		eval("new Chart(ctx)." + mimController.widgets[id].chartType + "(mimController.widgets[id].datas, mimController.widgets[id].options);");
 
 		/* 
 		// Ne fonctionne pas... dommage c'était plus propre
